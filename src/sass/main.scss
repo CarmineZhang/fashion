@@ -1,0 +1,9 @@
+@import "./variables/variable";
+@import "./mixins/mixin";
+@import 'common';
+
+/*
+基础组件样式
+*/
+
+@import './widget/searchbar/searchbar';

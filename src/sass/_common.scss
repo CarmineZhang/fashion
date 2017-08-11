@@ -1,0 +1,106 @@
+html {
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  line-height: 1.6;
+  font-family: $ff;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+a,
+button,
+img,
+input,
+select {
+  -webkit-tap-highlight-color: transparent;
+  outline: 0;
+}
+
+a,
+img,
+button {
+  border: 0;
+}
+
+a {
+  text-decoration: none;
+}
+
+li {
+  list-style: none;
+}
+
+img {
+  vertical-align: top;
+}
+
+.router-view {
+  width: 100%;
+}
+
+a.link {
+  color: #333;
+}
+
+.ipt {
+  font-size: .28rem;
+  color: #999;
+  padding-left: 10px;
+  border: 0;
+  outline: 0;
+  -webkit-appearance: none;
+  background-color: transparent;
+}
+
+.fixed-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  background-color: #323136;
+}
+
+.fixed-footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 101;
+}
+
+.more {
+  height: .6rem;
+  line-height: .6rem;
+  background-color: #eee;
+  text-align: center;
+  font-size: .24rem;
+  color: #323136;
+  a {
+    display: inline-block;
+  }
+}
+
+.btn {
+  display: block;
+  font-size: .3rem;
+  color: #fff;
+  text-align: center;
+  height: .88rem;
+  line-height: .88rem;
+  margin-bottom: .3rem;
+}
+
+.btn-primary {
+  background-color: #bf3737;
+}
+
+.btn-default {
+  background-color: #928f9c;
+}

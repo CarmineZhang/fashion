@@ -2,10 +2,14 @@ var path = require('path')
 var config = require('../config')
 var ExtractTextPlugin = require('extract-text-webpack-plugin')
 
+exports.resolve = function (dir) {
+  return path.join(__dirname, '..', dir)
+}
+
 exports.assetsPath = function (_path) {
-  var assetsSubDirectory = process.env.NODE_ENV === 'production'
-    ? config.build.assetsSubDirectory
-    : config.dev.assetsSubDirectory
+  var assetsSubDirectory = process.env.NODE_ENV === 'production' ?
+    config.build.assetsSubDirectory :
+    config.dev.assetsSubDirectory
   return path.posix.join(assetsSubDirectory, _path)
 }
 
@@ -19,10 +23,16 @@ exports.cssLoaders = function (options) {
       sourceMap: options.sourceMap
     }
   }
+  var postCssLoader = {
+    loader: 'postcss-loader',
+    options: {
+      sourceMap: options.sourceMap
+    }
+  }
 
   // generate loader string to be used with extract text plugin
-  function generateLoaders (loader, loaderOptions) {
-    var loaders = [cssLoader]
+  function generateLoaders(loader, loaderOptions) {
+    var loaders = [cssLoader, postCssLoader]
     if (loader) {
       loaders.push({
         loader: loader + '-loader',
@@ -30,8 +40,15 @@ exports.cssLoaders = function (options) {
           sourceMap: options.sourceMap
         })
       })
+      if (loader === 'sass') {
+        loaders.push({
+          loader: 'sass-resources-loader',
+          options: {
+            resources: [exports.resolve('./src/sass/_mixin.scss')]
+          }
+        })
+      }
     }
-
     // Extract CSS when that option is specified
     // (which is the case during production build)
     if (options.extract) {
@@ -49,8 +66,14 @@ exports.cssLoaders = function (options) {
     css: generateLoaders(),
     postcss: generateLoaders(),
     less: generateLoaders('less'),
-    sass: generateLoaders('sass', { indentedSyntax: true }),
-    scss: generateLoaders('sass'),
+    // sass: generateLoaders('sass', { indentedSyntax: true,  includePaths: [
+    //     exports.resolve('./src/sass')
+    //   ]}),
+    scss: generateLoaders('sass', {
+      includePaths: [
+        exports.resolve('./src/sass')
+      ]
+    }),
     stylus: generateLoaders('stylus'),
     styl: generateLoaders('stylus')
   }
