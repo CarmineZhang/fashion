@@ -4,8 +4,20 @@ html {
 }
 
 body {
-  line-height: 1.6;
   font-family: $ff;
+  margin: 0 auto;
+  min-width: 320px;
+  max-width: 540px;
+  background: #fff;
+  font-size: 14px;
+  font-family: $ff;
+  line-height: 1.5;
+  color: #666;
+}
+
+* {
+  -webkit-tap-highlight-color: transparent;
+  outline: 0;
 }
 
 * {

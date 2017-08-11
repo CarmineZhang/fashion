@@ -1,15 +1,7 @@
 <template>
   <div class="search-bar" id="searchBar" :class="{'search-bar-focusing':isFocus}">
     <form class="search-bar-form">
-      <div class="search-bar-box">
-        <i class="weui-icon-search"></i>
-        <input type="search" v-model="searchValue" class="search-bar-input" v-focus="isFocus" placeholder="搜索" required="" @blur="inputBlur">
-        <a href="javascript:" class="weui-icon-clear" @click="clear"></a>
-      </div>
-      <label class="search-bar-label" @click="labelClick">
-        <i class="weui-icon-search"></i>
-        <span>搜索</span>
-      </label>
+      <input type="search" class="search-bar-ipt">
     </form>
     <a href="javascript:" class="search-bar-cancel-btn" @click="cancel">取消</a>
   </div>

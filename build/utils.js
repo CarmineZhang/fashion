@@ -44,7 +44,7 @@ exports.cssLoaders = function (options) {
         loaders.push({
           loader: 'sass-resources-loader',
           options: {
-            resources: [exports.resolve('./src/sass/_mixin.scss')]
+            resources: [exports.resolve('./src/sass/mixins/mixin.scss'), exports.resolve('./src/sass/variables/variable.scss')]
           }
         })
       }
