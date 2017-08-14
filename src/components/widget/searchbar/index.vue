@@ -3,7 +3,7 @@
     <form class="search-bar-form">
       <input type="search" class="search-bar-ipt" @focus="inputFocus" @blur="inputBlur" v-model="searchValue">
     </form>
-    <a href="javascript:" class="search-bar-search-btn" @click="cancel">搜索</a>
+    <a href="javascript:" class="search-bar-search-btn" @click="search">搜索</a>
   </div>
 </template>
 <script>
@@ -37,14 +37,9 @@ export default {
         this.isFocus = false
       }
     },
-    cancel() {
-      this.searchValue = ''
-      this.isFocus = false
+    search() {
+      //todo
     },
-    clear() {
-      this.searchValue = ''
-      this.isFocus = true
-    }
   },
   beforeDestroy() {
     if (this._debounce) {
