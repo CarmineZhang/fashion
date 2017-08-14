@@ -1,6 +1,6 @@
 <template>
   <div class="hello">
-    <search-bar></search-bar>
+    <search-bar placeholder="查询所有订单"></search-bar>
     <swiper :list="list" @on-click="showMask"></swiper>
     <div class="mod-slider-mask" v-show="maskShow" @click="maskClick"></div>
   </div>

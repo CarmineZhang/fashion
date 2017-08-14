@@ -1,7 +1,7 @@
 <template>
   <div class="search-bar" id="searchBar" :class="{'search-bar-focusing':isFocus}">
     <form class="search-bar-form">
-      <input type="search" class="search-bar-ipt" @focus="inputFocus" @blur="inputBlur" v-model="searchValue">
+      <input type="search" class="search-bar-ipt" :placeholder="placeholder" @focus="inputFocus" @blur="inputBlur" v-model="searchValue">
     </form>
     <a href="javascript:" class="search-bar-search-btn" @click="search">搜索</a>
   </div>
@@ -10,6 +10,12 @@
 import Debounce from '@/libs/debounce'
 export default {
   name: 'search-bar',
+  props: {
+    placeholder: {
+      type: String,
+      default: '搜索'
+    }
+  },
   data() {
     return {
       isFocus: false,
