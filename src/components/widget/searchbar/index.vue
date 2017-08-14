@@ -1,9 +1,9 @@
 <template>
   <div class="search-bar" id="searchBar" :class="{'search-bar-focusing':isFocus}">
     <form class="search-bar-form">
-      <input type="search" class="search-bar-ipt" v-model="searchValue">
+      <input type="search" class="search-bar-ipt" @focus="inputFocus" @blur="inputBlur" v-model="searchValue">
     </form>
-    <a href="javascript:" class="search-bar-cancel-btn" @click="cancel">取消</a>
+    <a href="javascript:" class="search-bar-search-btn" @click="cancel">搜索</a>
   </div>
 </template>
 <script>
@@ -29,13 +29,12 @@ export default {
     }
   },
   methods: {
-    labelClick() {
+    inputFocus() {
       this.isFocus = true
     },
     inputBlur() {
-      this.isFocus = false
-      if (this.searchValue.length) {
-        this.$emit('on-change', this.searchValue)
+      if (this.searchValue.length === 0) {
+        this.isFocus = false
       }
     },
     cancel() {
