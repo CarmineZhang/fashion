@@ -35,8 +35,9 @@ class Swiper {
   _init() {
     this.width = parseInt($.getStyle(document.querySelector(this._options.container), 'width'))
     this._setPosition()
-    this._setTransition()
+    this._setTransition('none')
     this._setTransform()
+    this.$navbarItem.eq(0).addClass('cur')
   }
   _bind() {
     var me = this
