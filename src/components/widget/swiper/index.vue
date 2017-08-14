@@ -1,19 +1,19 @@
 <template>
-  <div class="ve-slider" v-if="len>0">
+  <div class="ve-slider" :class="{'ve-slider-cover':showViewer}" v-if="len>0" @click="cover">
     <div class="ve-slider-hold">
       <div class="ve-slider-list">
         <div class="ve-slider-item">
-          <a :href="firstItem.href">
+          <a>
             <img :src="firstItem.img" alt="">
           </a>
         </div>
         <div class="ve-slider-item" v-for="(item,index) in list" :key="index">
-          <a :href="item.href">
+          <a>
             <img :src="item.img" alt="">
           </a>
         </div>
         <div class="ve-slider-item">
-          <a :href="lastItem.href">
+          <a>
             <img :src="lastItem.img" alt="">
           </a>
         </div>
@@ -35,6 +35,11 @@ export default {
       console.log(this.list)
       this.render()
     })
+  },
+  data() {
+    return {
+      showViewer: false
+    }
   },
   props: {
     list: {
@@ -75,6 +80,10 @@ export default {
     }
   },
   methods: {
+    cover() {
+      this.showViewer = true
+      this.$emit('on-click')
+    },
     render() {
       this.swiper && this.swiper.destory()
       this.swiper = new Swiper({

@@ -12,6 +12,7 @@ class Swiper {
       navbar: '.nav-bar',
       interval: 3000,
       duration: 300,
+      threshold: 50,
       loop: true
     }
     this._options = objectAssign(this._default, options)
@@ -35,6 +36,7 @@ class Swiper {
     this.width = parseInt($.getStyle(document.querySelector(this._options.container), 'width'))
     this._setPosition()
     this._setTransition()
+    this._setTransform()
   }
   _bind() {
     var me = this
@@ -42,18 +44,19 @@ class Swiper {
       me.stop()
       me.start.x = e.changedTouches[0].pageX
       me.start.y = e.changedTouches[0].pageY
+      me._setTransition('none')
     }
-    // me.touchMoveHandler = (e) => {
-    //   me.move.x = e.changedTouches[0].pageX
-    //   me.move.y = e.changedTouches[0].pageY
-    //   let distanceX = me.move.x - me.start.x
-    //   let distanceY = me.move.y - me.start.y
-    //   let noScrollerY = Math.abs(distanceX) > Math.abs(distanceY)
-    //   if (noScrollerY) {
-    //     me.next()
-    //   }
-    //   noScrollerY && e.preventDefault()
-    // }
+    me.touchMoveHandler = (e) => {
+      me.move.x = e.changedTouches[0].pageX
+      me.move.y = e.changedTouches[0].pageY
+      let distanceX = me.move.x - me.start.x
+      let distanceY = me.move.y - me.start.y
+      let noScrollerY = Math.abs(distanceX) > Math.abs(distanceY)
+      if (noScrollerY) {
+        me._setTransform(distanceX)
+      }
+      noScrollerY && e.preventDefault()
+    }
 
     me.touchEndHandler = (e) => {
       me.end.x = e.changedTouches[0].pageX
@@ -63,10 +66,17 @@ class Swiper {
       if (distance === 0) {
         me._auto()
       } else {
-        me.next(distance < 0 ? 1 : -1)
+        if (distance > me._options.threshold) {
+          me.next(-1)
+        } else if (distance < -me._options.threshold) {
+          me.next(1)
+        } else {
+          me.next(0)
+        }
       }
     }
     me.$sliderlist.on('touchstart', me.touchstartHandler)
+    me.$sliderlist.on('touchmove', me.touchMoveHandler)
     me.$sliderlist.on('touchend', me.touchEndHandler)
     me.$sliderlist.on('transitionend webkitTransitionEnd', (e) => {
       e.preventDefault()
@@ -98,13 +108,22 @@ class Swiper {
       })
     }
   }
-  _setTransition() {
-    let distance = -this.current * this.width
+
+  _setTransition(duration) {
+    duration = duration || (this._options.duration || 'none')
+    let transition = duration === 'none' ? 'none' : duration + 'ms'
+    this.$sliderlist.css({
+      'transition': `all ${transition} ease`,
+      '-webkit-transition': `all ${transition} ease`
+    })
+  }
+
+  _setTransform(offset) {
+    offset = offset || 0
+    let distance = -this.current * this.width + offset
     this.$sliderlist.css({
       '-webkit-transform': `translate3d(${distance}px,0, 0)`,
       'transform': `translate3d(${distance}px, 0, 0)`,
-      'transition': `all ${this._options.duration}ms ease`,
-      '-webkit-transition': `all ${this._options.duration}ms ease`
     })
     if (this.navcurrent === this.count) {
       this.navcurrent = 0
@@ -139,6 +158,7 @@ class Swiper {
   next(num) {
     this._moveIndex(num)
     this._setTransition()
+    this._setTransform()
     this._auto()
   }
 }

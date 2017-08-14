@@ -1,7 +1,8 @@
 <template>
   <div class="hello">
     <search-bar></search-bar>
-    <swiper :list=list></swiper>
+    <swiper :list="list" @on-click="showMask"></swiper>
+    <div class="mod-slider-mask" v-show="maskShow" @click="maskClick"></div>
   </div>
 </template>
 
@@ -17,16 +18,25 @@ export default {
   data() {
     return {
       msg: 'Welcome to Your Vue.js App',
+      maskShow: false,
       list: [{
         href: '',
-        img: '//img12.360buyimg.com/mcoss/jfs/t7129/165/1970328143/52203/971c96ca/599056feN88975d1c.jpg.webp'
+        img: 'https://m.360buyimg.com/n12/jfs/t5650/39/1969510279/230705/c0175d15/592b7e83N740a2e13.jpg!q70.jpg'
       }, {
         href: '',
-        img: '//img11.360buyimg.com/mcoss/jfs/t7369/6/288359616/58505/a993cc54/59915397N571286e1.jpg.webp'
+        img: 'https://m.360buyimg.com/n12/jfs/t5980/365/784165297/263510/67ae0a8b/592b7e81N2683a45a.jpg!q70.jpg'
       }, {
         href: '',
-        img: '//img30.360buyimg.com/mcoss/jfs/t7843/296/189781065/58546/99f1f378/59902f78N9d95ff86.jpg.webp'
+        img: 'https://m.360buyimg.com/n12/jfs/t6118/153/709815207/247368/4e044731/592b7e82N34ed0798.jpg!q70.jpg'
       }]
+    }
+  },
+  methods: {
+    showMask() {
+      this.maskShow = true
+    },
+    maskClick() {
+      this.maskShow = false
     }
   }
 }
