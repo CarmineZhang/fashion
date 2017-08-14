@@ -99,6 +99,10 @@ class Swiper {
           '-webkit-transition': `0ms`
         })
       }
+      if (me.navcurrent === me.count) {
+        me.navcurrent = 0
+      }
+      me.$navbarItem.removeClass('cur').eq(me.navcurrent).addClass('cur')
     })
   }
   _setPosition() {
@@ -111,11 +115,17 @@ class Swiper {
 
   _setTransition(duration) {
     duration = duration || (this._options.duration || 'none')
-    let transition = duration === 'none' ? 'none' : duration + 'ms'
-    this.$sliderlist.css({
-      'transition': `all ${transition} ease`,
-      '-webkit-transition': `all ${transition} ease`
-    })
+    if (duration === 'none') {
+      this.$sliderlist.css({
+        'transition': 'none',
+        '-webkit-transition': 'none'
+      })
+    } else {
+      this.$sliderlist.css({
+        'transition': `all ${duration}ms ease`,
+        '-webkit-transition': `all ${duration}ms ease`
+      })
+    }
   }
 
   _setTransform(offset) {
@@ -125,10 +135,6 @@ class Swiper {
       '-webkit-transform': `translate3d(${distance}px,0, 0)`,
       'transform': `translate3d(${distance}px, 0, 0)`,
     })
-    if (this.navcurrent === this.count) {
-      this.navcurrent = 0
-    }
-    this.$navbarItem.removeClass('cur').eq(this.navcurrent).addClass('cur')
   }
   _auto() {
     const me = this
