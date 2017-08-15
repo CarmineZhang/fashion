@@ -48,6 +48,7 @@ export default {
       text-align: center;
       padding: 10px 0;
       color: #666;
+      font-size: 12px;
     }
   }
 }

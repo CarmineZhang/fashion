@@ -37,6 +37,7 @@ export default {
       display: block;
       padding: 10px 0;
       color: #666;
+      font-size: 12px;
     }
   }
 }

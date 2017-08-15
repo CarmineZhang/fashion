@@ -34,7 +34,8 @@ export default {
 .my-header-wrap {
   margin-bottom: 10px;
   background-color: #fff;
-  padding-top: 10px;
+  padding: 10px 0;
+  font-size: 12px;
   .my-header-avatar {
     font-size: 0;
     margin: 0 auto;
@@ -49,6 +50,7 @@ export default {
     }
   }
   .my-header-name {
+    line-height: 1.8;
     text-align: center;
   }
   .my-header-info {
