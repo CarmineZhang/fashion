@@ -8,9 +8,8 @@ body {
   margin: 0 auto;
   min-width: 320px;
   max-width: 540px;
-  background: #fff;
+  background: #e8e8ed;
   font-size: 14px;
-  font-family: $ff;
   line-height: 1.5;
   color: #666;
 }
@@ -41,6 +40,7 @@ button {
 }
 
 a {
+  color: #333;
   text-decoration: none;
 }
 
@@ -50,6 +50,10 @@ li {
 
 img {
   vertical-align: top;
+}
+
+.main {
+  padding-bottom: 50px;
 }
 
 .router-view {
@@ -115,4 +119,32 @@ a.link {
 
 .btn-default {
   background-color: #928f9c;
+}
+
+.my-section {
+  margin: 10px 0;
+  background: #fff;
+  .header {
+    position: relative;
+    display: block;
+    height: 45px;
+    line-height: 45px;
+    font-size: 14px;
+    padding: 0 10px;
+    em {
+      font-style: normal;
+    }
+    span {
+      color: #999;
+      position: absolute;
+      right: 25px;
+      font-size: 12px;
+    }
+  }
+  .header-access {
+    @include arrow-right(8px);
+    &:after {
+      right: 10px;
+    }
+  }
 }
