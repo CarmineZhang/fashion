@@ -1,14 +1,14 @@
 <template>
   <div class="main">
     <div class="fixed-header">
-      <a href="" class="header-left">设置</a>
-      <a href="" class="header-right">消息</a>
+      <a class="header-left" @click="showSetting">设置</a>
+      <a class="header-right">消息</a>
     </div>
     <my-header></my-header>
     <my-order></my-order>
     <my-tool></my-tool>
     <div class="my-section">
-      <a class="header header-access">
+      <a class="header header-access" @click="showSetting">
         <em>设置</em>
       </a>
     </div>
@@ -24,6 +24,11 @@ export default {
     MyHeader,
     MyOrder,
     MyTool
+  },
+  methods: {
+    showSetting() {
+      this.$router.push({ path: '/setting' })
+    }
   }
 }
 </script>
