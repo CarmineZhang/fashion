@@ -25,7 +25,7 @@ export default {
       this.$router.push('/category')
     },
     gotoCart() {
-
+      this.$router.push('/cart')
     },
     gotoMe() {
       this.$router.push('/usercenter')
