@@ -34,7 +34,7 @@
     bottom: 0;
     border-bottom: 1px solid $color;
     color: $color;
-    transform-origin: 0 0;
+    transform-origin: 0 100%;
     transform: scaleY(.5);
   }
 }
@@ -76,7 +76,7 @@
     bottom: 0;
     border-right: 1px solid $color;
     color: $color;
-    transform-origin: 0 0;
+    transform-origin: 100% 0;
     transform: scaleX(.5);
   }
 }

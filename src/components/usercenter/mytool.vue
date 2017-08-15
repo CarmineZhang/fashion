@@ -5,25 +5,19 @@
     </a>
     <ul class="my-tool">
       <li>
-        <a href="">我的劵</a>
-      </li>
-      <li>
         <a href="">我的积分</a>
       </li>
       <li>
-        <a href="">我的团队</a>
+        <a href="">我的好友</a>
       </li>
       <li>
         <a href="">我的二维码</a>
       </li>
       <li>
-        <a href="">银行卡管理</a>
-      </li>
-      <li>
-        <a href="">售后服务</a>
-      </li>
-      <li>
         <a href="">购卡</a>
+      </li>
+      <li>
+        <a href="">礼品卡绑定</a>
       </li>
     </ul>
   </div>
@@ -44,6 +38,11 @@ export default {
     position: relative;
     @include rightline();
     @include bottomline();
+    &:nth-child(4) {
+      &::before {
+        display: none;
+      }
+    }
     a {
       display: block;
       text-align: center;
