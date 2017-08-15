@@ -1,7 +1,8 @@
 <template>
   <div class="search-bar" id="searchBar" :class="{'search-bar-focusing':isFocus}">
     <form class="search-bar-form">
-      <input type="search" class="search-bar-ipt" :placeholder="placeholder" @focus="inputFocus" @blur="inputBlur" v-model="searchValue">
+      <input type="search" class="search-bar-ipt" :placeholder="placeholder" @focus="inputFocus" @blur="inputBlur" v-model="searchValue" ref="input">
+      <a class="search-clear" v-show="searchValue!==''" @click="clear"></a>
     </form>
     <a href="javascript:" class="search-bar-search-btn" @click="search">搜索</a>
   </div>
@@ -42,6 +43,10 @@ export default {
       if (this.searchValue.length === 0) {
         this.isFocus = false
       }
+    },
+    clear() {
+      this.searchValue = ''
+      this.$refs.input.focus()
     },
     search() {
       //todo
