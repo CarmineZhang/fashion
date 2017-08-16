@@ -3,8 +3,10 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
+import Validator from '@/plugins/validator'
 import './sass/main.scss'
 Vue.config.productionTip = false
+Vue.use(Validator)
 
 Vue.directive('price', {
   bind: function (el, binding) {
