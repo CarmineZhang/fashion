@@ -1,23 +1,43 @@
 .cell {
   box-sizing: border-box;
-  height: 44px;
-  line-height: 44px;
   display: flex;
   position: relative;
-  padding-left: 40px;
-  padding-right: 20px;
+  padding: 10px 15px;
   @include bottomline();
   .cell-bd {
     flex: 1;
     font-size: 14px;
     color: #333;
+    height: 24px;
+    line-height: 24px;
+  }
+  .cell-ft {
+    line-height: 24px;
+    position: relative;
+    padding-right: 20px;
   }
 }
 
 .cell-access {
   .cell-ft {
-    position: relative;
-    padding-right: 20px;
     @include arrow-right(8px);
+  }
+}
+
+.cell-select {
+  .cell-ft {
+    &::after {
+      content: "";
+      position: absolute;
+      right: 0;
+      top: 50%;
+      width: 15px;
+      height: 3px;
+      transform: translateY(-50%);
+      background-image: url('//wq.360buyimg.com/fd/base/img/detail/sprite_detail_sku_v1.png?20160512');
+      background-repeat: no-repeat;
+      background-size: 15px;
+      background-position: 0 0;
+    }
   }
 }

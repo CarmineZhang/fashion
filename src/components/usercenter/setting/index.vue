@@ -1,38 +1,18 @@
 <template>
   <div>
     <div class="section">
-      <div class="cell cell-access">
-        <div class="cell-bd">个人信息</div>
-        <div class="cell-ft"></div>
-      </div>
-      <div class="cell cell-access">
-        <div class="cell-bd">账户安全</div>
-        <div class="cell-ft"></div>
-      </div>
-      <div class="cell cell-access">
-        <div class="cell-bd">消息提醒设置</div>
-        <div class="cell-ft"></div>
-      </div>
-      <div class="cell cell-access">
-        <div class="cell-bd">通用</div>
-        <div class="cell-ft"></div>
-      </div>
+  
+      <cell type="link" title="个人信息"></cell>
+      <cell type="link" title="账户安全"></cell>
+      <cell type="link" title="消息提醒设置"></cell>
+      <cell type="link" title="通用"></cell>
     </div>
     <div class="section">
-      <div class="cell cell-access">
-        <div class="cell-bd">图片质量</div>
-        <div class="cell-ft"></div>
-      </div>
+      <cell type="link" title="图片质量"></cell>
     </div>
     <div class="section">
-      <div class="cell cell-access">
-        <div class="cell-bd">关于我们</div>
-        <div class="cell-ft"></div>
-      </div>
-      <div class="cell cell-access">
-        <div class="cell-bd">意见反馈</div>
-        <div class="cell-ft"></div>
-      </div>
+      <cell type="link" title="关于我们"></cell>
+      <cell type="link" title="意见反馈"></cell>
     </div>
     <a class="section-footer">
       退出登录
@@ -40,8 +20,12 @@
   </div>
 </template>
 <script>
+import Cell from '@/components/widget/cell'
 export default {
-  name: 'setting'
+  name: 'setting',
+  components: {
+    Cell
+  }
 }
 </script>
 <style lang="scss" scoped>
