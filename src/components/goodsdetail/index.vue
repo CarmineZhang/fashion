@@ -23,11 +23,15 @@
             <p>满78元包邮</p>
           </section>
           <section>
-  
+            <cell type="select" title="产品参数"></cell>
+            <cell type="select" title="选择颜色"></cell>
           </section>
           <section>
             <p>商品评价</p>
-            <p>查看更多</p>
+            <comment></comment>
+            <p class="more">
+              查看更多
+            </p>
           </section>
         </div>
       </div>
@@ -39,12 +43,16 @@
 import GoodsHeader from './header'
 import GoodsFooter from './footer'
 import Swiper from '../widget/swiper'
+import Cell from '@/components/widget/cell'
+import Comment from './comment'
 export default {
   name: 'goods-detail',
   components: {
     GoodsHeader,
     GoodsFooter,
-    Swiper
+    Swiper,
+    Cell,
+    Comment
   },
   data() {
     return {
@@ -68,6 +76,9 @@ export default {
       background-color: #fff;
       margin-bottom: 10px;
       padding: 12px 10px;
+      .more {
+        text-align: center;
+      }
     }
     .goods-price {
       strong {
