@@ -1,7 +1,7 @@
 import $ from '@/libs/domUtil'
 class Scroll {
   constructor(el) {
-    this.container = el
+    this.$container = $(el)
     this.$el = $(el).find('ul')
     this.childWidth = 80
     this.maxWidth = 0
@@ -85,9 +85,9 @@ class Scroll {
         me._trans(distance)
       }
     }
-    me.$el.on('touchstart', me.touchstartHandler)
-    me.$el.on('touchmove', me.touchMoveHandler)
-    me.$el.on('touchend', me.touchEndHandler)
+    me.$container.on('touchstart', me.touchstartHandler)
+    me.$container.on('touchmove', me.touchMoveHandler)
+    me.$container.on('touchend', me.touchEndHandler)
   }
   _trans(distance) {
     if (this.distance !== 0) {
