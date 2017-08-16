@@ -4,7 +4,9 @@
       <slot name="header"></slot>
     </div>
     <div class="cell-bd" v-text="title"></div>
-    <div class="cell-ft" v-text="content"></div>
+    <div class="cell-ft" v-text="content">
+      <slot name="footer"></slot>
+    </div>
   </div>
 </template>
 <script>

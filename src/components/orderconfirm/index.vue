@@ -12,16 +12,21 @@
     </section>
     <list></list>
     <cell type="link" title="选择发票抬头"></cell>
+    <cell title="可用1000积分抵扣50">
+      <my-switch slot="footer"></my-switch>
+    </cell>
   </div>
 </template>
 <script>
 import List from './list'
 import Cell from '@/components/widget/cell'
+import MySwitch from '@/components/widget/switch'
 export default {
   name: 'order-confirm',
   components: {
     List,
-    Cell
+    Cell,
+    MySwitch
   }
 }
 </script>
