@@ -2,7 +2,7 @@ import {
   is,
   parsePath,
   assign
-} from '@/libs/comUtil'
+} from '@/libs/comutil'
 import rules from './rules'
 let Vue
 class Validator {

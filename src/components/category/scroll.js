@@ -1,4 +1,4 @@
-import $ from '@/plugins/util'
+import $ from '@/plugins/widget/util'
 class Scroll {
   constructor(el) {
     this.$container = $(el)
