@@ -1,4 +1,4 @@
-import $ from '@/libs/domUtil'
+import $ from '@/plugins/util'
 class Scroll {
   constructor(el) {
     this.$container = $(el)
