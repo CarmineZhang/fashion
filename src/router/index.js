@@ -1,10 +1,11 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-// import Test from '@/components/Test'
+import Test from '@/components/Test'
 import Index from '@/components/index'
 import UserCenter from '@/components/usercenter'
 import Setting from '@/components/usercenter/setting'
 import Cart from '@/components/cart'
+import Category from '@/components/category'
 Vue.use(Router)
 
 export default new Router({
@@ -18,9 +19,15 @@ export default new Router({
     }, {
       path: '/cart',
       component: Cart
+    }, {
+      path: '/category',
+      component: Category
     }]
   }, {
     path: '/setting',
     component: Setting
+  }, {
+    path: '/test',
+    component: Test
   }]
 })
