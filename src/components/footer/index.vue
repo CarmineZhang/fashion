@@ -19,7 +19,7 @@ export default {
   },
   methods: {
     gotoIndex() {
-      this.$router.push('/index')
+      this.$router.push('/')
     },
     gotoCategory() {
       this.$router.push('/category')

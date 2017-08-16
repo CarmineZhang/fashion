@@ -6,14 +6,17 @@ import UserCenter from '@/components/usercenter'
 import Setting from '@/components/usercenter/setting'
 import Cart from '@/components/cart'
 import Category from '@/components/category'
+import Login from '@/components/login'
 Vue.use(Router)
 
 export default new Router({
   routes: [{
     path: '/',
-    name: 'index',
     component: Index,
     children: [{
+      path: '/',
+      component: Login
+    }, {
       path: '/usercenter',
       component: UserCenter
     }, {
