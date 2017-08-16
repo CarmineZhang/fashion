@@ -23,6 +23,9 @@
   .cell-ft {
     @include arrow-right(8px);
   }
+  &:active {
+    background-color: #ececec;
+  }
 }
 
 .cell-select {
