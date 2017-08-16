@@ -3,7 +3,8 @@
   display: flex;
   position: relative;
   padding: 10px 15px;
-  @include bottomline();
+  background-color: #fff;
+  @include topline();
   .cell-bd {
     flex: 1;
     font-size: 14px;
@@ -38,6 +39,14 @@
       background-repeat: no-repeat;
       background-size: 15px;
       background-position: 0 0;
+    }
+  }
+}
+
+.cells {
+  .cell::first-child {
+    &::before {
+      display: none;
     }
   }
 }
