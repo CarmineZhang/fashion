@@ -1,6 +1,6 @@
 <template>
   <div class="main">
-    <div class="fixed-header">
+    <div class="my-fixed-header">
       <a class="header-left" @click="showSetting">设置</a>
       <a class="header-right">消息</a>
     </div>
@@ -37,7 +37,7 @@ export default {
   padding-top: 40px;
 }
 
-.fixed-header {
+.my-fixed-header {
   position: fixed;
   top: 0;
   left: 0;
