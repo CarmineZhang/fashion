@@ -1,5 +1,5 @@
 <template>
-  <div class="main">
+  <div class="my-main">
     <div class="my-fixed-header">
       <a class="header-left" @click="showSetting">设置</a>
       <a class="header-right">消息</a>
@@ -33,7 +33,7 @@ export default {
 }
 </script>
 <style lang="scss">
-.main {
+.my-main {
   padding-top: 40px;
 }
 

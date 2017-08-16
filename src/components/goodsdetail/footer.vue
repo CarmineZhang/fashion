@@ -1,0 +1,60 @@
+<template>
+  <div class="goods-footer">
+    <div class="goods-collect">
+      <span>收藏</span>
+    </div>
+    <div class="goods-action goods-cart">加入购物车</div>
+    <div class="goods-action goods-buy">立即购买</div>
+  </div>
+</template>
+<script>
+export default {
+  name: 'goods-footer'
+}
+</script>
+<style lang="scss">
+.goods-footer {
+  display: flex;
+  @include topline();
+  .goods-collect {
+    flex: 1;
+    position: relative;
+    padding-top: 25px;
+    background-color: #fff;
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translate3d(-50%, 0, 0);
+      width: 25px;
+      height: 25px;
+      background: url('//wq.360buyimg.com/fd/base/img/detail/favour.png?20160512') no-repeat;
+      background-size: 25px 60px;
+      background-position: 0 -35px;
+    }
+    span {
+      display: block;
+      text-align: center;
+    }
+  }
+  .goods-action {
+    flex: 1;
+    position: relative;
+    z-index: 10;
+    line-height: 50px;
+    text-align: center;
+    color: #fff;
+    font-size: 14px;
+    cursor: pointer;
+    text-align: center
+  }
+  .goods-buy {
+    background: #e4393c;
+  }
+  .goods-cart {
+    background: #ff9600;
+  }
+}
+</style>
+
