@@ -5,7 +5,7 @@
         <span>收货人：</span>
         <strong>12681246354</strong>
       </p>
-      <p>
+      <p class="sub-addr">
         <span>收货地址：</span>
         <span>北京市朝阳区光华路SOHO</span>
       </p>
@@ -53,6 +53,9 @@ export default {
     &::after {
       right: 15px;
     }
+  }
+  .sub-addr {
+    font-size: 12px;
   }
 }
 

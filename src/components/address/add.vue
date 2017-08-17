@@ -4,7 +4,7 @@
       <p>
         <label>
           <span class="tit">收货人</span>
-          <input type="text" placeholder="姓名" v-model="receiver" class="ipt">
+          <input type="text" placeholder="姓名" v-model="receiver" class="ipt" />
         </label>
       </p>
       <p>
@@ -13,17 +13,17 @@
           <input type="tel" maxlength="11" placeholder="手机号码" v-model="phone" class="ipt">
         </label>
       </p>
-      <p id="selAddr" @click="showArea">
+      <p class="area" @click="showArea">
         <label>
           <span class="tit">省市区县</span>
           <input type="text" readonly="" placeholder="选择省市区县" id="provincecity" :value="area" class="ipt">
           <i class="arrow"></i>
         </label>
       </p>
-      <p>
+      <p class="detail">
         <label>
           <span class="tit">详细地址</span>
-          <textarea placeholder="街道地址" rows="2" v-model="detail" ref="textarea" class="ipt"></textarea>
+          <textarea placeholder="街道地址" rows="2" v-model="detail" ref="textarea"></textarea>
           <i class="close" @click="clearDetail"></i>
         </label>
       </p>
@@ -168,7 +168,7 @@ export default {
     line-height: 1.5;
   }
 
-  .street_detail {
+  .detail {
     padding-right: 35px;
   }
 
