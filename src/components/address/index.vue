@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="address-wrap">
+    <div class="select-form">
       <div>
         <div class="address" v-slider v-for="(item,index) in list" :key="index">
           <ul>
@@ -23,7 +23,7 @@
   </div>
 </template>
 <script>
-import slider from './slider'
+import slider from '@/libs/slider'
 import * as http from '@/services'
 export default {
   name: 'address',
