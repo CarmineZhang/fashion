@@ -1,7 +1,7 @@
 var tpl = `<div class="<%= className %>">
     <div class="mask-transparent"></div>
-    <div class="toast">
-        <i class="icon-toast weui-loading"></i>
+    <div class="toast icon-toast">
+        <i class="icon-loading"></i>
         <p class="toast-content"><%=content%></p>
     </div>
 </div>`

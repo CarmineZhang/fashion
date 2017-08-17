@@ -40,7 +40,7 @@ export default {
       this.$router.push('/selectinvoice')
     },
     test() {
-      this.$ve.toast('123', 1000)
+      this.$ve.toast.text('注册成功112313123123123', 50000)
     }
   }
 }

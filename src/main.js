@@ -9,10 +9,13 @@ import {
 } from 'vuex-router-sync'
 import Validator from '@/plugins/validator'
 import Widget from '@/plugins/widget'
+import Toast from '@/plugins/widget/toast'
 import './sass/main.scss'
 Vue.config.productionTip = false
 Vue.use(Validator)
 Vue.use(Widget)
+Vue.use(Toast)
+
 sync(store, router)
 
 Vue.directive('price', {

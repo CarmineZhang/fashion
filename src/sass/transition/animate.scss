@@ -49,3 +49,12 @@
 .animate-fade-out {
   animation: fadeOut ease .3s forwards;
 }
+
+@keyframes loading {
+  0% {
+    transform: rotate3d(0, 0, 1, 0deg);
+  }
+  100% {
+    transform: rotate3d(0, 0, 1, 360deg);
+  }
+}
