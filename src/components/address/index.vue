@@ -16,7 +16,7 @@
           </p>
         </div>
       </div>
-      <div class="address-add">
+      <div class="address-add" @click="add">
         <a></a>
       </div>
     </div>
@@ -28,6 +28,11 @@ export default {
   name: 'address',
   directives: {
     slider: slider
+  },
+  methods: {
+    add() {
+      this.$router.push('addaddress')
+    }
   }
 }
 </script>

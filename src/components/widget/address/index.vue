@@ -1,7 +1,7 @@
 <template>
   <div class="ve-address">
     <transition name="ve-mask">
-      <div class="weui-mask weui-mask_transparent" v-show="show"></div>
+      <div class="mask mask-transparent" v-show="show"></div>
     </transition>
     <div class="mod-address-slide-main" :class="{'mod-address-slide-toggle': show}">
       <div class="mod-address-slide-header">
@@ -9,7 +9,7 @@
       </div>
       <div class="mod-address-slide-body">
         <ul class="mod-address-slide-tabs">
-          <li :class="{'cur':level===index}" :data-level="index" v-for="(item,index) in header" :key="item" @click="changeArea">
+          <li :class="{'cur':level===index}" :data-level="index" v-for="(item,index) in header" :key="index" @click="changeArea">
             <span v-text="item.label"></span>
           </li>
         </ul>
