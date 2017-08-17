@@ -4,7 +4,8 @@
       <div class="mask mask-transparent" v-show="show"></div>
     </transition>
     <div class="mod-slide-main" :class="{'mod-slide-toggle': show}">
-      <div class="mod-address-slide-header">
+      <div class="mod-slide-header">
+        所在地区
         <i class="close" @click="close"></i>
       </div>
       <div class="mod-slide-body">

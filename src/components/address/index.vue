@@ -2,7 +2,7 @@
   <div>
     <div class="select-form">
       <div>
-        <div class="address" v-slider v-for="(item,index) in list" :key="index">
+        <div class="item" v-slider v-for="(item,index) in list" :key="index">
           <ul>
             <li>吉林省松原市长岭县123</li>
             <li>
@@ -16,7 +16,7 @@
           </p>
         </div>
       </div>
-      <div class="address-add" @click="add">
+      <div class="add" @click="add">
         <a></a>
       </div>
     </div>

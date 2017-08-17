@@ -2,7 +2,7 @@
   <div>
     <div class="select-form">
       <div>
-        <div class="address" v-slider v-for="(item,index) in list" :key="index">
+        <div class="item" v-slider v-for="(item,index) in list" :key="index">
           <ul>
             <li>
               <span>发票抬头</span>
@@ -19,7 +19,7 @@
           </p>
         </div>
       </div>
-      <div class="address-add" @click="add">
+      <div class="add" @click="add">
         <a></a>
       </div>
     </div>

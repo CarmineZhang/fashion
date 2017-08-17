@@ -4,31 +4,31 @@
       <p>
         <label>
           <span class="tit">收货人</span>
-          <input type="text" placeholder="姓名" v-model="receiver">
+          <input type="text" placeholder="姓名" v-model="receiver" class="ipt">
         </label>
       </p>
       <p>
         <label>
           <span class="tit">联系方式</span>
-          <input type="tel" maxlength="11" placeholder="手机号码" v-model="phone">
+          <input type="tel" maxlength="11" placeholder="手机号码" v-model="phone" class="ipt">
         </label>
       </p>
       <p id="selAddr" @click="showArea">
         <label>
           <span class="tit">省市区县</span>
-          <input type="text" readonly="" placeholder="选择省市区县" id="provincecity" :value="area">
+          <input type="text" readonly="" placeholder="选择省市区县" id="provincecity" :value="area" class="ipt">
           <i class="arrow"></i>
         </label>
       </p>
       <p>
         <label>
           <span class="tit">详细地址</span>
-          <textarea placeholder="街道地址" rows="2" v-model="detail" ref="textarea"></textarea>
+          <textarea placeholder="街道地址" rows="2" v-model="detail" ref="textarea" class="ipt"></textarea>
           <i class="close" @click="clearDetail"></i>
         </label>
       </p>
     </div>
-    <div class="btn-wrap">
+    <div class="btn-wrapper">
       <a class="btn btn-primary" @click="addAddress">确认</a>
       <a class="btn btn-default" v-show="isEdit" @click="delAddress">删除收货地址</a>
     </div>
@@ -201,6 +201,11 @@ export default {
       background-size: 15px;
     }
   }
+}
+
+.btn-wrapper {
+  background: #fff;
+  padding: 10px 15px;
 }
 </style>
 

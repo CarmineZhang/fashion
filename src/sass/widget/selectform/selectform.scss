@@ -5,7 +5,7 @@
 .select-form {
   color: #333;
   background: #fff;
-  .edit-addr {
+  .select-item {
     ul {
       &:before {
         content: "\20";
@@ -27,7 +27,7 @@
       }
     }
   }
-  .address {
+  .item {
     position: relative;
     overflow: hidden;
     word-wrap: break-word;
@@ -86,7 +86,7 @@
       }
     }
   }
-  .address-add {
+  .add {
     position: relative;
     @include bottomline();
     a {
