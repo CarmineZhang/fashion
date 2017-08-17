@@ -34,3 +34,18 @@
 .form-op {
   padding-top: .3rem;
 }
+
+.cell-form-item {
+  display: flex;
+  position: relative;
+  padding: 12px 10px;
+  @include bottomline();
+  .cell-hd {
+    width: 100px;
+    text-align: right;
+  }
+  .cell-bd {
+    flex: 1;
+    margin-left: 10px;
+  }
+}

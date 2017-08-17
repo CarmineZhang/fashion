@@ -3,17 +3,17 @@
     <transition name="ve-mask">
       <div class="mask mask-transparent" v-show="show"></div>
     </transition>
-    <div class="mod-address-slide-main" :class="{'mod-address-slide-toggle': show}">
+    <div class="mod-slide-main" :class="{'mod-slide-toggle': show}">
       <div class="mod-address-slide-header">
         <i class="close" @click="close"></i>
       </div>
-      <div class="mod-address-slide-body">
-        <ul class="mod-address-slide-tabs">
+      <div class="mod-slide-body">
+        <ul class="mod-slide-tabs">
           <li :class="{'cur':level===index}" :data-level="index" v-for="(item,index) in header" :key="index" @click="changeArea">
             <span v-text="item.label"></span>
           </li>
         </ul>
-        <ul class="mod-address-slide-list">
+        <ul class="mod-slide-list">
           <li :class="{'cur':key==selectKey}" :data-level="level" :data-key="key" v-for="(value, key) in data" :key="key" v-addr-text="value" @click="change"></li>
         </ul>
       </div>

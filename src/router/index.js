@@ -11,6 +11,7 @@ import Category from '@/components/category'
 import OrderConfirm from '@/components/orderconfirm'
 import SelectAddress from '@/components/address'
 import AddAddress from '@/components/address/add'
+import SelectInvoice from '@/components/invoice'
 Vue.use(Router)
 
 export default new Router({
@@ -43,5 +44,8 @@ export default new Router({
     path: '/addaddress',
     name: 'addaddress',
     component: AddAddress
+  }, {
+    path: '/selectinvoice',
+    component: SelectInvoice
   }]
 })

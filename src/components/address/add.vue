@@ -138,7 +138,6 @@ export default {
   p {
     padding: 12px 10px 12px 75px;
     position: relative;
-    -webkit-box-sizing: border-box;
     box-sizing: border-box;
     @include bottomline();
   }
@@ -158,17 +157,6 @@ export default {
     right: 0;
     margin: auto 0;
     text-align: right;
-  }
-
-  input {
-    height: 20px;
-    line-height: normal;
-    border: 0 none;
-    width: 100%;
-    -webkit-appearance: none;
-    vertical-align: top;
-    font-size: 14px;
-    color: #333;
   }
 
   textarea {

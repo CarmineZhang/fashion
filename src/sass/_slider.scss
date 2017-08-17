@@ -1,4 +1,4 @@
-.mod-address-slide {
+.mod-slide {
   position: fixed;
   top: 0;
   bottom: 0;
@@ -8,7 +8,7 @@
   background-color: rgba(0, 0, 0, .7);
 }
 
-.mod-address-slide-main {
+.mod-slide-main {
   position: fixed;
   left: 0;
   bottom: 0;
@@ -22,21 +22,22 @@
   transition: transform 0.3s, -webkit-transform 0.3s;
 }
 
-.mod-address-slide-toggle {
+.mod-slide-toggle {
   transform: translateY(0);
 }
 
-.mod-address-slide-header {
+.mod-slide-header {
   position: relative;
   height: 40px;
   line-height: 40px;
   padding-left: 10px;
   color: #333;
   background-color: #f3f2f8;
+  text-align: center;
 }
 
-.mod-address-slide-header::after,
-.mod-address-slide-tabs::after {
+.mod-slide-header::after,
+.mod-slide-tabs::after {
   background: #ddd;
   height: 1px;
   left: 0;
@@ -67,7 +68,7 @@
   }
 }
 
-.mod-address-slide-tabs {
+.mod-slide-tabs {
   overflow: hidden;
   padding: 0 10px;
   position: relative;
@@ -103,7 +104,7 @@
   color: #e4393c;
 }
 
-.mod-address-slide-list {
+.mod-slide-list {
   padding: 5px 10px;
   font-size: 14px;
   height: 300px;
