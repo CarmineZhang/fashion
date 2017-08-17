@@ -11,7 +11,7 @@
       </p>
     </section>
     <list></list>
-    <cell type="link" title="配送方式"></cell>
+    <cell type="link" title="配送方式" @on-click="test"></cell>
     <cell type="link" title="选择发票抬头" @on-click="selectInvoice"></cell>
     <cell title="可用1000积分抵扣50" ce-class="order-switch">
       <my-switch slot="footer"></my-switch>
@@ -38,6 +38,9 @@ export default {
     },
     selectInvoice() {
       this.$router.push('/selectinvoice')
+    },
+    test() {
+      this.$ve.toast('123', 1000)
     }
   }
 }

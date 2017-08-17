@@ -1,14 +1,14 @@
 @import "./variables/variable";
 @import "./mixins/mixin";
 @import 'common';
-@import 'cell';
 @import 'form';
-@import 'slider';
+@import 'font';
 
 /*
 基础组件样式
 */
 
+@import './widget/cell/cell';
 @import './widget/dialog/dialog';
 @import './widget/toast/toast';
 @import './widget/picker/picker';
@@ -17,3 +17,10 @@
 @import './widget/mask/mask';
 @import './widget/selectform/selectform';
 @import './widget/button/button';
+
+/**
+* 动画
+*/
+
+@import './transition/animate';
+@import './transition/transition';
