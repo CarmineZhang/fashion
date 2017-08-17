@@ -1,4 +1,4 @@
-import http from '@/services'
+import * as http from '@/services'
 
 export var areaList = {}
 

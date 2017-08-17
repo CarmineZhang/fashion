@@ -3,10 +3,16 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
+import store from './store'
+import {
+  sync
+} from 'vuex-router-sync'
 import Validator from '@/plugins/validator'
 import './sass/main.scss'
 Vue.config.productionTip = false
 Vue.use(Validator)
+
+sync(store, router)
 
 Vue.directive('price', {
   bind: function (el, binding) {
@@ -36,6 +42,7 @@ Vue.filter('price', (val) => {
 new Vue({
   el: '#app',
   router,
+  store,
   template: '<App/>',
   components: {
     App

@@ -4,33 +4,33 @@
       <p>
         <label>
           <span class="tit">收货人</span>
-          <input type="text" placeholder="姓名">
+          <input type="text" placeholder="姓名" v-model="receiver">
         </label>
       </p>
       <p>
         <label>
           <span class="tit">联系方式</span>
-          <input type="tel" maxlength="11" placeholder="手机号码">
+          <input type="tel" maxlength="11" placeholder="手机号码" v-model="phone">
         </label>
       </p>
       <p id="selAddr" @click="showArea">
         <label>
           <span class="tit">省市区县</span>
-          <input type="text" readonly="" placeholder="选择省市区县" id="provincecity">
+          <input type="text" readonly="" placeholder="选择省市区县" id="provincecity" :value="area">
           <i class="arrow"></i>
         </label>
       </p>
       <p>
         <label>
           <span class="tit">详细地址</span>
-          <textarea placeholder="街道地址" rows="2" id="adinfo"></textarea>
-          <i class="close" id="closeDetail"></i>
+          <textarea placeholder="街道地址" rows="2" v-model="detail" ref="textarea"></textarea>
+          <i class="close" @click="clearDetail"></i>
         </label>
       </p>
     </div>
     <div class="btn-wrap">
-      <a class="btn btn-primary" id="btnOk">确认</a>
-      <a class="btn btn-default">删除收货地址</a>
+      <a class="btn btn-primary" @click="addAddress">确认</a>
+      <a class="btn btn-default" v-show="isEdit" @click="delAddress">删除收货地址</a>
     </div>
     <my-area v-model="show" @on-change="setArea"></my-area>
   </div>
@@ -38,6 +38,7 @@
 <script>
 import Cell from '../widget/cell'
 import MyArea from '../widget/address'
+import * as http from '@/services'
 export default {
   name: 'add-address',
   components: {
@@ -46,15 +47,84 @@ export default {
   },
   data() {
     return {
+      isEdit: false,
+      receiver: '',
+      areaId: 0,
+      phone: '',
+      province: '',
+      provinceId: 0,
+      city: '',
+      cityId: 0,
+      town: '',
+      townId: 0,
+      county: '',
+      countyId: 0,
+      detail: '',
       show: false
+    }
+  },
+  beforeMount() {
+    var params = this.$store.state.route.params
+    this.isEdit = params.edit || false
+    var addr = params.addr
+    if (addr) {
+      this.province = addr['province'] || ''
+      this.provinceId = addr['provinceId'] || 0
+      this.city = addr['city'] || ''
+      this.cityId = addr['cityId'] || 0
+      this.town = addr['town'] || ''
+      this.townId = addr['townId'] || 0
+      this.county = addr['county'] || ''
+      this.countyId = addr['countyId'] || 0
+    }
+  },
+  computed: {
+    area() {
+      return this.province + this.city + this.town + this.county
     }
   },
   methods: {
     showArea() {
       this.show = true
     },
+    getValue(ob) {
+      return ob ? ob.value : ''
+    },
+    getKey(ob) {
+      return ob ? ob.key : 0
+    },
     setArea(result) {
       console.log(result)
+      this.province = this.getValue(result[0])
+      this.provinceId = this.getKey(result[0])
+      this.city = this.getValue(result[1])
+      this.cityId = this.getKey(result[1])
+      this.town = this.getValue(result[2])
+      this.townId = this.getKey(result[2])
+      this.county = this.getValue(result[3])
+      this.countyId = this.getKey(result[3])
+    },
+    clearDetail() {
+      this.detail = ''
+      this.$refs.textarea.focus()
+    },
+    addAddress() {
+      http.editAddr(this.receiver, this.phone, this.provinceId, this.cityId, this.townId, this.countyId, this.detail, this.areaId).then(res => {
+        if (res.retcode === 0) {
+          this.$ve.alert('添加成功', () => {
+            this.$router.push('/selectaddress')
+          })
+        }
+      })
+    },
+    delAddress() {
+      http.delAddr(this.areaId).then(res => {
+        if (res.retcode === 0) {
+          this.$ve.alert('删除成功', () => {
+            this.$router.push('/selectaddress')
+          })
+        }
+      })
     }
   }
 }

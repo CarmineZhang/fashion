@@ -41,6 +41,7 @@ export default new Router({
     component: SelectAddress
   }, {
     path: '/addaddress',
+    name: 'addaddress',
     component: AddAddress
   }]
 })
