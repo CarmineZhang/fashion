@@ -9,6 +9,7 @@ import Category from '@/components/category'
 // import Login from '@/components/login'
 // import GoodsDetail from '@/components/goodsdetail'
 import OrderConfirm from '@/components/orderconfirm'
+import SelectAddress from '@/components/address'
 Vue.use(Router)
 
 export default new Router({
@@ -34,5 +35,8 @@ export default new Router({
   }, {
     path: '/test',
     component: Test
+  }, {
+    path: '/selectaddress',
+    component: SelectAddress
   }]
 })

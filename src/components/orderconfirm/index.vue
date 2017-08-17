@@ -1,6 +1,6 @@
 <template>
   <div class="order-confirm">
-    <section class="order-address">
+    <section class="order-address" @click="selectAddress">
       <p>
         <span>收货人：</span>
         <strong>12681246354</strong>
@@ -28,6 +28,14 @@ export default {
     List,
     Cell,
     MySwitch
+  },
+  beforeMount() {
+    console.log('beforeMount')
+  },
+  methods: {
+    selectAddress() {
+      this.$router.push('/selectaddress')
+    }
   }
 }
 </script>

@@ -17,6 +17,17 @@ function _detect(ua) {
 _detect.call($, navigator.userAgent);
 
 objectAssign($.fn, {
+
+  offset: function () {
+    if (!this.length) return null
+    var obj = this[0].getBoundingClientRect()
+    return {
+      left: obj.left + window.pageXOffset,
+      top: obj.top + window.pageYOffset,
+      width: Math.round(obj.width),
+      height: Math.round(obj.height)
+    }
+  },
   /**
    * 只能是一个 HTMLElement 元素或者 HTMLElement 数组，不支持字符串
    * @param {Element|Element[]} $child
