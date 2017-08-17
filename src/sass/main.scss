@@ -9,7 +9,11 @@
 基础组件样式
 */
 
+@import './widget/dialog/dialog';
+@import './widget/toast/toast';
+@import './widget/picker/picker';
 @import './widget/searchbar/searchbar';
 @import './widget/swiper/swiper';
 @import './widget/mask/mask';
 @import './widget/selectform/selectform';
+@import './widget/button/button';
