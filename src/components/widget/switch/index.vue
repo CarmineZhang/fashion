@@ -1,9 +1,15 @@
 <template>
-  <input class="switch-ipt" type="checkbox" checked="checked">
+  <input class="switch-ipt" type="checkbox" :checked="checked">
 </template>
 <script>
 export default {
-  name: 'switch'
+  name: 'switch',
+  props: {
+    checked: {
+      type: Boolean,
+      default: false
+    }
+  }
 }
 </script>
 <style lang="scss">
