@@ -17,6 +17,9 @@
       <my-switch slot="footer"></my-switch>
     </cell>
     <star></star>
+    <div style="padding :10px;background:#fff">
+      <quantity></quantity>
+    </div>
   </div>
 </template>
 <script>
@@ -24,13 +27,15 @@ import List from './list'
 import Cell from '@/components/widget/cell'
 import MySwitch from '@/components/widget/switch'
 import Star from '@/components/widget/star'
+import Quantity from '@/components/widget/quantity'
 export default {
   name: 'order-confirm',
   components: {
     List,
     Cell,
     MySwitch,
-    Star
+    Star,
+    Quantity
   },
   beforeMount() {
     console.log('beforeMount')
