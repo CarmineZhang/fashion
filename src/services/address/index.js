@@ -1,6 +1,6 @@
 import ajax, {
   axios
-} from './ajax'
+} from '../ajax'
 import cookie from '@/libs/cookie'
 
 export function getArea(id) {

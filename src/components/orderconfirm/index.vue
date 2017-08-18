@@ -16,18 +16,21 @@
     <cell title="可用1000积分抵扣50" ce-class="order-switch">
       <my-switch slot="footer"></my-switch>
     </cell>
+    <star></star>
   </div>
 </template>
 <script>
 import List from './list'
 import Cell from '@/components/widget/cell'
 import MySwitch from '@/components/widget/switch'
+import Star from '@/components/widget/star'
 export default {
   name: 'order-confirm',
   components: {
     List,
     Cell,
-    MySwitch
+    MySwitch,
+    Star
   },
   beforeMount() {
     console.log('beforeMount')
