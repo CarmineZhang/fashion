@@ -1,8 +1,5 @@
 <template>
   <div class="my-section">
-    <a class="header">
-      <em>必备工具</em>
-    </a>
     <ul class="my-tool">
       <li>
         <a href="" class="t-jifen">积分商品</a>
@@ -50,7 +47,7 @@ export default {
       display: block;
       text-align: center;
       padding: 10px 0;
-      color: #666;
+      color: #999;
       font-size: 12px;
       &::before {
         width: .5rem;

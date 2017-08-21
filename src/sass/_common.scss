@@ -110,34 +110,6 @@ a.link {
   }
 }
 
-.my-section {
-  margin: 10px 0;
-  background: #fff;
-  .header {
-    position: relative;
-    display: block;
-    height: 45px;
-    line-height: 45px;
-    font-size: 14px;
-    padding: 0 10px;
-    em {
-      font-style: normal;
-    }
-    span {
-      color: #999;
-      position: absolute;
-      right: 25px;
-      font-size: 12px;
-    }
-  }
-  .header-access {
-    @include arrow-right(8px);
-    &:after {
-      right: 10px;
-    }
-  }
-}
-
 .icon-loading {
   width: 20px;
   height: 20px;

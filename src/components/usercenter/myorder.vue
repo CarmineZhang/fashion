@@ -1,6 +1,7 @@
 <template>
   <div class="my-section">
     <a class="header header-access">
+      <i class=""></i>
       <em>我的订单</em>
       <span>查看全部订单</span>
     </a>
@@ -29,6 +30,45 @@ export default {
 }
 </script>
 <style lang="scss">
+.my-section {
+  margin: 10px 0;
+  background: #fff;
+  .header {
+    position: relative;
+    display: block;
+    height: 45px;
+    line-height: 45px;
+    font-size: 14px;
+    padding: 0 10px;
+    i {
+      display: inline-block;
+      height: 45px;
+      width: .62rem;
+      background: url('../../assets/order/order.png') no-repeat;
+      background-position: 50%;
+      background-size: .31rem .35rem;
+      vertical-align: middle;
+    }
+    em {
+      display: inline-block;
+      font-style: normal;
+      vertical-align: middle;
+    }
+    span {
+      color: #999;
+      position: absolute;
+      right: 25px;
+      font-size: 12px;
+    }
+  }
+  .header-access {
+    @include arrow-right(8px);
+    &:after {
+      right: 10px;
+    }
+  }
+}
+
 .my-order {
   position: relative;
   display: flex;
@@ -39,7 +79,7 @@ export default {
     a {
       display: block;
       padding: 10px 0;
-      color: #666;
+      color: #999;
       font-size: 12px;
       &::before {
         content: '';
