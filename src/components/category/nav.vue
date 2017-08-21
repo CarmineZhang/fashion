@@ -97,9 +97,9 @@ export default {
       }
     }
     .cur {
-      color: red;
+      color: #ffb54b;
       span {
-        border-bottom: 1px solid red;
+        border-bottom: 2px solid #ffb54b;
       }
     }
   }

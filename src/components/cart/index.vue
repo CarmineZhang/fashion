@@ -25,7 +25,11 @@
     <div class="cart-footer">
       <i class="icon-select" :class="{'selected':allSelected}" @click="selectAll">全选</i>
       <div class="total">
-        <strong>合计 {{totalPrice | price}}</strong>
+        <strong>
+          <span class="title">合计</span>
+          <em>¥ </em>
+          <span v-text="totalPrice"></span>
+        </strong>
         <p>不含运费</p>
       </div>
       <a href="" class="settle">结算</a>
@@ -216,11 +220,24 @@ export default {
     .total {
       flex: 1;
       text-align: right;
-      font-size: 12px;
+      font-size: 14px;
       color: #666;
       strong {
+        font-weight: normal;
+        color: #e4393c;
         display: block;
         line-height: 25px;
+        .title {
+          color: #333;
+        }
+        em {
+          font-size: 10px;
+          font-style: normal;
+        }
+      }
+      p {
+        font-size: 12px;
+        color: #999;
       }
     }
     .settle {
