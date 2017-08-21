@@ -1,13 +1,17 @@
 <template>
   <div class="home-col">
-    <div class="col-header" :class="[headerClass]"></div>
+    <div class="col-header" :class="[headerClass]" v-text="cdata.title"></div>
     <div class="col-body">
-      <img src="" alt="">
+      <a class="banner">
+        <img :src="cdata.banner" alt="">
+      </a>
       <div class="col-footer">
-        <div class="footer-item">
-          <img src="" alt="">
-          <strong></strong>
-          <span></span>
+        <div class="footer-item" v-for="(item,index) in cdata.list" :key="index">
+          <div class="img-wrapper">
+            <img :src="item.img" alt="">
+          </div>
+          <strong v-text="item.title"></strong>
+          <span v-text="item.desc"></span>
         </div>
       </div>
     </div>
@@ -17,40 +21,66 @@
 export default {
   name: 'column',
   props: {
-    headerClass: String
+    headerClass: String,
+    cdata: {
+      type: Object,
+      default: {}
+    }
   }
 }
 </script>
 <style lang="scss">
 .home-col {
+  background: #fff;
   margin-bottom: 10px;
-  padding: 0 10px;
+  padding: 0 .17rem;
   .col-header {
-    height: 30px;
-    line-height: 30px;
+    height: .86rem;
+    line-height: .86rem;
+    font-size: 16px;
     text-align: center;
   }
   .col-body {
-    img {
-      width: 100%;
+    .banner {
+      position: relative;
+      display: block;
+      padding-top: (252/716)*100%;
+      img {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: (716/750)*100%;
+        height: auto;
+        transform: translate3d(-50%, -50%, 0)
+      }
     }
   }
   .col-footer {
+    height: 2.7rem;
     display: flex;
     .footer-item {
       flex: 1;
       text-align: center;
-      img {
-        display: block;
-        width: 100%;
+      .img-wrapper {
+        position: relative;
+        padding-top: (149/233)*100%;
+        img {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          width: 100%;
+          transform: translate3d(-50%, -50%, 0)
+        }
       }
       strong {
         display: block;
         color: #333;
+        font-weight: normal;
       }
       span {
         display: block;
-        color: #666;
+        color: #999;
+        font-size: 12px;
       }
     }
   }

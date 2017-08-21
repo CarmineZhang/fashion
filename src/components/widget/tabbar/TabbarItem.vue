@@ -47,7 +47,7 @@ export default {
   }
 
   &.on {
-    color: #e93b3d;
+    color: #ffb54b;
   }
 }
 </style>
