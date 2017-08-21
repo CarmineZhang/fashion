@@ -7,13 +7,18 @@
         <div class="goods-img">
           <img :src="item.img" alt="">
         </div>
-        <div class="goods-desc">
-          <p v-text="item.title"></p>
-          <p v-text="item.desc"></p>
-        </div>
-        <div class="goods-price">
-          <p v-price="item.price"></p>
-          <p v-text="item.quantity"></p>
+        <div class="goods-info">
+          <div class="goods-desc">
+            <p v-text="item.title"></p>
+            <p v-text="item.desc" class="summary"></p>
+          </div>
+          <div class="goods-price">
+            <p class="price">
+              <em>¥ </em>
+              <span v-text="item.price"></span>
+            </p>
+            <quantity class="quantity"></quantity>
+          </div>
         </div>
       </div>
     </div>
@@ -29,10 +34,12 @@
 </template>
 <script>
 import CartHeader from './header'
+import Quantity from '@/components/widget/quantity'
 export default {
   name: 'cart',
   components: {
-    CartHeader
+    CartHeader,
+    Quantity
   },
   data() {
     return {
@@ -119,22 +126,50 @@ export default {
       display: flex;
       padding: 10px 0;
       .goods-img {
-        width: 80px;
-        height: 80px;
+        padding: 0 10px;
         img {
-          width: 100%;
+          width: 80px;
+          height: 80px;
         }
       }
-      .goods-desc {
+      .goods-info {
         flex: 1;
-      }
-      .goods-price {
-        width: 80px;
+        padding-right: 10px;
+        .goods-desc {
+          padding-bottom: 12px;
+          p {
+            vertical-align: top;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+          }
+          .summary {
+            color: #999;
+          }
+        }
+        .goods-price {
+          display: flex;
+          height: 30px;
+          line-height: 30px;
+          padding-right: 1px;
+          .price {
+            flex: 1;
+            font-size: 14px;
+            color: #e4393c;
+            em {
+              font-size: 10px;
+              font-style: normal;
+            }
+          }
+          .quantity {
+            flex: 1;
+          }
+        }
       }
     }
   }
   .icon-select {
-    width: 60px;
+    width: 40px;
     position: relative;
     &:after {
       position: absolute;
