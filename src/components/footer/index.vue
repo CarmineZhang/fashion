@@ -62,10 +62,10 @@ export default {
 
 .nav-cart {
   &:before {
-    background-image: url("../../assets/nav/card.png");
+    background-image: url("../../assets/nav/cart.png");
   }
   &.on:before {
-    background-image: url("../../assets/nav/card-cur.png");
+    background-image: url("../../assets/nav/cart-cur.png");
   }
 }
 
