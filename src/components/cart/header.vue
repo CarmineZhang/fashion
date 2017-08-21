@@ -1,14 +1,36 @@
 <template>
   <div class="cart-header">
-    <a href="" class="address">
+    <a class="address" @click="showAddress">
       <em>北京市海淀区</em>
     </a>
-    <a class="edit-btn">编辑</a>
+    <a class="edit-btn" @click="edit" v-text="content">编辑</a>
   </div>
 </template>
 <script>
 export default {
-  name: 'cart-header'
+  name: 'cart-header',
+  data() {
+    return {
+      isEdit: false
+    }
+  },
+  computed: {
+    content() {
+      if (this.isEdit) {
+        return '完成'
+      }
+      return '编辑'
+    }
+  },
+  methods: {
+    edit() {
+      this.isEdit = !this.isEdit
+      this.$emit('on-edit', this.isEdit)
+    },
+    showAddress() {
+      this.$emit('on-address')
+    }
+  }
 }
 </script>
 <style lang="scss">

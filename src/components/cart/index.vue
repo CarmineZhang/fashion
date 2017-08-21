@@ -1,6 +1,6 @@
 <template>
   <div class="main cart">
-    <cart-header></cart-header>
+    <cart-header @on-edit="edit" @on-address="selectAddress"></cart-header>
     <div class="cart-wrap">
       <div class="cart-item" v-for="(item,index) in list" :key="index">
         <div class="icon-select" :class="{'selected':item.selected}" @click="setSelected(item)"></div>
@@ -24,7 +24,7 @@
     </div>
     <div class="cart-footer">
       <i class="icon-select" :class="{'selected':allSelected}" @click="selectAll">全选</i>
-      <div class="total">
+      <div class="total" v-show="!isEdit">
         <strong>
           <span class="title">合计</span>
           <em>¥ </em>
@@ -32,18 +32,22 @@
         </strong>
         <p>不含运费</p>
       </div>
-      <a href="" class="settle">结算</a>
+      <a class="settle" v-show="!isEdit">结算</a>
+      <a class="delete" v-show="isEdit">删除</a>
     </div>
+    <cart-address v-model="addressShow"></cart-address>
   </div>
 </template>
 <script>
 import CartHeader from './header'
 import Quantity from '@/components/widget/quantity'
+import CartAddress from './address'
 export default {
   name: 'cart',
   components: {
     CartHeader,
-    Quantity
+    Quantity,
+    CartAddress
   },
   data() {
     return {
@@ -89,7 +93,9 @@ export default {
         price: 2000,
         quantity: 1,
         selected: false
-      }]
+      }],
+      isEdit: false,
+      addressShow: false
     }
   },
   computed: {
@@ -109,6 +115,12 @@ export default {
     }
   },
   methods: {
+    selectAddress() {
+      this.addressShow = true
+    },
+    edit(val) {
+      this.isEdit = val
+    },
     setSelected(item) {
       item.selected = !item.selected
     },
@@ -176,23 +188,12 @@ export default {
     width: 40px;
     position: relative;
     &:after {
-      position: absolute;
-      left: 15px;
-      top: 50%;
-      content: "\20";
-      display: block;
-      width: .35rem;
-      height: .35rem;
-      margin-top: -(0.35rem /2);
-      background: url('../../assets/cart/no-select.png') no-repeat;
-      background-size: 100%;
+      @include select()
     }
   }
   .selected {
     &:after {
-      background: url('../../assets/cart/selected.png') no-repeat;
-      background-size: 100%;
-      ;
+      @include selected()
     }
   }
 
@@ -206,6 +207,7 @@ export default {
     color: #333;
     font-size: 14px;
     display: flex;
+    align-items: center;
     @include topline();
     .icon-select {
       padding-left: 40px;
@@ -251,6 +253,21 @@ export default {
       font-weight: 700;
       background: #ffb54b;
       color: #fff;
+    }
+    .delete {
+      position: absolute;
+      right: 10px;
+      top: 12px;
+      display: inline-block;
+      margin-left: 5px;
+      width: 69px;
+      height: 30px;
+      line-height: 30px;
+      text-align: center;
+      color: #fff;
+      font-size: 12px;
+      background: #f19325;
+      border-radius: 2px;
     }
   }
 }

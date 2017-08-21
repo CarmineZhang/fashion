@@ -182,3 +182,21 @@
   -webkit-box-orient: vertical;
   -webkit-line-clamp: $line;
 }
+
+@mixin select() {
+  position: absolute;
+  left: 15px;
+  top: 50%;
+  content: "\20";
+  display: block;
+  width: .35rem;
+  height: .35rem;
+  margin-top: -(0.35rem /2);
+  background: url('../../assets/cart/no-select.png') no-repeat;
+  background-size: 100%;
+}
+
+@mixin selected() {
+  background: url('../../assets/cart/selected.png') no-repeat;
+  background-size: 100%;
+}
