@@ -20,6 +20,7 @@
     <div style="padding :10px;background:#fff">
       <quantity></quantity>
     </div>
+    <gift></gift>
   </div>
 </template>
 <script>
@@ -28,6 +29,7 @@ import Cell from '@/components/widget/cell'
 import MySwitch from '@/components/widget/switch'
 import Star from '@/components/widget/star'
 import Quantity from '@/components/widget/quantity'
+import Gift from '../gift'
 export default {
   name: 'order-confirm',
   components: {
@@ -35,7 +37,8 @@ export default {
     Cell,
     MySwitch,
     Star,
-    Quantity
+    Quantity,
+    Gift
   },
   beforeMount() {
     console.log('beforeMount')
