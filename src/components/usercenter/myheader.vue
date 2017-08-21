@@ -1,8 +1,10 @@
 <template>
   <div class="my-header-wrap">
     <div class="header-main">
-      <div class="my-header-avatar">
-        <img src="//storage.jd.com/i.imageUpload/7a68726d3139383431343930303939373030333233_mid.jpg" alt="">
+      <div class="img-wrapper">
+        <div class="my-header-avatar">
+          <img src="//storage.jd.com/i.imageUpload/7a68726d3139383431343930303939373030333233_mid.jpg" alt="">
+        </div>
       </div>
       <div class="user-info">
         <div class="user-name">
@@ -44,17 +46,24 @@ export default {
     position: relative;
     display: flex;
     padding: 10px 10px;
+    height: 1.98rem;
     @include bottomline();
-    .my-header-avatar {
-      font-size: 0;
-      width: 60px;
-      height: 60px;
-      border: 1px solid hsla(0, 0%, 100%, .4);
-      border-radius: 60px;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, .15);
-      img {
-        width: 100%;
-        border-radius: 60px;
+    .img-wrapper {
+      position: relative;
+      width: 1.5rem;
+      .my-header-avatar {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 1.43rem;
+        height: 1.43rem;
+        border: 1px solid hsla(0, 0%, 100%, .4);
+        border-radius: (1.43rem/2);
+        box-shadow: 0 2px 10px rgba(0, 0, 0, .15);
+        img {
+          width: 100%;
+          border-radius: (1.43rem/2);
+        }
       }
     }
     .user-info {
@@ -78,6 +87,7 @@ export default {
   .my-header-info {
     display: flex;
     color: #999;
+    height: 1.08rem;
     .my-header-info-item {
       margin: 10px 0;
       flex: 1;

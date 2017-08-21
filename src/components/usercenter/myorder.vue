@@ -31,13 +31,13 @@ export default {
 </script>
 <style lang="scss">
 .my-section {
-  margin: 10px 0;
+  margin: .24rem 0;
   background: #fff;
   .header {
     position: relative;
     display: block;
-    height: 45px;
-    line-height: 45px;
+    height: .82rem;
+    line-height: .82rem;
     font-size: 14px;
     padding: 0 10px;
     i {
@@ -77,6 +77,8 @@ export default {
     flex: 1;
     text-align: center;
     a {
+      box-sizing: border-box;
+      height: 1.8rem;
       display: block;
       padding: 10px 0;
       color: #999;

@@ -46,6 +46,8 @@ export default {
     a {
       display: block;
       text-align: center;
+      box-sizing: border-box;
+      height: 1.8rem;
       padding: 10px 0;
       color: #999;
       font-size: 12px;
