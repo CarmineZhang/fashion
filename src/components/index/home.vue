@@ -23,12 +23,12 @@
         <span>分类</span>
       </div>
     </div>
-  
+
   </div>
 </template>
 <script>
 import Swiper from '../widget/swiper/'
-import http from '@/services'
+// import * as http from '@/services'
 export default {
   name: 'home',
   components: {
@@ -40,11 +40,11 @@ export default {
     }
   },
   created() {
-    http.getHomeBanner(1).then((res) => {
-      if (res.retcode === 0) {
-        this.banners = res.respbody.list
-      }
-    })
+    // http.getHomeBanner(1).then((res) => {
+    //   if (res.retcode === 0) {
+    //     this.banners = res.respbody.list
+    //   }
+    // })
   }
 }
 </script>
@@ -70,17 +70,6 @@ export default {
       white-space: nowrap;
     }
   }
-}
-
-
-
-
-
-
-
-
-
-
 }
 </style>
 

@@ -32,7 +32,9 @@ export default {
   name: 've-swiper',
   mounted() {
     this.$nextTick(() => {
-      this.render()
+      if (this.list.length > 0) {
+        this.render()
+      }
     })
   },
   data() {

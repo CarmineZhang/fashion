@@ -8,11 +8,12 @@ import Cart from '@/components/cart'
 import Category from '@/components/category'
 // import Login from '@/components/login'
 // import GoodsDetail from '@/components/goodsdetail'
-import OrderConfirm from '@/components/orderconfirm'
+// import OrderConfirm from '@/components/orderconfirm'
 import SelectAddress from '@/components/address'
 import AddAddress from '@/components/address/add'
 import SelectInvoice from '@/components/invoice'
 import Gift from '@/components/gift'
+import Home from '@/components/index/home'
 Vue.use(Router)
 
 export default new Router({
@@ -21,7 +22,7 @@ export default new Router({
     component: Index,
     children: [{
       path: '/',
-      component: OrderConfirm
+      component: Home
     }, {
       path: '/usercenter',
       component: UserCenter
