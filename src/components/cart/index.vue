@@ -1,5 +1,6 @@
 <template>
   <div class="main cart">
+    <cart-header></cart-header>
     <div class="cart-wrap">
       <div class="cart-item" v-for="(item,index) in list" :key="index">
         <div class="icon-select" :class="{'selected':item.selected}" @click="setSelected(item)"></div>
@@ -27,8 +28,12 @@
   </div>
 </template>
 <script>
+import CartHeader from './header'
 export default {
   name: 'cart',
+  components: {
+    CartHeader
+  },
   data() {
     return {
       list: [{
@@ -137,16 +142,18 @@ export default {
       top: 50%;
       content: "\20";
       display: block;
-      width: 20px;
-      height: 20px;
-      margin-top: -10px;
-      background: url('//wq.360buyimg.com/fd/base/img/my/shopcart_v2.png');
-      background-size: 60px 40px;
+      width: .35rem;
+      height: .35rem;
+      margin-top: -(0.35rem /2);
+      background: url('../../assets/cart/no-select.png') no-repeat;
+      background-size: 100%;
     }
   }
   .selected {
     &:after {
-      background-position: -20px 0;
+      background: url('../../assets/cart/selected.png') no-repeat;
+      background-size: 100%;
+      ;
     }
   }
 
@@ -190,7 +197,7 @@ export default {
       font-size: 16px;
       text-align: center;
       font-weight: 700;
-      background: #e4393c;
+      background: #ffb54b;
       color: #fff;
     }
   }
