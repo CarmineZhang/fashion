@@ -38,11 +38,11 @@ export default {
     display: block;
     height: .82rem;
     line-height: .82rem;
-    font-size: 14px;
+    font-size: 0;
     padding: 0 10px;
     i {
       display: inline-block;
-      height: 45px;
+      height: .82rem;
       width: .62rem;
       background: url('../../assets/order/order.png') no-repeat;
       background-position: 50%;
@@ -50,6 +50,8 @@ export default {
       vertical-align: middle;
     }
     em {
+      height: .82rem;
+      font-size: 14px;
       display: inline-block;
       font-style: normal;
       vertical-align: middle;
