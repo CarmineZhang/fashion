@@ -17,7 +17,7 @@
         <a href="" class="t-bind-card">礼品卡绑定</a>
       </li>
       <li>
-        <a href="" class="t-set">设置</a>
+        <router-link class="t-set" to="/setting">设置</router-link>
       </li>
     </ul>
   </div>
