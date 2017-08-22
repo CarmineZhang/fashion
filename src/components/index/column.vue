@@ -3,12 +3,12 @@
     <div class="col-header" :class="[headerClass]" v-text="cdata.title"></div>
     <div class="col-body">
       <a class="banner">
-        <img :src="cdata.banner" alt="">
+        <img v-lazy="cdata.banner" alt="">
       </a>
       <div class="col-footer">
         <div class="footer-item" v-for="(item,index) in cdata.list" :key="index">
           <div class="img-wrapper">
-            <img :src="item.img" alt="">
+            <img v-lazy="item.img" alt="">
           </div>
           <strong v-text="item.title"></strong>
           <span v-text="item.desc"></span>
