@@ -1,9 +1,9 @@
 <template>
-  <tabbar class="footer-nav">
-    <tabbar-item selected textContent='首页' iconClass="nav-index" @on-click="gotoIndex"></tabbar-item>
-    <tabbar-item textContent='分类' iconClass="nav-category" @on-click="gotoCategory"></tabbar-item>
-    <tabbar-item textContent='购物车' iconClass="nav-cart" @on-click="gotoCart"></tabbar-item>
-    <tabbar-item textContent='个人中心' iconClass="nav-me" @on-click="gotoMe"></tabbar-item>
+  <tabbar class="footer-nav" :index="selectedIndex">
+    <tabbar-item path='/' textContent='首页' iconClass="nav-index" @on-click="gotoIndex"></tabbar-item>
+    <tabbar-item path='/category ' textContent='分类' iconClass="nav-category" @on-click="gotoCategory"></tabbar-item>
+    <tabbar-item path='/cart' textContent='购物车' iconClass="nav-cart" @on-click="gotoCart"></tabbar-item>
+    <tabbar-item path='/usercenter' textContent='个人中心' iconClass="nav-me" @on-click="gotoMe"></tabbar-item>
   </tabbar>
 </template>
 <script>
@@ -13,9 +13,6 @@ export default {
   components: {
     Tabbar,
     TabbarItem
-  },
-  mounted() {
-    // this.gotoIndex()
   },
   methods: {
     gotoIndex() {

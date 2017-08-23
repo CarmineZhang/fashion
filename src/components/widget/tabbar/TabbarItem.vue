@@ -8,6 +8,7 @@ export default {
   props: {
     iconClass: String,
     textContent: String,
+    path: String,
     selected: {
       type: Boolean,
       default: false
@@ -15,12 +16,12 @@ export default {
   },
   computed: {
     isActive() {
-      return this.$parent.currentIndex === this.index
+      let path = this.$store.state.route.path
+      return path === this.path
     }
   },
   methods: {
     onItemClick() {
-      this.$parent.updateCurrentIndex(this.index)
       this.$emit('on-click')
     }
   }
