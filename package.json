@@ -19,6 +19,7 @@
     "blueimp-md5": "^2.8.0",
     "element-closest": "^2.0.2",
     "lodash.debounce": "^4.0.8",
+    "lodash.throttle": "^4.1.1",
     "object-assign": "^4.1.1",
     "vue": "^2.3.3",
     "vue-lazyload": "^1.0.6",
