@@ -34,7 +34,7 @@ export default {
   },
   methods: {
     register() {
-
+      this.$router.push('/register')
     }
   }
 }

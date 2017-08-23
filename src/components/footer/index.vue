@@ -28,7 +28,8 @@ export default {
       this.$router.push('/cart')
     },
     gotoMe() {
-      this.$router.push('/usercenter')
+      this.$router.push('/login')
+      // this.$router.push('/usercenter') 
     }
   }
 }

@@ -6,7 +6,7 @@ import UserCenter from '@/components/usercenter'
 import Setting from '@/components/usercenter/setting'
 import Cart from '@/components/cart'
 import Category from '@/components/category'
-// import Login from '@/components/login'
+import Login from '@/components/login'
 // import GoodsDetail from '@/components/goodsdetail'
 // import OrderConfirm from '@/components/orderconfirm'
 import SelectAddress from '@/components/address'
@@ -14,6 +14,7 @@ import AddAddress from '@/components/address/add'
 import SelectInvoice from '@/components/invoice'
 import Gift from '@/components/gift'
 import Home from '@/components/index/home'
+import Register from '@/components/register'
 Vue.use(Router)
 
 export default new Router({
@@ -52,5 +53,11 @@ export default new Router({
   }, {
     path: '/selectinvoice',
     component: SelectInvoice
+  }, {
+    path: '/register',
+    component: Register
+  }, {
+    path: '/login',
+    component: Login
   }]
 })
