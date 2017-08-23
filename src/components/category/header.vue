@@ -1,7 +1,7 @@
 <template>
-  <div class="index-search">
+  <div class="search-wrapper">
     <div class="header-back"></div>
-    <search-bar class="index-searchbar"></search-bar>
+    <search-bar></search-bar>
   </div>
 </template>
 <script>

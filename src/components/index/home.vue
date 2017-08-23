@@ -145,8 +145,8 @@ export default {
 </script>
 <style lang="scss">
 .index-wrapper {
-  padding-top: 46px;
-  padding-bottom: 50px;
+  padding-top: $searchbarHeight;
+  padding-bottom: $navBottomHeight;
 }
 </style>
 

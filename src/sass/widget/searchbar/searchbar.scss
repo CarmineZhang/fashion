@@ -1,5 +1,19 @@
-.search-bar {
+.search-wrapper {
   display: flex;
+  background: -webkit-gradient(linear, left bottom, right bottom, from(#fdb34b), to(#fd9520));
+  .search-bar {
+    flex: 1;
+    background: -webkit-gradient(linear, left bottom, right bottom, from(#fdb34b), to(#fd9520));
+    .search-bar-form {
+      background: -webkit-gradient(linear, left bottom, right bottom, from(#fec46f), to(#feaf4c));
+      .search-bar-ipt {
+        color: #fff;
+      }
+    }
+  }
+}
+
+.search-bar {
   padding: 9px 10px;
   background-color: #fff;
   &.search-bar-focusing {
@@ -8,7 +22,6 @@
     }
   }
   .search-bar-form {
-    flex: 1;
     height: 28px;
     padding-left: 30px;
     padding-right: 30px;
@@ -69,4 +82,8 @@ input[type="search"]::-webkit-search-cancel-button,
 input[type="search"]::-webkit-search-results-button,
 input[type="search"]::-webkit-search-results-decoration {
   display: none;
+}
+
+input::-webkit-input-placeholder {
+  color: #fff;
 }

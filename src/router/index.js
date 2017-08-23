@@ -15,6 +15,7 @@ import SelectInvoice from '@/components/invoice'
 import Gift from '@/components/gift'
 import Home from '@/components/index/home'
 import Register from '@/components/register'
+import OrderList from '@/components/orderlist'
 Vue.use(Router)
 
 export default new Router({
@@ -59,5 +60,8 @@ export default new Router({
   }, {
     path: '/login',
     component: Login
+  }, {
+    path: '/orderlist',
+    component: OrderList
   }]
 })

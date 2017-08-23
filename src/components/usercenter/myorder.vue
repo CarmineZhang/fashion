@@ -1,6 +1,6 @@
 <template>
   <div class="my-section">
-    <a class="header header-access">
+    <a class="header header-access" @click="showOrderList">
       <i class=""></i>
       <em>我的订单</em>
       <span>查看全部订单</span>
@@ -27,6 +27,11 @@
 <script>
 export default {
   name: 'my-order',
+  methods: {
+    showOrderList() {
+      this.$router.push('/orderlist')
+    }
+  }
 }
 </script>
 <style lang="scss">

@@ -1,7 +1,7 @@
 <template>
-  <div class="index-search">
+  <div class="search-wrapper">
     <div class="search-qrcode"></div>
-    <search-bar class="index-searchbar"></search-bar>
+    <search-bar></search-bar>
     <div class="search-message"></div>
   </div>
 </template>
@@ -15,11 +15,6 @@ export default {
 }
 </script>
 <style lang="scss">
-.index-search {
-  display: flex;
-  background: -webkit-gradient(linear, left bottom, right bottom, from(#fdb34b), to(#fd9520));
-}
-
 .search-qrcode {
   width: 40px;
   height: 46px;
@@ -34,21 +29,6 @@ export default {
   background: #fd9520 url('../../assets/index/message.png') no-repeat;
   background-position: 50%;
   background-size: (43px/2) (41px/2);
-}
-
-.index-searchbar {
-  flex: 1;
-  background: -webkit-gradient(linear, left bottom, right bottom, from(#fdb34b), to(#fd9520));
-  .search-bar-form {
-    background: -webkit-gradient(linear, left bottom, right bottom, from(#fec46f), to(#feaf4c));
-    .search-bar-ipt {
-      color: #fff;
-    }
-  }
-}
-
-input::-webkit-input-placeholder {
-  color: #fff;
 }
 </style>
 
