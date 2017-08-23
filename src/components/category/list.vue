@@ -1,6 +1,6 @@
 <template>
   <div class="list">
-    <a href="" class="list-item" v-for="(item,index) in list" :key="index">
+    <a class="list-item" v-for="(item,index) in list" :key="index" @click="showGoods">
       <div class="pt-img">
         <img :src="item.img" alt="">
       </div>
@@ -20,6 +20,11 @@ export default {
   name: 'product-list',
   props: {
     list: Array
+  },
+  methods: {
+    showGoods() {
+      this.$router.push('/goodsdetail')
+    }
   }
 }
 </script>

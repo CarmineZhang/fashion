@@ -7,7 +7,9 @@ import Setting from '@/components/usercenter/setting'
 import Cart from '@/components/cart'
 import Category from '@/components/category'
 import Login from '@/components/login'
-// import GoodsDetail from '@/components/goodsdetail'
+import GoodsDetail from '@/components/goodsdetail'
+import Goods from '@/components/goodsdetail/goods'
+import Detail from '@/components/goodsdetail/detail'
 // import OrderConfirm from '@/components/orderconfirm'
 import SelectAddress from '@/components/address'
 import AddAddress from '@/components/address/add'
@@ -63,5 +65,17 @@ export default new Router({
   }, {
     path: '/orderlist',
     component: OrderList
+  }, {
+    path: '/goodsdetail',
+    component: GoodsDetail,
+    children: [{
+      path: '',
+      name: 'goods',
+      component: Goods
+    }, {
+      path: 'detail',
+      name: 'detail',
+      component: Detail
+    }]
   }]
 })

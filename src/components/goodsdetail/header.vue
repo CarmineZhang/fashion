@@ -1,11 +1,11 @@
 <template>
   <div class="goods-header">
-    <div class="header-back"></div>
-    <div class="header-nav">
-      <a class="nav-item cur">
+    <div class="g-header-back"></div>
+    <div class="g-header-nav">
+      <a class="nav-item" :class="{'cur':path==='/goodsdetail/'}" @click="showGoods">
         <span>商品</span>
       </a>
-      <a class="nav-item">
+      <a class="nav-item" :class="{'cur':path==='/goodsdetail/detail'}" @click="showDetail">
         <span>详情</span>
       </a>
       <a class="nav-item">
@@ -19,6 +19,26 @@
 <script>
 export default {
   name: 'goods-header',
+  beforeMount() {
+    console.log(this.$store.state.route.path)
+  },
+  computed: {
+    path() {
+      return this.$store.state.route.path
+    }
+  },
+  methods: {
+    showGoods() {
+      this.$router.push({ name: 'goods' })
+    },
+    showDetail() {
+
+      this.$router.push({ name: 'detail' })
+    },
+    showEvaluations() {
+      this.$router.push({ name: 'evaluations' })
+    }
+  }
 }
 </script>
 <style lang="scss">
@@ -26,12 +46,12 @@ export default {
   background-color: #fff;
   display: flex;
   @include bottomline();
-  .header-back {
+  .g-header-back {
     width: 40px;
     position: relative;
     @include arrow-left();
   }
-  .header-nav {
+  .g-header-nav {
     flex: 1;
     display: flex;
     .nav-item {
