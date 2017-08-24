@@ -10,6 +10,18 @@ export function getArea(id) {
   })
 }
 
+export function setAddrDefault(id) {
+  return ajax.post({
+    "name": "editDefAddr",
+    "ctype": "weChat",
+    "sessionStr": cookie('sessionStr'),
+    "userid": cookie('userId'),
+    "reqbody": {
+      "defAddrID": id
+    }
+  })
+}
+
 export function getAddrList() {
   return ajax.post({
     "name": "queryAddr",
@@ -19,9 +31,9 @@ export function getAddrList() {
   })
 }
 
-export function editAddr(realName, mobile, province, city, countyName, townName, detail, addrId) {
+export function editAddr(addr) {
   var name = 'addAddr'
-  if (addrId) {
+  if (addr.addrId) {
     name = 'editAddr'
   }
   return ajax({
@@ -30,14 +42,14 @@ export function editAddr(realName, mobile, province, city, countyName, townName,
     "sessionStr": cookie('sessionStr'),
     "userid": cookie('userId'),
     "reqbody": {
-      "addrID": addrId,
-      "province": province,
-      "city": city,
-      countyName: countyName,
-      townName: townName,
-      "addressDetail": detail,
-      "mobile": mobile,
-      realName: realName
+      "addrID": addr.addrId,
+      "province": addr.province,
+      "city": addr.city,
+      'countyName': addr.county,
+      'townName': addr.town,
+      'addressDetail': addr.detail,
+      'mobile': addr.mobile,
+      'realName': addr.realName
     }
   })
 }

@@ -5,28 +5,6 @@
 .select-form {
   color: #333;
   background: #fff;
-  .select-item {
-    ul {
-      &:before {
-        content: "\20";
-        width: 20px;
-        height: 20px;
-        position: absolute;
-        top: 50%;
-        left: 10px;
-        margin-top: -10px;
-        background-position: -20px -50px;
-        background-image: url("../assets/address.png");
-        background-repeat: no-repeat;
-        background-size: 100px 100px;
-      }
-    }
-    ul.selected {
-      &:before {
-        background-position: 0 -50px;
-      }
-    }
-  }
   .item {
     position: relative;
     overflow: hidden;
@@ -109,6 +87,30 @@
         background-repeat: no-repeat;
         background-size: 100px 100px;
       }
+    }
+  }
+}
+
+.selected-form {
+  ul {
+    &:before {
+      // @include select();
+      position: absolute;
+      left: 15px;
+      top: 50%;
+      content: "\20";
+      display: block;
+      width: .35rem;
+      height: .35rem;
+      margin-top: -(0.35rem /2);
+      background: url('../assets/cart/no-select.png') no-repeat;
+      background-size: 100%;
+    }
+  }
+  ul.selected {
+    &:before {
+      background: url('../assets/cart/selected.png') no-repeat;
+      background-size: 100%;
     }
   }
 }

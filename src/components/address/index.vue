@@ -1,18 +1,18 @@
 <template>
   <div>
-    <div class="select-form">
+    <div class="select-form" :class="{'selected-form':choose}">
       <div>
-        <div class="item" v-slider v-for="(item,index) in list" :key="index">
-          <ul>
-            <li>吉林省松原市长岭县123</li>
+        <div class="item" v-slider v-for="(item,index) in list" :key="item.id">
+          <ul :class="{'selected':item.isDefault===1}" @click="chooseAddr(item.addrID)">
+            <li v-text="item.addressDetail"></li>
             <li>
-              <strong>测试1</strong>
-              <span>136****6754</span>
+              <strong v-text="item.realName"></strong>
+              <span v-text="item.mobile"></span>
             </li>
-            <li class="edit" @click="editAddr(item)"></li>
+            <li class="edit" @click.stop="editAddr(item)"></li>
           </ul>
           <p class="action">
-            <span class="del" @click="delAddr(item.AddrId)">删除</span>
+            <span class="del" @click="delAddr(item)">删除</span>
           </p>
         </div>
       </div>
@@ -24,33 +24,54 @@
 </template>
 <script>
 import slider from '@/libs/slider'
-import * as http from '@/services'
+import { mapActions } from 'vuex'
 export default {
   name: 'address',
   directives: {
     slider: slider
   },
-  data() {
-    return {
-      list: []
+  props: {
+    choose: {
+      type: Boolean,
+      default: false
+    },
+    list: {
+      type: Array,
+      default: () => []
     }
   },
   methods: {
     add() {
-      this.$router.push({ name: 'addaddress', params: { edit: false } })
+      this.$emit('on-add')
     },
     editAddr(item) {
-      this.$router.push({ name: 'addaddress', params: { edit: true, addr: item } })
+      this.$emit('on-edit', item)
     },
-    delAddr(id) {
-      http.delAddr(id).then(res => {
-        if (res.retcode === 0) {
-          this.$ve.alert('删除成功', () => {
-            this.$router.push('/selectaddress')
-          })
-        }
+    delAddr(item) {
+      if (item.isDefault === 1) {
+        this.$ve.alert('默认地址不能删除')
+        return
+      }
+      this.$ve.confirm('确定删除此地址吗?', () => {
+        this.$store.dispatch('deleteAddr', { id: item.addrID }).then(res => {
+          if (res.retcode === 0) {
+            this.$ve.alert('删除成功', () => {
+              this.getAddrList()
+            })
+          }
+        })
       })
-    }
+    },
+    chooseAddr(id) {
+      if (this.choose) {
+        this.$store.dispatch('setDefaultAddr', { id: id }).then(res => {
+          if (res.retcode === 0) {
+            this.$emit('on-change')
+          }
+        })
+      }
+    },
+    ...mapActions(['getAddrList'])
   }
 }
 </script>

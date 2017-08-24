@@ -10,7 +10,7 @@
       <p>
         <label>
           <span class="tit">联系方式</span>
-          <input type="tel" maxlength="11" placeholder="手机号码" v-model="phone" class="ipt">
+          <input type="tel" maxlength="11" placeholder="手机号码" v-model="mobile" class="ipt">
         </label>
       </p>
       <p class="area" @click="showArea">
@@ -30,7 +30,6 @@
     </div>
     <div class="btn-wrapper">
       <a class="btn btn-primary" @click="addAddress">确认</a>
-      <a class="btn btn-default" v-show="isEdit" @click="delAddress">删除收货地址</a>
     </div>
     <my-area v-model="show" @on-change="setArea"></my-area>
   </div>
@@ -38,7 +37,6 @@
 <script>
 import Cell from '../widget/cell'
 import MyArea from '../widget/address'
-import * as http from '@/services'
 export default {
   name: 'add-address',
   components: {
@@ -47,10 +45,9 @@ export default {
   },
   data() {
     return {
-      isEdit: false,
       receiver: '',
-      areaId: 0,
-      phone: '',
+      addrID: 0,
+      mobile: '',
       province: '',
       provinceId: 0,
       city: '',
@@ -60,12 +57,12 @@ export default {
       county: '',
       countyId: 0,
       detail: '',
+      isDefault: 0,
       show: false
     }
   },
   beforeMount() {
     var params = this.$store.state.route.params
-    this.isEdit = params.edit || false
     var addr = params.addr
     if (addr) {
       this.province = addr['province'] || ''
@@ -76,6 +73,11 @@ export default {
       this.townId = addr['townId'] || 0
       this.county = addr['county'] || ''
       this.countyId = addr['countyId'] || 0
+      this.receiver = addr.realName || ''
+      this.addrID = addr.addrID
+      this.mobile = addr.mobile
+      this.detail = addr.addressDetail
+      this.isDefault = addr.isDefault
     }
   },
   computed: {
@@ -94,7 +96,6 @@ export default {
       return ob ? ob.key : 0
     },
     setArea(result) {
-      console.log(result)
       this.province = this.getValue(result[0])
       this.provinceId = this.getKey(result[0])
       this.city = this.getValue(result[1])
@@ -109,19 +110,22 @@ export default {
       this.$refs.textarea.focus()
     },
     addAddress() {
-      http.editAddr(this.receiver, this.phone, this.provinceId, this.cityId, this.townId, this.countyId, this.detail, this.areaId).then(res => {
+      var addr = {
+        "addrID": this.addrID,
+        "province": this.provinceId,
+        "city": this.cityId,
+        "countyName": this.countyId,
+        "townName": this.townId,
+        "addressDetail": this.detail,
+        "realName": this.receiver,
+        "mobile": this.mobile,
+        "isDefault": this.isDefault
+      }
+      this.$store.dispatch('editAddr', addr).then(res => {
+        console.dir(res)
         if (res.retcode === 0) {
-          this.$ve.alert('添加成功', () => {
-            this.$router.push('/selectaddress')
-          })
-        }
-      })
-    },
-    delAddress() {
-      http.delAddr(this.areaId).then(res => {
-        if (res.retcode === 0) {
-          this.$ve.alert('删除成功', () => {
-            this.$router.push('/selectaddress')
+          this.$ve.alert('编辑成功', () => {
+            this.$emit('on-confirm')
           })
         }
       })
@@ -134,7 +138,9 @@ export default {
   background: #fff;
   position: relative;
   padding-bottom: 10px;
-
+  .ipt {
+    padding: 0;
+  }
   p {
     padding: 12px 10px 12px 75px;
     position: relative;

@@ -10,7 +10,6 @@ import Login from '@/components/login'
 import GoodsDetail from '@/components/goodsdetail'
 import Goods from '@/components/goodsdetail/goods'
 import Detail from '@/components/goodsdetail/detail'
-// import OrderConfirm from '@/components/orderconfirm'
 import SelectAddress from '@/components/address'
 import AddAddress from '@/components/address/add'
 import SelectInvoice from '@/components/invoice'
@@ -18,6 +17,7 @@ import Gift from '@/components/gift'
 import Home from '@/components/index/home'
 import Register from '@/components/register'
 import OrderList from '@/components/orderlist'
+import OrderConfirm from './confirm'
 Vue.use(Router)
 
 export default new Router({
@@ -77,5 +77,5 @@ export default new Router({
       name: 'detail',
       component: Detail
     }]
-  }]
+  }, OrderConfirm]
 })

@@ -32,7 +32,7 @@
         </strong>
         <p>不含运费</p>
       </div>
-      <a class="settle" v-show="!isEdit">结算</a>
+      <a class="settle" v-show="!isEdit" @click="settle">结算</a>
       <a class="delete" v-show="isEdit">删除</a>
     </div>
     <cart-address v-model="addressShow"></cart-address>
@@ -129,6 +129,9 @@ export default {
       this.list.forEach((item) => {
         item.selected = !flag
       })
+    },
+    settle() {
+      this.$router.push('/orderconfirm')
     }
   }
 }
