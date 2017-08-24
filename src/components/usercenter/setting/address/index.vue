@@ -1,6 +1,6 @@
 <template>
   <div>
-    <my-address choose :list="list" @on-change="chooseAddr" @on-add="addAddress" @on-edit="editAddress"></my-address>
+    <my-address :list="list" @on-change="chooseAddr" @on-add="addAddress" @on-edit="editAddress"></my-address>
   </div>
 </template>
 <script>

@@ -16,7 +16,8 @@ import Home from '@/components/index/home'
 import Register from '@/components/register'
 import OrderList from '@/components/orderlist'
 import OrderConfirmRouter from './confirm'
-import UserCenterRouter from './usercenter'
+import SettingRouter from './settings'
+import UserCenter from '@/components/usercenter'
 Vue.use(Router)
 
 export default new Router({
@@ -32,6 +33,9 @@ export default new Router({
     }, {
       path: '/category',
       component: Category
+    }, {
+      path: '/usercenter',
+      component: UserCenter,
     }]
   }, {
     path: '/test',
@@ -70,5 +74,5 @@ export default new Router({
       name: 'detail',
       component: Detail
     }]
-  }, OrderConfirmRouter, ...UserCenterRouter]
+  }, OrderConfirmRouter, SettingRouter]
 })
