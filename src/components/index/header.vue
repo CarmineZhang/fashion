@@ -1,5 +1,5 @@
 <template>
-  <div class="search-wrapper">
+  <div class="header-wrapper">
     <div class="search-qrcode"></div>
     <search-bar></search-bar>
     <div class="search-message"></div>

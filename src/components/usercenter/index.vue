@@ -1,22 +1,22 @@
 <template>
   <div class="my-main">
-    <!-- <div class="my-fixed-header">
-                  <a class="header-left" @click="showSetting">设置</a>
-                  <a class="header-right">消息</a>
-                </div> -->
-    <my-header></my-header>
+    <div class="my-fixed-header header-wrapper">
+      <a class="header-back"></a>
+      <div class="header-info">我的</div>
+    </div>
+    <my-info></my-info>
     <my-order></my-order>
     <my-tool></my-tool>
   </div>
 </template>
 <script>
-import MyHeader from './myheader'
+import MyInfo from './myinfo'
 import MyOrder from './myorder'
 import MyTool from './mytool'
 export default {
   name: 'usercenter',
   components: {
-    MyHeader,
+    MyInfo,
     MyOrder,
     MyTool
   },
@@ -28,28 +28,20 @@ export default {
 }
 </script>
 <style lang="scss">
-// .my-main {
-//   padding-top: 40px;
-// }
-// .my-fixed-header {
-//   position: fixed;
-//   top: 0;
-//   left: 0;
-//   width: 100%;
-//   height: 40px;
-//   line-height: 40px;
-//   background-color: #fff;
-//   display: flex;
-//   @include bottomline();
-//   .header-left {
-//     flex: 1;
-//     padding-left: 10px;
-//   }
-//   .header-right {
-//     flex: 1;
-//     padding-right: 10px;
-//     text-align: right;
-//   }
-// }
+.my-main {
+  padding-top: 40px;
+}
+
+.my-fixed-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 40px;
+  line-height: 40px;
+  background-color: #fff;
+  display: flex;
+  @include bottomline();
+}
 </style>
 

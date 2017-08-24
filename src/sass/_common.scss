@@ -133,3 +133,19 @@ a.link {
     opacity: .6;
   }
 }
+
+.header-wrapper {
+  display: flex;
+  background: -webkit-gradient(linear, left bottom, right bottom, from(#fdb34b), to(#fd9520));
+  .header-back {
+    width: 40px;
+    position: relative;
+    background: #fdb34b;
+    @include arrow-left(10px, #fff);
+  }
+  .header-info {
+    flex: 1;
+    text-align: center;
+    color: #fff;
+  }
+}
