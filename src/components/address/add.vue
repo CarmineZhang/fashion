@@ -4,13 +4,13 @@
       <p>
         <label>
           <span class="tit">收货人</span>
-          <input type="text" placeholder="姓名" v-model="receiver" class="ipt" />
+          <input type="text" placeholder="姓名" v-model.trim="receiver" class="ipt" />
         </label>
       </p>
       <p>
         <label>
           <span class="tit">联系方式</span>
-          <input type="tel" maxlength="11" placeholder="手机号码" v-model="mobile" class="ipt">
+          <input type="tel" maxlength="11" placeholder="手机号码" v-model.trim="mobile" class="ipt">
         </label>
       </p>
       <p class="area" @click="showArea">
@@ -23,7 +23,7 @@
       <p class="detail">
         <label>
           <span class="tit">详细地址</span>
-          <textarea placeholder="街道地址" rows="2" v-model="detail" ref="textarea"></textarea>
+          <textarea placeholder="街道地址" rows="2" v-model.trim="detail" ref="textarea"></textarea>
           <i class="close" @click="clearDetail"></i>
         </label>
       </p>
@@ -42,6 +42,45 @@ export default {
   components: {
     Cell,
     MyArea
+  },
+  validator: {
+    receiver: [{
+      test: 'required',
+      message: '请填写收货人姓名'
+    }, {
+      test: (val) => {
+        let temp = val.replace(/[^\x00-\xff]/g, 'aaa')
+        return temp.length >= 3
+      },
+      message: '姓名太短，请输入正确的姓名'
+    }, {
+      test: (val) => {
+        let temp = val.replace(/[^\x00-\xff]/g, 'aaa')
+        return temp.length <= 30
+      },
+      message: '姓名必须少于等于10个汉字'
+    }, {
+      test: (val) => {
+        let temp = val.replace(/[^\x00-\xff]/g, 'aaa')
+        return /^[\A-Za-z·]{3,30}$/.test(temp)
+      },
+      message: '收货人姓名只能输入中文和字母'
+    }],
+    mobile: [{
+      test: 'required',
+      message: '请填写手机号码'
+    }, 'mobile'],
+    area: { test: 'required', message: '请选择省市区县信息' },
+    detail: [{
+      test: 'required',
+      message: '请填写详细地址'
+    }, {
+      test: (val) => {
+        let temp = val.replace(/[^\x00-\xff]/g, 'aaa')
+        return temp.length <= 255
+      },
+      message: '详细地址太长，不能超过85个汉字'
+    }]
   },
   data() {
     return {
@@ -121,14 +160,18 @@ export default {
         "mobile": this.mobile,
         "isDefault": this.isDefault
       }
-      this.$store.dispatch('editAddr', addr).then(res => {
-        console.dir(res)
-        if (res.retcode === 0) {
-          this.$ve.alert('编辑成功', () => {
-            this.$emit('on-confirm')
-          })
-        }
-      })
+      if (this.$validator.valid) {
+        this.$store.dispatch('editAddr', addr).then(res => {
+          if (res.retcode === 0) {
+            this.$ve.alert('编辑成功', () => {
+              this.$emit('on-confirm')
+            })
+          }
+        })
+      } else {
+        let errors = this.$validator.$errors
+        this.$ve.alert(errors.receiver || errors.mobile || errors.area || errors.detail)
+      }
     }
   }
 }
