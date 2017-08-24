@@ -44,6 +44,7 @@ function alert(content = '', yes = $.noop, options) {
   }
 
   options = $.extend({
+    title: '提示',
     content: content,
     buttons: [{
       label: '确定',
