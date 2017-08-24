@@ -54,7 +54,7 @@ export default {
       &::before {
         width: .5rem;
         height: .5rem;
-        margin: 7px auto 5px;
+        margin: 10px auto;
         content: '';
         display: block;
       }

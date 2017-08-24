@@ -95,7 +95,7 @@ export default {
         display: block;
         width: .42rem;
         height: .42rem;
-        margin: 7px auto 5px;
+        margin: 10px auto;
       }
     }
     a.o-pay {
