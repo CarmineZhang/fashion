@@ -15,6 +15,7 @@
 
 .search-bar {
   padding: 9px 10px;
+  display: flex;
   background-color: #fff;
   &.search-bar-focusing {
     .search-bar-search-btn {
@@ -22,6 +23,7 @@
     }
   }
   .search-bar-form {
+    flex: 1;
     height: 28px;
     padding-left: 30px;
     padding-right: 30px;
@@ -47,7 +49,7 @@
       width: 28px;
       height: 28px;
       font-size: 0;
-      background: #f3f2f8 url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeBAMAAADJHrORAAAABGdBTUEAALGPC/xhBQAAAAFzUkdCAK7OHOkAAAAYUExURUdwTAAAAAAAAAAAAAAAAAAAAAAAAAAAAGgC1MsAAAAIdFJOUwBNRg0qGAM5GjgNgQAAAKNJREFUGNNjYAACtpAiQXXXBAYoYHMSBAEVmECQIASoQrgsgjDgAOYXwvniqNIQBYFIfFGg4YpIfKEEFOUgDUkgZUZAQhmkUQ2sXZhZUVDIIBBsgCNIm4GRoDIzyCARiO3KzEoGRhAXgI0XMjBmhjAYIOYqMxhBGBh8dPXo5qHbh3CPIdg9YPcGIdyL7h90/6KHB0Z4oYcnRnizocUHRnwhxycAnkgnDwTrYtIAAAAASUVORK5CYII=) 50% no-repeat;
+      background: #feaf4c url('../assets/close.png') 50% no-repeat;
       background-size: 15px;
     }
     .search-bar-ipt {
