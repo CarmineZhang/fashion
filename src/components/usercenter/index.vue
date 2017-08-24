@@ -1,9 +1,9 @@
 <template>
   <div class="my-main">
     <!-- <div class="my-fixed-header">
-              <a class="header-left" @click="showSetting">设置</a>
-              <a class="header-right">消息</a>
-            </div> -->
+                  <a class="header-left" @click="showSetting">设置</a>
+                  <a class="header-right">消息</a>
+                </div> -->
     <my-header></my-header>
     <my-order></my-order>
     <my-tool></my-tool>

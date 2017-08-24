@@ -2,10 +2,10 @@
   <div class="my-section">
     <ul class="my-tool">
       <li>
-        <a href="" class="t-jifen">积分商品</a>
+        <a href="" class="t-jifen">积分订单</a>
       </li>
       <li>
-        <a href="" class="t-firend">我的好友</a>
+        <a href="" class="t-tiaozao">跳蚤订单</a>
       </li>
       <li>
         <a href="" class="t-qrcode">我的二维码</a>
@@ -65,9 +65,9 @@ export default {
         background-size: 100%;
       }
     }
-    a.t-firend {
+    a.t-tiaozao {
       &:before {
-        background: url('../../assets/tools/firend.png') no-repeat;
+        background: url('../../assets/tools/tiaozao.png') no-repeat;
         background-size: 100%;
       }
     }
