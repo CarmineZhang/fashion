@@ -1,7 +1,7 @@
 <template>
   <div class="my-main">
     <div class="my-fixed-header header-wrapper">
-      <a class="header-back"></a>
+      <a class="header-back" @click="back"></a>
       <div class="header-info">我的</div>
     </div>
     <my-info></my-info>
@@ -21,8 +21,8 @@ export default {
     MyTool
   },
   methods: {
-    showSetting() {
-      this.$router.push({ path: '/setting' })
+    back() {
+      this.$router.go(-1)
     }
   }
 }
