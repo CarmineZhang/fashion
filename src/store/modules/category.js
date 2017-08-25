@@ -22,6 +22,8 @@ const actions = {
       if (res.retcode === 0) {
         commit(types.RECEIVE_CATEGORY, res.respbody.dataList)
       }
+    }).then((ab) => {
+      console.dir(ab)
     })
   },
   getJFCategory({

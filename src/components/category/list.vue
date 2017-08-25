@@ -1,16 +1,16 @@
 <template>
   <div class="list">
-    <a class="list-item" v-for="(item,index) in list" :key="index" @click="showGoods">
+    <a class="list-item" v-for="item in list" :key="item.commodityId" @click="showGoods">
       <div class="pt-img">
         <img :src="item.img" alt="">
       </div>
-      <p class="pt-des" v-text="item.desc"></p>
+      <p class="pt-des" v-text="item.name"></p>
       <p class="pt-price">
         <strong>
           <em>¥ </em>
           <span v-price="item.price"></span>
         </strong>
-        <span>月销{{item.quantity}}笔</span>
+        <span>月销{{item.sales}}笔</span>
       </p>
     </a>
   </div>
@@ -18,10 +18,8 @@
 <script>
 export default {
   name: 'product-list',
-  computed: {
-    list() {
-      return this.$store.state.goods.list
-    }
+  props: {
+    list: Array
   },
   methods: {
     showGoods() {

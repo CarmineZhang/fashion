@@ -25,14 +25,13 @@ export default {
   },
   data() {
     return {
-      loading: false,
+      allowLoading: true,
       show: false
     }
   },
   watch: {
     value(val) {
-      console.log(val)
-      this.loading = val
+      this.allowLoading = val
       this.show = val
     },
     loading(val) {
@@ -41,13 +40,13 @@ export default {
   },
   methods: {
     scroll() {
-      if (!this.loading) {
+      if (this.allowLoading) {
         let scrollHeight = this.$el.scrollHeight
         let clientHeight = this.$el.clientHeight
         let scrollTop = this.$el.scrollTop
         if ((scrollHeight - this.threshold) <= (clientHeight + scrollTop)) {
           this.show = true
-          this.loading = true
+          this.allowLoading = false
           this.$emit('load-more')
         }
       }
