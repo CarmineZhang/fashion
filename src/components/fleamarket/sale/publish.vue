@@ -18,9 +18,9 @@ export default {
     }
   },
   methods: {
-    choose(item) {
-      this.$store.dispatch('getFleaCommidity', {
-        cId: item.categoryId,
+    choose(id) {
+      this.$store.dispatch('getJFCommodity', {
+        cId: id,
         index: 1,
         size: 100
       })

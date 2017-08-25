@@ -22,18 +22,14 @@ export default {
     this.$store.dispatch('getJFCategory').then(() => {
       if (this.category && this.category.length > 0) {
         this.curId = this.category[0].categoryId
-        this.$store.dispatch('getJFCommidity', {
-          cId: this.curId,
-          index: 1,
-          size: 100
-        })
+        this.$emit('on-click', this.curId)
       }
     })
   },
   methods: {
     search(item) {
-      this.curId = item.categoryid
-      this.$emit('on-click', item)
+      this.curId = item.categoryId
+      this.$emit('on-click', this.curId)
     }
   }
 }
