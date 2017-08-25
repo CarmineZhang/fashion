@@ -42,11 +42,10 @@ export default {
     display: block;
     img {
       position: absolute;
-      top: 50%;
-      left: 50%;
+      top: 0;
+      left: 0;
       width: (712/750)*100%;
       height: auto;
-      transform: translate3d(-50%, -50%, 0)
     }
   }
 

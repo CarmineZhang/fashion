@@ -41,7 +41,7 @@ const actions = {
     commit
   }) {
     http.getHomePageSort(1, 3).then(res => {
-      if (res.retcod === 0) {
+      if (res.retcode === 0) {
         commit(types.RECEIVE_COLUMNS, res.respbody.arrayList)
       }
     })

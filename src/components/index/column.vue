@@ -1,6 +1,6 @@
 <template>
   <div class="home-col">
-    <div class="col-header" :class="[headerClass]" v-text="cdata.title"></div>
+    <div class="col-header" :class="[headerClass]" v-text="cdata.categoryName"></div>
     <div class="col-body">
       <a class="banner">
         <img v-lazy="cdata.categoryImage" alt="">
@@ -47,16 +47,15 @@ export default {
       padding-top: (252/716)*100%;
       img {
         position: absolute;
-        top: 50%;
-        left: 50%;
+        top: 0;
+        left: 0;
         width: 100%;
         height: auto;
-        transform: translate3d(-50%, -50%, 0)
       }
     }
   }
   .col-footer {
-    height: 2.7rem;
+    // height: 2.7rem;
     display: flex;
     .footer-item {
       flex: 1;
@@ -66,10 +65,10 @@ export default {
         padding-top: (149/233)*100%;
         img {
           position: absolute;
-          top: 50%;
-          left: 50%;
+          top: 0;
+          left: 0;
           width: 100%;
-          transform: translate3d(-50%, -50%, 0)
+          height: auto;
         }
       }
       strong {
