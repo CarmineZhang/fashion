@@ -4,17 +4,17 @@
       <div class="ve-slider-list">
         <div class="ve-slider-item">
           <a>
-            <img :src="firstItem.img" alt="">
+            <img :src="firstItem.image" alt="">
           </a>
         </div>
         <div class="ve-slider-item" v-for="(item,index) in list" :key="index">
           <a>
-            <img :src="item.img" alt="">
+            <img :src="item.image" alt="">
           </a>
         </div>
         <div class="ve-slider-item">
           <a>
-            <img :src="lastItem.img" alt="">
+            <img :src="lastItem.image" alt="">
           </a>
         </div>
       </div>
@@ -82,8 +82,8 @@ export default {
   },
   methods: {
     cover() {
-      this.showViewer = true
-      this.$emit('on-click')
+      // this.showViewer = true
+      // this.$emit('on-click')
     },
     render() {
       this.swiper && this.swiper.destory()

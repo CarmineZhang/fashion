@@ -15,8 +15,7 @@ import MyNav from './nav'
 import Notice from './notice'
 import Activity from './activity'
 import Column from './column'
-// import * as http from '@/services'
-import bannerSrc from '../../assets/index/banner.png'
+
 import b2 from '../../assets/column/banner2@3x.png'
 import b3 from '../../assets/column/banner3@3x.png'
 import b4 from '../../assets/column/banner4@3x.png'
@@ -48,9 +47,13 @@ export default {
     Activity,
     Column
   },
+  computed: {
+    banners() {
+      return this.$store.state.home.banners
+    }
+  },
   data() {
     return {
-      banners: [{ img: bannerSrc }, { img: bannerSrc }, { img: bannerSrc }],
       columns: [{
         title: '绅士男鞋',
         banner: b2,
@@ -135,11 +138,7 @@ export default {
     }
   },
   created() {
-    // http.getHomeBanner(1).then((res) => {
-    //   if (res.retcode === 0) {
-    //     this.banners = res.respbody.list
-    //   }
-    // })
+    this.$store.dispatch('getBanners')
   }
 }
 </script>

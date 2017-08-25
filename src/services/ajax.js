@@ -1,5 +1,5 @@
 import axios from './interceptors'
-let url = ''
+let url = '/api'
 export {
   axios
 }

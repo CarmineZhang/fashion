@@ -5,12 +5,12 @@ import ajax from '../ajax'
  * @param {*} type 
  * //1获取主页第一栏图片活动信息  2 获取主页第二栏信息 3,获取积分商城图片活动信息 4, 获取跳蚤市场图片活动信息 
  */
-export function getHomeBanner(type) {
+export function getHomeBanner(flag) {
   return ajax({
     "name": "homePage",
     "ctype": "weChat",
     "reqbody": {
-      "type": type
+      "flag": flag
     }
   })
 }
