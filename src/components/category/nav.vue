@@ -26,10 +26,9 @@ export default {
   },
   created() {
     this.$store.dispatch('getCategory').then(() => {
-      console.dir(arguments)
       if (this.list.length > 0) {
         this.curCategoryId = this.list[0].categoryId
-        this.$emit('on-click', this.curCategoryId, 1)
+        this.$emit('on-click', this.curCategoryId)
       }
     })
   },
@@ -51,7 +50,7 @@ export default {
       this.current = index
       this.curCategoryId = item.categoryId
       scroll.setDistance(index)
-      this.$emit('on-click', this.curCategoryId, 1)
+      this.$emit('on-click', this.curCategoryId)
     }
   }
 }

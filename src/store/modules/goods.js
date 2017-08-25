@@ -2,7 +2,7 @@ import * as types from '../mutation-types'
 import * as http from '@/services'
 const state = {
   list: [],
-  isLoading: true,
+  allowLoad: true,
   jflist: []
 }
 // mutations
@@ -16,8 +16,8 @@ const mutations = {
   [types.RECEIVE_GOODS_MORE](state, list) {
     state.list = [...state.list, ...list]
   },
-  [types.GOODS_ISLOADING](state, flag) {
-    state.isLoading = flag
+  [types.GOODS_ALLOWLOAD](state, flag) {
+    state.allowLoad = flag
   }
 }
 
@@ -33,9 +33,9 @@ const actions = {
       if (res.retcode === 0) {
         let list = res.respbody.dataList
         if (list.length < size) {
-          commit(types.GOODS_ISLOADING, false)
+          commit(types.GOODS_ALLOWLOAD, false)
         } else {
-          commit(types.GOODS_ISLOADING, true)
+          commit(types.GOODS_ALLOWLOAD, true)
         }
         commit(types.RECEIVE_GOODS, list)
       }
@@ -52,9 +52,9 @@ const actions = {
       if (res.retcode === 0) {
         let list = res.respbody.dataList
         if (list.length < size) {
-          commit(types.GOODS_ISLOADING, false)
+          commit(types.GOODS_ALLOWLOAD, false)
         } else {
-          commit(types.GOODS_ISLOADING, true)
+          commit(types.GOODS_ALLOWLOAD, true)
         }
         commit(types.RECEIVE_GOODS_MORE, list)
       }

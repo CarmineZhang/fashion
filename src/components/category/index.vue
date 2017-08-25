@@ -4,7 +4,7 @@
       <category-header></category-header>
       <category-nav @on-click="getCommodity"></category-nav>
     </div>
-    <scroll-load class="list-wrapper" :height="height" @load-more="loadmore" v-model="allowLoading">
+    <scroll-load class="list-wrapper" :height="height" @load-more="loadmore" :allow-load="loading">
       <product-list :list="goodslist"></product-list>
     </scroll-load>
   </div>
@@ -14,7 +14,6 @@ import CategoryHeader from './header'
 import CategoryNav from './nav'
 import ProductList from './list'
 import ScrollLoad from '@/components/widget/scrollload'
-import * as http from '@/services'
 export default {
   name: 'category',
   components: {
@@ -22,6 +21,11 @@ export default {
     CategoryNav,
     ProductList,
     ScrollLoad
+  },
+  computed: {
+    loading() {
+      return this.$store.state.goods.allowLoad
+    }
   },
   beforeMount() {
     this.height = document.documentElement.clientHeight - 86 - 50
@@ -36,32 +40,20 @@ export default {
     }
   },
   methods: {
-    getCommodity(cId, index) {
+    getCommodity(cId) {
       this.cId = cId
-      http.getCommodity(cId, 1, index, 10).then(res => {
-        if (res.retcode === 0) {
-          let list = res.respbody.dataList
-          if (list.length < 10) {
-            this.allowLoading = false
-          } else {
-            this.allowLoading = true
-          }
-          this.goodslist = list
-        }
+      this.$store.dispatch('getCommodity', {
+        cId: this.cId,
+        index: 1,
+        size: 10
       })
     },
     loadmore() {
       this.index = this.index + 1
-      http.getCommodity(this.cId, 1, this.index, 10).then(res => {
-        if (res.retcode === 0) {
-          let list = res.respbody.dataList
-          if (list.length < 10) {
-            this.allowLoading = false
-          } else {
-            this.allowLoading = true
-          }
-          this.goodslist = [...this.goodslist, ...list]
-        }
+      this.$store.dispatch('getCommodityMore', {
+        cId: this.cId,
+        index: this.index,
+        size: 10
       })
     }
   }
