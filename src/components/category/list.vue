@@ -18,8 +18,10 @@
 <script>
 export default {
   name: 'product-list',
-  props: {
-    list: Array
+  computed: {
+    list() {
+      return this.$store.state.goods.list
+    }
   },
   methods: {
     showGoods() {

@@ -4,7 +4,7 @@
       <category-header></category-header>
       <category-nav></category-nav>
     </div>
-    <product-list :list="plist" class="list-wrapper"></product-list>
+    <product-list class="list-wrapper"></product-list>
   </div>
 </template>
 <script>

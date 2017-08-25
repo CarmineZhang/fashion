@@ -1,7 +1,7 @@
 <template>
   <div class="category-nav-wrapper" v-scroll>
     <ul class="category-nav">
-      <li :class="{'cur':current===index}" v-for="(item,index) in list" :key="index" @click="navClick(index)">
+      <li :class="{'cur':current===index}" v-for="(item,index) in list" :key="index" @click="navClick(item,index)">
         <span v-text="item.categoryName"></span>
       </li>
     </ul>
@@ -15,7 +15,8 @@ export default {
   data() {
     return {
       current: 0,
-      distance: 0
+      curCategoryId: 0,
+      distance: 0,
     }
   },
   computed: {
@@ -24,40 +25,16 @@ export default {
     }
   },
   created() {
-    // setTimeout(() => {
-    //   this.list = [{
-    //     id: 1,
-    //     name: '女鞋'
-    //   }, {
-    //     id: 1,
-    //     name: '男鞋'
-    //   }, {
-    //     id: 1,
-    //     name: '手机'
-    //   }, {
-    //     id: 1,
-    //     name: '电脑'
-    //   }, {
-    //     id: 1,
-    //     name: '服装'
-    //   }, {
-    //     id: 1,
-    //     name: '鞋帽'
-    //   }, {
-    //     id: 1,
-    //     name: '空调'
-    //   }, {
-    //     id: 1,
-    //     name: '电视机'
-    //   }, {
-    //     id: 1,
-    //     name: '电冰箱'
-    //   }, {
-    //     id: 1,
-    //     name: '户外用品'
-    //   }]
-    // }, 300);
-    this.$store.dispatch('getCategory')
+    this.$store.dispatch('getCategory').then(() => {
+      if (this.list.length > 0) {
+        this.curCategoryId = this.list[0].categoryId
+        this.$store.dispatch('getCommidity', {
+          cId: this.curCategoryId,
+          index: 1,
+          size: 10
+        })
+      }
+    })
   },
   directives: {
     scroll: {
@@ -73,9 +50,18 @@ export default {
     }
   },
   methods: {
-    navClick(index) {
+    navClick(item, index) {
       this.current = index
+      this.curCategoryId = item.categoryId
       scroll.setDistance(index)
+      this.getCommodity()
+    },
+    getCommodity() {
+      this.$store.dispatch('getCommidity', {
+        cId: this.curCategoryId,
+        index: 1,
+        size: 10
+      })
     }
   }
 }
