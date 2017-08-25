@@ -9,7 +9,7 @@
         <span>求购</span>
       </a>
     </div>
-    <div class="pub">发布</div>
+    <div class="pub" @click="publish">发布</div>
   </div>
 </template>
 <script>
@@ -26,6 +26,9 @@ export default {
     },
     showBuy() {
       this.$router.push({ name: 'flea-buy' })
+    },
+    publish() {
+      this.$router.push('/publish/sale')
     }
   }
 }

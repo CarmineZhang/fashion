@@ -4,11 +4,12 @@
 import FleaMarketIndex from '@/components/fleamarket/index'
 import Sale from '@/components/fleamarket/sale'
 import Buy from '@/components/fleamarket/buy'
-export default {
+import PublishSale from '@/components/fleamarket/sale/publish'
+export default [{
   path: '/fleamarket',
   component: FleaMarketIndex,
   children: [{
-    path: '',
+    path: '/',
     name: 'flea-sale',
     component: Sale
   }, {
@@ -16,4 +17,7 @@ export default {
     name: 'flea-buy',
     component: Buy
   }]
-}
+}, {
+  path: '/publish/sale',
+  component: PublishSale
+}]

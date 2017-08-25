@@ -63,5 +63,5 @@ export default new Router({
       name: 'detail',
       component: Detail
     }]
-  }, OrderConfirmRouter, SettingRouter, IntegralRouter, FleaMarketRouter]
+  }, OrderConfirmRouter, SettingRouter, IntegralRouter, ...FleaMarketRouter]
 })
