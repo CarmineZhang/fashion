@@ -4,13 +4,13 @@
       <a class="banner">
         <img v-lazy="cdata.categoryImage" alt="">
       </a>
-      <div class="col-footer">
+      <div class="col-footer integral-footer">
         <div class="footer-item" v-for="item in cdata.commodityList" :key="item.commodityId">
           <div class="img-wrapper">
             <img v-lazy="item.image" alt="">
           </div>
-          <span v-text="item.name"></span>
-          <div class="integral-footer">
+          <strong v-text="item.name" class="name"></strong>
+          <div class="integral-price">
             <span class="price">{{item.price}}积分</span>
             <span class="count">月销{{item.sales}}笔</span>
           </div>
@@ -33,13 +33,18 @@ export default {
 </script>
 <style lang="scss">
 .integral-footer {
-  overflow: hidden;
-  font-size: 12px;
-  .price {
-    float: left;
+  .footer-item {
+    max-width: 50%;
   }
-  .count {
-    float: right;
+  .integral-price {
+    overflow: hidden;
+    font-size: 12px;
+    .price {
+      float: left;
+    }
+    .count {
+      float: right;
+    }
   }
 }
 </style>

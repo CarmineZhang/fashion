@@ -10,7 +10,7 @@
           <div class="img-wrapper">
             <img v-lazy="item.image" alt="">
           </div>
-          <strong v-text="item.name"></strong>
+          <strong v-text="item.name" class="name"></strong>
           <span v-text="item.title"></span>
         </div>
       </div>
@@ -71,10 +71,12 @@ export default {
           height: auto;
         }
       }
-      strong {
+      .name {
         display: block;
         color: #333;
         font-weight: normal;
+        font-size: 12px;
+        @include ellipsisLn()
       }
       span {
         display: block;
