@@ -2,7 +2,7 @@
   <div class="category-nav-wrapper" v-scroll>
     <ul class="category-nav">
       <li :class="{'cur':current===index}" v-for="(item,index) in list" :key="index" @click="navClick(index)">
-        <span v-text="item.name"></span>
+        <span v-text="item.categoryName"></span>
       </li>
     </ul>
   </div>
@@ -14,45 +14,50 @@ export default {
   name: 'category-nav',
   data() {
     return {
-      list: {},
       current: 0,
       distance: 0
     }
   },
+  computed: {
+    list() {
+      return this.$store.state.category.categories
+    }
+  },
   created() {
-    setTimeout(() => {
-      this.list = [{
-        id: 1,
-        name: '女鞋'
-      }, {
-        id: 1,
-        name: '男鞋'
-      }, {
-        id: 1,
-        name: '手机'
-      }, {
-        id: 1,
-        name: '电脑'
-      }, {
-        id: 1,
-        name: '服装'
-      }, {
-        id: 1,
-        name: '鞋帽'
-      }, {
-        id: 1,
-        name: '空调'
-      }, {
-        id: 1,
-        name: '电视机'
-      }, {
-        id: 1,
-        name: '电冰箱'
-      }, {
-        id: 1,
-        name: '户外用品'
-      }]
-    }, 300);
+    // setTimeout(() => {
+    //   this.list = [{
+    //     id: 1,
+    //     name: '女鞋'
+    //   }, {
+    //     id: 1,
+    //     name: '男鞋'
+    //   }, {
+    //     id: 1,
+    //     name: '手机'
+    //   }, {
+    //     id: 1,
+    //     name: '电脑'
+    //   }, {
+    //     id: 1,
+    //     name: '服装'
+    //   }, {
+    //     id: 1,
+    //     name: '鞋帽'
+    //   }, {
+    //     id: 1,
+    //     name: '空调'
+    //   }, {
+    //     id: 1,
+    //     name: '电视机'
+    //   }, {
+    //     id: 1,
+    //     name: '电冰箱'
+    //   }, {
+    //     id: 1,
+    //     name: '户外用品'
+    //   }]
+    // }, 300);
+    this.$store.dispatch('getCategory')
   },
   directives: {
     scroll: {
