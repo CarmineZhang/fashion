@@ -8,7 +8,7 @@
       <img src="../../assets/index/jifen.png" alt="">
       <span>积分商城</span>
     </div>
-    <div class="nav-item">
+    <div class="nav-item" @click="gotoFleaMarket">
       <img src="../../assets/index/tiaozao.png" alt="">
       <span>跳蚤市场</span>
     </div>
@@ -28,6 +28,9 @@ export default {
   methods: {
     gotoIntegral() {
       this.$router.push('/integral')
+    },
+    gotoFleaMarket() {
+      this.$router.push('/fleamarket')
     }
   }
 }

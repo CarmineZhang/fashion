@@ -15,6 +15,7 @@ import OrderList from '@/components/orderlist'
 import OrderConfirmRouter from './confirm'
 import SettingRouter from './settings'
 import IntegralRouter from './integral'
+import FleaMarketRouter from './fleamarket'
 import UserCenter from '@/components/usercenter'
 Vue.use(Router)
 
@@ -62,5 +63,5 @@ export default new Router({
       name: 'detail',
       component: Detail
     }]
-  }, OrderConfirmRouter, SettingRouter, IntegralRouter]
+  }, OrderConfirmRouter, SettingRouter, IntegralRouter, FleaMarketRouter]
 })
