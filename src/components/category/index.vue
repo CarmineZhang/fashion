@@ -2,80 +2,47 @@
   <div class="category">
     <div class="fixed-header">
       <category-header></category-header>
-      <category-nav></category-nav>
+      <category-nav @on-click="getCommodity"></category-nav>
     </div>
-    <product-list class="list-wrapper"></product-list>
+    <scroll-load @load-more="loadmore" v-model="loading">
+      <product-list class="list-wrapper"></product-list>
+    </scroll-load>
   </div>
 </template>
 <script>
 import CategoryHeader from './header'
 import CategoryNav from './nav'
 import ProductList from './list'
+import ScrollLoad from '@/components/widget/scrollload'
 export default {
   name: 'category',
   components: {
     CategoryHeader,
     CategoryNav,
-    ProductList
+    ProductList,
+    ScrollLoad
   },
   data() {
     return {
-      plist: [{
-        img: '//img12.360buyimg.com/mcoss/jfs/t6079/171/6285155718/35247/4f7d9b95/5971a0efNe70b048f.jpg.webp',
-        desc: '谷秋夏季新款时尚玛丽珍增高女凉鞋',
-        price: 139,
-        quantity: 1000
-      }, {
-        img: '//img12.360buyimg.com/mcoss/jfs/t6079/171/6285155718/35247/4f7d9b95/5971a0efNe70b048f.jpg.webp',
-        desc: '谷秋夏季新款时尚玛丽珍增高女凉鞋',
-        price: 139,
-        quantity: 1000
-      }, {
-        img: '//img12.360buyimg.com/mcoss/jfs/t6079/171/6285155718/35247/4f7d9b95/5971a0efNe70b048f.jpg.webp',
-        desc: '谷秋夏季新款时尚玛丽珍增高女凉鞋',
-        price: 139,
-        quantity: 1000
-      }, {
-        img: '//img12.360buyimg.com/mcoss/jfs/t6079/171/6285155718/35247/4f7d9b95/5971a0efNe70b048f.jpg.webp',
-        desc: '谷秋夏季新款时尚玛丽珍增高女凉鞋',
-        price: 139,
-        quantity: 1000
-      }, {
-        img: '//img12.360buyimg.com/mcoss/jfs/t6079/171/6285155718/35247/4f7d9b95/5971a0efNe70b048f.jpg.webp',
-        desc: '谷秋夏季新款时尚玛丽珍增高女凉鞋',
-        price: 139,
-        quantity: 1000
-      }, {
-        img: '//img12.360buyimg.com/mcoss/jfs/t6079/171/6285155718/35247/4f7d9b95/5971a0efNe70b048f.jpg.webp',
-        desc: '谷秋夏季新款时尚玛丽珍增高女凉鞋',
-        price: 139,
-        quantity: 1000
-      }, {
-        img: '//img12.360buyimg.com/mcoss/jfs/t6079/171/6285155718/35247/4f7d9b95/5971a0efNe70b048f.jpg.webp',
-        desc: '谷秋夏季新款时尚玛丽珍增高女凉鞋',
-        price: 139,
-        quantity: 1000
-      }, {
-        img: '//img12.360buyimg.com/mcoss/jfs/t6079/171/6285155718/35247/4f7d9b95/5971a0efNe70b048f.jpg.webp',
-        desc: '谷秋夏季新款时尚玛丽珍增高女凉鞋',
-        price: 139,
-        quantity: 1000
-      }, {
-        img: '//img12.360buyimg.com/mcoss/jfs/t6079/171/6285155718/35247/4f7d9b95/5971a0efNe70b048f.jpg.webp',
-        desc: '谷秋夏季新款时尚玛丽珍增高女凉鞋',
-        price: 139,
-        quantity: 1000
-      }, {
-        img: '//img12.360buyimg.com/mcoss/jfs/t6079/171/6285155718/35247/4f7d9b95/5971a0efNe70b048f.jpg.webp',
-        desc: '谷秋夏季新款时尚玛丽珍增高女凉鞋',
-        price: 139,
-        quantity: 1000
-      }, {
-        img: '//img12.360buyimg.com/mcoss/jfs/t6079/171/6285155718/35247/4f7d9b95/5971a0efNe70b048f.jpg.webp',
-        desc: '谷秋夏季新款时尚玛丽珍增高女凉鞋',
-        price: 139,
-        quantity: 1000
-      }]
+      loading: true,
+      index: 1,
+      cId: 0,
+    }
+  },
+  methods: {
+    getCommodity(cId, index) {
+      this.cId = cId
+      this.$store.dispatch('getCommidity', {
+        cId: cId,
+        index: index,
+        size: 10
+      })
+    },
+    loadmore() {
+      this.index = this.index + 1
+      this.getCommodity(this.cId, this.index).then(() => {
+        console.dir(arguments)
+      })
     }
   }
 }
