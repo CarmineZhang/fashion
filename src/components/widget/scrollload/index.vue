@@ -18,35 +18,33 @@ export default {
       type: Number,
       default: 0
     },
-    value: Boolean
+    allowLoad: Boolean
   },
   mounted() {
     this.throttle = throttle(this.scroll, 200)
   },
   data() {
     return {
-      allowLoading: true,
-      show: false
+      show: false,
+      loading: false
     }
   },
   watch: {
-    value(val) {
-      this.allowLoading = val
-      this.show = val
-    },
-    loading(val) {
-      this.$emit('input', val)
+    allowLoad(val) {
+      if (!val) {
+        this.show = false
+      }
     }
   },
   methods: {
     scroll() {
-      if (this.allowLoading) {
+      if (this.allowLoad && !this.loading) {
         let scrollHeight = this.$el.scrollHeight
         let clientHeight = this.$el.clientHeight
         let scrollTop = this.$el.scrollTop
         if ((scrollHeight - this.threshold) <= (clientHeight + scrollTop)) {
           this.show = true
-          this.allowLoading = false
+          this.loading = true
           this.$emit('load-more')
         }
       }

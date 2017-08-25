@@ -4,8 +4,8 @@
       <category-header></category-header>
       <category-nav @on-click="getCommodity"></category-nav>
     </div>
-    <scroll-load :height="height" @load-more="loadmore" v-model="allowLoading">
-      <product-list class="list-wrapper" :list="goodslist"></product-list>
+    <scroll-load class="list-wrapper" :height="height" @load-more="loadmore" v-model="allowLoading">
+      <product-list :list="goodslist"></product-list>
     </scroll-load>
   </div>
 </template>
@@ -24,7 +24,7 @@ export default {
     ScrollLoad
   },
   beforeMount() {
-    this.height = document.documentElement.clientHeight - 86
+    this.height = document.documentElement.clientHeight - 86 - 50
   },
   data() {
     return {
