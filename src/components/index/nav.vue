@@ -4,7 +4,7 @@
       <img src="../../assets/index/game.png" alt="">
       <span>游戏专区</span>
     </div>
-    <div class="nav-item">
+    <div class="nav-item" @click="gotoIntegral">
       <img src="../../assets/index/jifen.png" alt="">
       <span>积分商城</span>
     </div>
@@ -24,7 +24,12 @@
 </template>
 <script>
 export default {
-  name: 'nav'
+  name: 'nav',
+  methods: {
+    gotoIntegral() {
+      this.$router.push('/integral')
+    }
+  }
 }
 </script>
 <style lang="scss">

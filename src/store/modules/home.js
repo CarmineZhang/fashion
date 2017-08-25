@@ -3,7 +3,9 @@ import * as http from '@/services'
 const state = {
   banners: [],
   activities: [],
-  columns: []
+  columns: [],
+  integralbanners: [],
+  integralcolumns: []
 }
 // mutations
 const mutations = {
@@ -15,6 +17,12 @@ const mutations = {
   },
   [types.RECEIVE_COLUMNS](state, list) {
     state.columns = list
+  },
+  [types.RECEIVE_INTEGRAL_BANNERS](state, list) {
+    state.integralbanners = list
+  },
+  [types.RECEIVE_INTEGRAL_COLUMNS](state, list) {
+    state.integralcolumns = list
   }
 }
 
@@ -43,6 +51,24 @@ const actions = {
     http.getHomePageSort(1, 3).then(res => {
       if (res.retcode === 0) {
         commit(types.RECEIVE_COLUMNS, res.respbody.arrayList)
+      }
+    })
+  },
+  getIntegralBanners({
+    commit
+  }) {
+    http.getHomeBanner('integral').then((res) => {
+      if (res.retcode === 0) {
+        commit(types.RECEIVE_INTEGRAL_BANNERS, res.respbody.list)
+      }
+    })
+  },
+  getIntegralColumns({
+    commit
+  }) {
+    http.getHomePageSort(2, 2).then((res) => {
+      if (res.retcode === 0) {
+        commit(types.RECEIVE_INTEGRAL_COLUMNS, res.respbody.arrayList)
       }
     })
   }
