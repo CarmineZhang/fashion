@@ -8,8 +8,9 @@ export const SET_DEFAULT_ADDR = 'SET_DEFAULT_ADDR'
 export const DEL_TO_ADDRESS = 'DEL_TO_ADDRESS'
 
 /**
- * 首页活动图
+ * 首页
  */
 
 export const RECEIVE_BANNERS = 'RECEIVE_BANNERS'
 export const RECEIVE_ACTIVITY = 'RECEIVE_ACTIVITY'
+export const RECEIVE_COLUMNS = 'RECEIVE_COLUMNS'

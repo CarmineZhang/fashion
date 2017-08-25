@@ -3,15 +3,15 @@
     <div class="col-header" :class="[headerClass]" v-text="cdata.title"></div>
     <div class="col-body">
       <a class="banner">
-        <img v-lazy="cdata.banner" alt="">
+        <img v-lazy="cdata.categoryImage" alt="">
       </a>
       <div class="col-footer">
-        <div class="footer-item" v-for="(item,index) in cdata.list" :key="index">
+        <div class="footer-item" v-for="item in cdata.commodityList" :key="item.commodityId">
           <div class="img-wrapper">
-            <img v-lazy="item.img" alt="">
+            <img v-lazy="item.image" alt="">
           </div>
-          <strong v-text="item.title"></strong>
-          <span v-text="item.desc"></span>
+          <strong v-text="item.name"></strong>
+          <span v-text="item.title"></span>
         </div>
       </div>
     </div>
