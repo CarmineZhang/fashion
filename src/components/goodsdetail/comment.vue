@@ -1,40 +1,35 @@
 <template>
   <ul>
     <li class="cmt-item" v-for="(item,index) in list" :key="index">
-      <div class="cmt-item-user" v-text="item.username"></div>
+      <div class="cmt-item-user" v-text="item.userName"></div>
       <div class="cmt-item-cnt" v-text="item.content"></div>
       <div class="cmt-item-imglist">
-        <span class="img" v-for="(imgItem ,imgIndex) in item.imgList" :key="imgIndex">
+        <span class="img" v-for="(imgItem ,imgIndex) in item.images.split(',')" :key="imgIndex">
           <img :src="imgItem.img" alt="">
         </span>
       </div>
-      <div class="cmt-item-type" v-text="item.type"></div>
+      <div class="cmt-item-type" v-attr="item.productParameter"></div>
     </li>
   </ul>
 </template>
 <script>
 export default {
   name: 'comment',
-  data() {
-    return {
-      list: [{
-        username: 'zzz123',
-        content: '第一次认真写评论给大家做个参考！',
-        imgList: [{
-          img: '//img30.360buyimg.com/shaidan/s128x96_jfs/t6124/160/4970085163/50246/451bcbd5/5968d0b0Nefe74139.jpg'
-        }, {
-          img: '//img30.360buyimg.com/shaidan/s128x96_jfs/t6124/160/4970085163/50246/451bcbd5/5968d0b0Nefe74139.jpg'
-        }, {
-          img: '//img30.360buyimg.com/shaidan/s128x96_jfs/t6124/160/4970085163/50246/451bcbd5/5968d0b0Nefe74139.jpg'
-        }, {
-          img: '//img30.360buyimg.com/shaidan/s128x96_jfs/t6124/160/4970085163/50246/451bcbd5/5968d0b0Nefe74139.jpg'
-        }, {
-          img: '//img30.360buyimg.com/shaidan/s128x96_jfs/t6124/160/4970085163/50246/451bcbd5/5968d0b0Nefe74139.jpg'
-        }, {
-          img: '//img30.360buyimg.com/shaidan/s128x96_jfs/t6124/160/4970085163/50246/451bcbd5/5968d0b0Nefe74139.jpg'
-        }],
-        type: 'iphone7 64G'
-      }]
+  props: {
+    list: Array
+  },
+  directives: {
+    attr: {
+      bind(el, binding) {
+        let val = binding.value
+        let ret = ''
+        if (val) {
+          val.forEach(item => {
+            ret += item.propertyName + '  ' + item.selector + '  '
+          })
+        }
+        el.innerHTML = ret
+      }
     }
   }
 }

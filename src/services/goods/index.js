@@ -28,3 +28,15 @@ export function commodityDetail(cId) {
     }
   })
 }
+
+export function commodityEvaluate(cId, index, size) {
+  return ajax({
+    "name": "commodityEvaluate",
+    "ctype": "Web",
+    "reqbody": {
+      "commodityId": cId, //商品唯一标识
+      "pageIndex": index, //当前页码
+      "pageSize": size //每页条数
+    }
+  })
+}

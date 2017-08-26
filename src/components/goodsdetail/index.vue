@@ -17,11 +17,6 @@ export default {
   components: {
     GoodsHeader,
     GoodsFooter
-  },
-  created() {
-    var id = this.$store.state.route.query.id;
-    console.log(id)
-    this.$store.dispatch('getCommodityDetail', { cId: id })
   }
 }
 </script>

@@ -24,8 +24,8 @@
         <cell type="select" :cell-key="item.propertyID" :title="item.name" v-for="item in goods.propertyList" :key="item.propertyID" @on-click="attrClick" :content="attrResult"></cell>
       </section>
       <section>
-        <p>商品评价</p>
-        <comment></comment>
+        <p>商品评价 ({{evaluateCount}})</p>
+        <comment :list="evaluateList"></comment>
         <p class="more">
           查看更多
         </p>
@@ -39,6 +39,7 @@ import Swiper from '@/components/widget/swiper'
 import Cell from './cell'
 import Comment from './comment'
 import SelectAttr from './select'
+import * as http from '@/services'
 export default {
   name: 'goods',
   components: {
@@ -53,8 +54,48 @@ export default {
       attrlist: [],
       curAttrId: 0,
       curAttrName: '',
-      attrResult: {}
+      attrResult: {},
+      evaluateCount: 10,
+      evaluateList: [{
+        "userName": "rel****124",//用户名称
+        "userImage": "http://192.168.1.213/resources/e8d459ff-498a-45f9-8551-60133f87caa1002.jpg",//用户头像
+        "content": "做工扎实，使用高档", //评价
+        "images": "http://192.168.1.213/resources/e8d459ff-498a-45f9-8551-60133f87caa1002.jpg,http://192.168.1.213/resources/e8d459ff-498a-45f9-8551-60133f87caa1002.jpg,http://192.168.1.213/resources/e8d459ff-498a-45f9-8551-60133f87caa1002.jpg", //上传的图片
+        "productParameter": [{
+          "comProID": 12,
+          "propertyName": "颜色选择",
+          "selector": "白色"
+        }, {
+          "comProID": 26,
+          "propertyName": "尺码选择",
+          "selector": "S"
+        }]
+      }, {
+        "userName": "rel****124",//用户名称
+        "userImage": "http://192.168.1.213/resources/e8d459ff-498a-45f9-8551-60133f87caa1002.jpg",//用户头像
+        "content": "做工扎实，使用高档", //评价
+        "images": "http://192.168.1.213/resources/e8d459ff-498a-45f9-8551-60133f87caa1002.jpg,http://192.168.1.213/resources/e8d459ff-498a-45f9-8551-60133f87caa1002.jpg,http://192.168.1.213/resources/e8d459ff-498a-45f9-8551-60133f87caa1002.jpg", //上传的图片
+        "productParameter": [{
+          "comProID": 12,
+          "propertyName": "颜色选择",
+          "selector": "白色"
+        }, {
+          "comProID": 26,
+          "propertyName": "尺码选择",
+          "selector": "S"
+        }],
+      }]
     }
+  },
+  created() {
+    var id = this.$store.state.route.query.id;
+    this.$store.dispatch('getCommodityDetail', { cId: id })
+    http.commodityEvaluate(id, 1, 1).then(res => {
+      if (res.retcode === 0) {
+        // this.evaluateCount = res.respbody.total
+        // this.evaluateList = res.respbody.list
+      }
+    })
   },
   computed: {
     list() {
@@ -64,30 +105,7 @@ export default {
       return []
     },
     goods() {
-      // return this.$store.state.goods.goods
-      return {
-        "propertyList": [{
-          "propertyID": 1,
-          "name": "产品参数",
-          "list": [{
-            "comProID": 1,//属性ID
-            "selector": "170mm" //属性
-          }, {
-            "comProID": 2,//属性ID
-            "selector": "180mm" //属性
-          }]
-        }, {
-          "propertyID": 2,
-          "name": "颜色分类",
-          "list": [{
-            "comProID": 12,//属性ID
-            "selector": "红色" //属性
-          }, {
-            "comProID": 13,//属性ID
-            "selector": "蓝色" //属性
-          }]
-        }]
-      }
+      return this.$store.state.goods.goods
     }
   },
   methods: {
