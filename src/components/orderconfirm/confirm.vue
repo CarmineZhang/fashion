@@ -16,6 +16,11 @@
     <cell title="可用1000积分抵扣50" ce-class="order-switch">
       <my-switch slot="footer"></my-switch>
     </cell>
+    <div class="footer-action">
+      <div class="footer-desc">共一件商品，合计</div>
+      <a class="action" @click="showConfirmDetail">提交订单</a>
+    </div>
+    <confirm-detail v-model="show"></confirm-detail>
   </div>
 </template>
 <script>
@@ -23,8 +28,14 @@ import List from './list'
 import Cell from '@/components/widget/cell'
 import MySwitch from '@/components/widget/switch'
 import { mapGetters } from 'vuex'
+import ConfirmDetail from './confirmdetail'
 export default {
   name: 'confirm',
+  data() {
+    return {
+      show: false
+    }
+  },
   computed: {
     ...mapGetters([
       'defaultAddr'
@@ -33,7 +44,8 @@ export default {
   components: {
     List,
     Cell,
-    MySwitch
+    MySwitch,
+    ConfirmDetail
   },
   methods: {
     selectAddress() {
@@ -41,6 +53,9 @@ export default {
     },
     selectInvoice() {
       this.$router.push('/selectinvoice')
+    },
+    showConfirmDetail() {
+      this.show = true
     }
   }
 }
