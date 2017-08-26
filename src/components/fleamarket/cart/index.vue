@@ -3,7 +3,8 @@
     <cart-header @on-edit="edit" @on-address="selectAddress"></cart-header>
     <div class="cart-wrap">
       <div class="cart-item" v-for="(item,index) in list" :key="index">
-        <div class="icon-select" :class="{'selected':item.selected}" @click="setSelected(item)"></div>
+        <div class="icon-select" :class="{'selected':item.selected}" @click="setSelected(item)">
+        </div>
         <div class="goods-img">
           <img :src="item.img" alt="">
         </div>

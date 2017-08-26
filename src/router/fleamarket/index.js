@@ -9,6 +9,7 @@ import GoodsDetail from '@/components/fleamarket/goodsdetail'
 import Goods from '@/components/fleamarket/goodsdetail/goods'
 import Detail from '@/components/fleamarket/goodsdetail/detail'
 import Confirm from '@/components/fleamarket/orderconfirm'
+import Cart from '@/components/fleamarket/cart'
 export default [{
     path: '/fleamarket',
     component: FleaMarketIndex,
@@ -39,5 +40,9 @@ export default [{
   }, {
     path: '/fleamarket/confirm',
     component: Confirm
-  }
+  },
+  {
+    path: '/fleamarket/cart',
+    component: Cart
+  },
 ]

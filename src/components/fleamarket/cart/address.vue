@@ -24,7 +24,7 @@
 </template>
 <script>
 export default {
-  name: 'cart-address',
+  name: 'flea-cart-address',
   data() {
     return {
       show: false,

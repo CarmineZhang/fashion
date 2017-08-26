@@ -192,11 +192,11 @@
   width: .35rem;
   height: .35rem;
   margin-top: -(0.35rem /2);
-  background: url('../../assets/cart/no-select.png') no-repeat;
+  background: url('../assets/cart/no-select.png') no-repeat;
   background-size: 100%;
 }
 
 @mixin selected() {
-  background: url('../../assets/cart/selected.png') no-repeat;
+  background: url('../assets/cart/selected.png') no-repeat;
   background-size: 100%;
 }
