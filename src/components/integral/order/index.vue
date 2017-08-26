@@ -23,14 +23,27 @@
     </div>
     <div class="i-o-footer">
       <div class="footer-desc">共一件商品</div>
-      <a class="footer-action">提交订单</a>
+      <a class="footer-action" @click="confirm">提交订单</a>
     </div>
+    <confirm v-model="show"></confirm>
   </div>
 </template>
 <script>
+import Confirm from './confirm'
 export default {
-  name: 'integral-confirm',
+  name: 'integral-order',
+  components: {
+    Confirm
+  },
+  data() {
+    return {
+      show: false
+    }
+  },
   methods: {
+    confirm() {
+      this.show = true
+    }
   }
 }
 </script>
