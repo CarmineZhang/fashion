@@ -50,7 +50,7 @@ export default {
       this.$router.push('/integral/order/delivery')
     },
     sale() {
-
+      this.$router.push('/integral/order/transfer')
     }
   }
 }
