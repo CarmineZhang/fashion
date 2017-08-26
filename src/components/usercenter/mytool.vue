@@ -2,7 +2,7 @@
   <div class="my-section">
     <ul class="my-tool">
       <li>
-        <a href="" class="t-jifen">积分订单</a>
+        <router-link class="t-jifen" to="/integral/order/list">积分订单</router-link>
       </li>
       <li>
         <a href="" class="t-tiaozao">跳蚤订单</a>

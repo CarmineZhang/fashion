@@ -17,7 +17,7 @@ export default [{
     name: 'integralgoods',
     component: Goods
   }, {
-    path: '/detail',
+    path: 'detail',
     name: 'integraldetail',
     component: Detail
   }]
