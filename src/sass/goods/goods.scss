@@ -1,0 +1,22 @@
+.goods-info {
+  section {
+    background-color: #fff;
+    margin-bottom: 10px;
+    padding: 12px 10px;
+    .more {
+      text-align: center;
+    }
+  }
+  .goods-price {
+    strong {
+      color: #e4393c
+    }
+  }
+  .goods-other {
+    font-size: 12px;
+    display: flex;
+    span {
+      flex: 1;
+    }
+  }
+}

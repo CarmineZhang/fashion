@@ -34,8 +34,8 @@
   </div>
 </template>
 <script>
-import Swiper from '../widget/swiper'
-import Cell from '../widget/cell'
+import Swiper from '@/components/widget/swiper'
+import Cell from '@/components/widget/cell'
 import Comment from './comment'
 export default {
   name: 'goods',
@@ -61,3 +61,4 @@ export default {
   }
 }
 </script>
+

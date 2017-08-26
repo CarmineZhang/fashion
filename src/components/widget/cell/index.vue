@@ -3,7 +3,8 @@
     <div class="cell-hd">
       <slot name="header"></slot>
     </div>
-    <div class="cell-bd" v-text="title"></div>
+    <div class="cell-bd" v-text="title">
+    </div>
     <div class="cell-ft">
       <span v-if="content">{{content}}</span>
       <slot name="footer"></slot>

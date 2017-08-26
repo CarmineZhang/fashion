@@ -5,12 +5,21 @@
   padding: 10px 15px;
   background-color: #fff;
   @include topline();
+  .cell-hd {
+    line-height: 24px;
+  }
   .cell-bd {
     flex: 1;
     font-size: 14px;
     color: #333;
     height: 24px;
     line-height: 24px;
+    .ipt {
+      padding: 0;
+      padding-left: 10px;
+      height: 24px;
+      line-height: 24px;
+    }
   }
   .cell-ft {
     line-height: 24px;

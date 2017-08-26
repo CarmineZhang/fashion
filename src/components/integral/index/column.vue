@@ -1,6 +1,6 @@
 <template>
   <div class="home-col">
-    <div class="col-body">
+    <div class="col-body" @click="showDetail">
       <a class="banner">
         <img v-lazy="cdata.categoryImage" alt="">
       </a>
@@ -27,6 +27,11 @@ export default {
     cdata: {
       type: Object,
       default: {}
+    }
+  },
+  methods: {
+    showDetail() {
+      this.$router.push('/integralgoods')
     }
   }
 }
