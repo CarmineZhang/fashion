@@ -133,3 +133,25 @@ a.link {
     opacity: .6;
   }
 }
+
+.footer-action {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 40px;
+  line-height: 40px;
+  display: flex;
+  background-color: #fff;
+  .footer-desc {
+    flex: 1;
+    text-align: center;
+  }
+  .action {
+    width: 100px;
+    display: block;
+    text-align: center;
+    color: #fff;
+    background-color: $orange;
+  }
+}

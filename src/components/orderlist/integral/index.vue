@@ -44,6 +44,14 @@ export default {
   name: 'integral-order-list',
   components: {
     SearchBar
+  },
+  methods: {
+    delivery() {
+      this.$router.push('/integral/order/delivery')
+    },
+    sale() {
+
+    }
   }
 }
 </script>

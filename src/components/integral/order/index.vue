@@ -21,9 +21,9 @@
         <input type="text" class="ipt">
       </div>
     </div>
-    <div class="i-o-footer">
+    <div class="footer-action">
       <div class="footer-desc">共一件商品</div>
-      <a class="footer-action" @click="confirm">提交订单</a>
+      <a class="action" @click="confirm">提交订单</a>
     </div>
     <confirm v-model="show"></confirm>
   </div>
@@ -47,26 +47,3 @@ export default {
   }
 }
 </script>
-<style lang="scss">
-.i-o-footer {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 40px;
-  line-height: 40px;
-  display: flex;
-  background-color: #fff;
-  .footer-desc {
-    flex: 1;
-    text-align: center;
-  }
-  .footer-action {
-    width: 100px;
-    display: block;
-    text-align: center;
-    color: #fff;
-    background-color: $orange;
-  }
-}
-</style>
