@@ -8,7 +8,6 @@ import GoodsDetail from '@/components/goodsdetail'
 import Goods from '@/components/goodsdetail/goods'
 import Detail from '@/components/goodsdetail/detail'
 import SelectInvoice from '@/components/invoice'
-import Gift from '@/components/gift'
 import Home from '@/components/index/home'
 import Register from '@/components/register'
 import OrderList from '@/components/orderlist'
@@ -18,6 +17,7 @@ import IntegralRouter from './integral'
 import FleaMarketRouter from './fleamarket'
 import UserCenter from '@/components/usercenter'
 import UserCenterRouter from './usercenter'
+import GiftRouter from './gift'
 Vue.use(Router)
 
 export default new Router({
@@ -37,9 +37,6 @@ export default new Router({
       path: '/usercenter',
       component: UserCenter,
     }]
-  }, {
-    path: '/gift',
-    component: Gift
   }, {
     path: '/selectinvoice',
     component: SelectInvoice
@@ -64,5 +61,5 @@ export default new Router({
       name: 'detail',
       component: Detail
     }]
-  }, OrderConfirmRouter, SettingRouter, ...IntegralRouter, ...FleaMarketRouter, ...UserCenterRouter]
+  }, OrderConfirmRouter, SettingRouter, ...IntegralRouter, ...FleaMarketRouter, ...UserCenterRouter, ...GiftRouter]
 })
