@@ -3,7 +3,8 @@ import * as http from '@/services'
 const state = {
   list: [],
   allowLoad: true,
-  jflist: []
+  jflist: [],
+  goods: {}
 }
 // mutations
 const mutations = {
@@ -18,6 +19,9 @@ const mutations = {
   },
   [types.GOODS_ALLOWLOAD](state, flag) {
     state.allowLoad = flag
+  },
+  [types.RECEIVE_GOODS_DETAIL](state, goods) {
+    state.goods = goods
   }
 }
 
@@ -73,6 +77,17 @@ const actions = {
       }
     })
   },
+  getCommodityDetail({
+    commit
+  }, {
+    cId
+  }) {
+    return http.commodityDetail(cId).then(res => {
+      if (res.retcode === 0) {
+        commit(types.RECEIVE_GOODS_DETAIL, res.respbody)
+      }
+    })
+  }
 }
 
 export default {

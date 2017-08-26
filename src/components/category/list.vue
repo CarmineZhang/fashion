@@ -1,6 +1,6 @@
 <template>
   <div class="list">
-    <a class="list-item" v-for="item in list" :key="item.commodityId" @click="showGoods">
+    <a class="list-item" v-for="item in list" :key="item.commodityId" @click="showGoods(item)">
       <div class="pt-img">
         <img :src="item.img" alt="">
       </div>
@@ -27,8 +27,8 @@ export default {
     }
   },
   methods: {
-    showGoods() {
-      this.$router.push('/goodsdetail')
+    showGoods(item) {
+      this.$router.push({ name: 'goods', query: { id: item.commodityId } })
     }
   }
 }

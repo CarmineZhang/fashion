@@ -2,11 +2,9 @@
   <div>
     <goods-header class="fixed-header"></goods-header>
     <transition name="ve-pop-in">
-      <!-- <div class="goods-body"> -->
       <keep-alive>
         <router-view class="goods-body"></router-view>
       </keep-alive>
-      <!-- </div> -->
     </transition>
     <goods-footer class="fixed-footer"></goods-footer>
   </div>
@@ -20,10 +18,10 @@ export default {
     GoodsHeader,
     GoodsFooter
   },
-  data() {
-    return {
-      currentView: 'goods'
-    }
+  created() {
+    var id = this.$store.state.route.query.id;
+    console.log(id)
+    this.$store.dispatch('getCommodityDetail', { cId: id })
   }
 }
 </script>

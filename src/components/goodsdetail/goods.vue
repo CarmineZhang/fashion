@@ -3,16 +3,17 @@
     <swiper :list="list"></swiper>
     <div class="goods-info">
       <section>
-        <p class="goods-desc">夏季潮流男士拖鞋透气沙滩一字拖个性图案时尚青年男生夏天凉拖鞋子 2017-9白面图案 42</p>
+        <p class="goods-desc" v-text="goods.summary"></p>
         <p class="goods-price">
-          <strong v-price="price"></strong>
-          <span>积分</span>
-          <span>200</span>
+          <strong>
+            <em>¥ </em>
+            <span v-text="goods.price"></span>
+          </strong>
         </p>
         <p class="goods-other">
-          <span>快递 0.00</span>
-          <span>月销 800</span>
-          <span>库存 999</span>
+          <span>快递 {{goods.delivery}}</span>
+          <span>月销 {{goods.sales}}</span>
+          <span>库存 {{goods.quantity}}</span>
         </p>
       </section>
       <section>
@@ -20,8 +21,7 @@
         <p>满78元包邮</p>
       </section>
       <section>
-        <cell type="select" title="产品参数"></cell>
-        <cell type="select" title="选择颜色"></cell>
+        <cell type="select" :cell-key="item.propertyID" :title="item.name" v-for="item in goods.propertyList" :key="item.propertyID" @on-click="attrClick" :content="attrResult"></cell>
       </section>
       <section>
         <p>商品评价</p>
@@ -31,32 +31,86 @@
         </p>
       </section>
     </div>
+    <select-attr v-model="show" :title="curAttrName" :list="attrlist" @on-click="selectAttr"></select-attr>
   </div>
 </template>
 <script>
-import Swiper from '../widget/swiper'
-import Cell from '../widget/cell'
+import Swiper from '@/components/widget/swiper'
+import Cell from './cell'
 import Comment from './comment'
+import SelectAttr from './select'
 export default {
   name: 'goods',
   components: {
     Swiper,
     Cell,
-    Comment
-  },
-  beforeMount() {
-    console.log('goods before mount')
+    Comment,
+    SelectAttr
   },
   data() {
     return {
-      price: 2000,
-      list: [{
-        img: '//m.360buyimg.com/mobilecms/s750x750_jfs/t4681/239/2930068290/125413/cea2430c/58f46bcfN504c893d.jpg!q80.jpg.webp'
-      }, {
-        img: '//m.360buyimg.com/mobilecms/s750x750_jfs/t4489/277/2733185219/458267/a4627e13/58f46be2Nf7486b41.jpg!q80.jpg.webp'
-      }, {
-        img: '//m.360buyimg.com/mobilecms/s750x750_jfs/t4849/305/1771777928/374099/c319fc1c/58f46be2N9a66791b.jpg!q80.jpg.webp'
-      }]
+      show: false,
+      attrlist: [],
+      curAttrId: 0,
+      curAttrName: '',
+      attrResult: {}
+    }
+  },
+  computed: {
+    list() {
+      if (this.goods.img) {
+        return this.goods.img.split(',')
+      }
+      return []
+    },
+    goods() {
+      // return this.$store.state.goods.goods
+      return {
+        "propertyList": [{
+          "propertyID": 1,
+          "name": "产品参数",
+          "list": [{
+            "comProID": 1,//属性ID
+            "selector": "170mm" //属性
+          }, {
+            "comProID": 2,//属性ID
+            "selector": "180mm" //属性
+          }]
+        }, {
+          "propertyID": 2,
+          "name": "颜色分类",
+          "list": [{
+            "comProID": 12,//属性ID
+            "selector": "红色" //属性
+          }, {
+            "comProID": 13,//属性ID
+            "selector": "蓝色" //属性
+          }]
+        }]
+      }
+    }
+  },
+  methods: {
+    findattr(id) {
+      var ret = this.goods.propertyList.filter(item => {
+        return item.propertyID === id
+      })
+      if (ret.length > 0) {
+        return ret[0]
+      }
+      return null
+    },
+    attrClick(id) {
+      this.curAttrId = id;
+      let attr = this.findattr(id)
+      if (attr) {
+        this.curAttrName = attr.name
+        this.attrlist = attr.list
+      }
+      this.show = true
+    },
+    selectAttr(item) {
+      this.$set(this.attrResult, this.curAttrId, item)
     }
   }
 }

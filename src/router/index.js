@@ -4,9 +4,6 @@ import Index from '@/components/index'
 import Cart from '@/components/cart'
 import Category from '@/components/category'
 import Login from '@/components/login'
-import GoodsDetail from '@/components/goodsdetail'
-import Goods from '@/components/goodsdetail/goods'
-import Detail from '@/components/goodsdetail/detail'
 import SelectInvoice from '@/components/invoice'
 import Home from '@/components/index/home'
 import Register from '@/components/register'
@@ -18,6 +15,7 @@ import FleaMarketRouter from './fleamarket'
 import UserCenter from '@/components/usercenter'
 import UserCenterRouter from './usercenter'
 import GiftRouter from './gift'
+import GoodsRouter from './goods'
 Vue.use(Router)
 
 export default new Router({
@@ -49,17 +47,5 @@ export default new Router({
   }, {
     path: '/orderlist',
     component: OrderList
-  }, {
-    path: '/goodsdetail',
-    component: GoodsDetail,
-    children: [{
-      path: '',
-      name: 'goods',
-      component: Goods
-    }, {
-      path: 'detail',
-      name: 'detail',
-      component: Detail
-    }]
-  }, OrderConfirmRouter, SettingRouter, ...IntegralRouter, ...FleaMarketRouter, ...UserCenterRouter, ...GiftRouter]
+  }, GoodsRouter, OrderConfirmRouter, SettingRouter, ...IntegralRouter, ...FleaMarketRouter, ...UserCenterRouter, ...GiftRouter]
 })

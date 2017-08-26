@@ -13,15 +13,12 @@
       </a>
     </div>
     <div class="header-cart"></div>
-    <div class="header-info"></div>
+    <div class="header-other"></div>
   </div>
 </template>
 <script>
 export default {
   name: 'goods-header',
-  beforeMount() {
-    console.log(this.$store.state.route.path)
-  },
   computed: {
     path() {
       return this.$store.state.route.path
@@ -61,7 +58,7 @@ export default {
   }
 }
 
-.header-info {
+.header-other {
   width: 40px;
   position: relative;
   &:after {
