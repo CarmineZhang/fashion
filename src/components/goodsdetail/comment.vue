@@ -5,7 +5,7 @@
       <div class="cmt-item-cnt" v-text="item.content"></div>
       <div class="cmt-item-imglist">
         <span class="img" v-for="(imgItem ,imgIndex) in item.images.split(',')" :key="imgIndex">
-          <img :src="imgItem.img" alt="">
+          <img :src="imgItem" alt="">
         </span>
       </div>
       <div class="cmt-item-type" v-attr="item.productParameter"></div>
