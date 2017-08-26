@@ -4,11 +4,11 @@
       <search-bar placeholder="搜索"></search-bar>
     </div>
     <swiper :list="banners"></swiper>
-    <column v-for="item in columns" :key="item.categoryid" :cdata="item"></column>
+    <column v-for="item in columns" :key="item.categoryid" :cdata="item" @on-click="showDetail"></column>
   </div>
 </template>
 <script>
-import Column from '../index/column'
+import Column from '../common/column'
 import SearchBar from '@/components/widget/searchbar'
 import Swiper from '@/components/widget/swiper'
 export default {
@@ -28,6 +28,11 @@ export default {
   },
   created() {
     this.$store.dispatch('getFMBuyColumns')
+  },
+  methods: {
+    showDetail() {
+      this.$router.push('/fleamarket/goods')
+    }
   }
 }
 </script>

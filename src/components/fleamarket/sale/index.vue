@@ -8,7 +8,7 @@
   </div>
 </template>
 <script>
-import Column from '../index/column'
+import Column from '../common/column'
 import SearchBar from '@/components/widget/searchbar'
 import Swiper from '@/components/widget/swiper'
 export default {
