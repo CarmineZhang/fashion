@@ -36,7 +36,7 @@
 <script>
 import Swiper from '@/components/widget/swiper'
 import Cell from '@/components/widget/cell'
-import Comment from './comment'
+import Comment from '@/components/widget/comment'
 export default {
   name: 'goods',
   components: {

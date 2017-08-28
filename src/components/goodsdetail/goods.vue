@@ -37,7 +37,7 @@
 <script>
 import Swiper from '@/components/widget/swiper'
 import Cell from './cell'
-import Comment from './comment'
+import Comment from '@/components/widget/comment'
 import SelectAttr from './select'
 import * as http from '@/services'
 export default {
