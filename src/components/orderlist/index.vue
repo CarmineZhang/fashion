@@ -20,7 +20,9 @@
       </ul>
     </div>
     <div class="o-list-wrapper">
-      <list :list="orderList"></list>
+      <scroll-load @load-more="loadmore" :height="height" v-model="allowload">
+        <list :list="orderList"></list>
+      </scroll-load>
     </div>
   </div>
 </template>
@@ -28,18 +30,25 @@
 import SearchBar from '../widget/searchbar/'
 import List from './list'
 import * as http from '@/services'
+import ScrollLoad from '@/components/widget/scrollload'
 export default {
   name: 'order-list',
   components: {
     SearchBar,
-    List
+    List,
+    ScrollLoad
   },
   data() {
     return {
       orderList: [],
       index: 1,
       status: 0,
+      allowload: true,
+      height: 0
     }
+  },
+  beforeMount() {
+    this.height = document.documentElement.clientHeight - 80
   },
   created() {
     var st = this.$store.state.route.params.status
@@ -54,6 +63,24 @@ export default {
       http.queryOrders(this.status, this.index).then(res => {
         if (res.retcode === 0) {
           this.orderList = res.respbody.arrayList
+          if (this.orderList.length < 10) {
+            this.allowload = false
+          } else {
+            this.allowload = true
+          }
+        }
+      })
+    },
+    getOrdersMore() {
+      http.queryOrders(this.status, this.index).then(res => {
+        if (res.retcode === 0) {
+          let list = res.respbody.arrayList
+          if (list.length < 10) {
+            this.allowload = false
+          } else {
+            this.allowload = true
+          }
+          this.orderList = [...this.orderList, ...list]
         }
       })
     },
@@ -61,6 +88,10 @@ export default {
       this.index = 1
       this.status = status
       this.getOrders()
+    },
+    loadmore() {
+      this.index = this.index + 1
+      this.getOrdersMore()
     }
   }
 }

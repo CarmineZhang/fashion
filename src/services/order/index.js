@@ -52,7 +52,13 @@ export function cancelOrder(id) {
     }
   })
 }
-
+/**
+ * 提货
+ * @param {*} oId 
+ * @param {*} detailId 
+ * @param {*} addrId 
+ * @param {*} attrList 
+ */
 export function integralPickUp(oId, detailId, addrId, attrList) {
   return ajax({
     "name": "integralPickUp",
@@ -65,6 +71,30 @@ export function integralPickUp(oId, detailId, addrId, attrList) {
       "deliveryQty": 1,
       "addrId": addrId,
       "propertyList": attrList
+    }
+  })
+}
+
+/**
+ * 维修
+ * @param {*} oId 
+ * @param {*} weight 
+ * @param {*} weightUnit 
+ * @param {*} trackingNo 
+ */
+export function afterSaleMaintain(oId, weight, weightUnit, trackingNo) {
+  return ajax({
+    "name": "afterSaleMaintain",
+    "ctype": "weChat",
+    "sessionStr": "B3B18F1384421A1AF839F11DAD35F7D8",
+    "userid": 40,
+    "reqbody": {
+      "orderID": oId, //订单ID
+      "shipperCode": "1", //物流公司代码
+      "shippingMode": 1, //配送方式
+      "weight": weight, //商品重量
+      "weightUnit": "Kg",
+      "trackingNo": trackingNo
     }
   })
 }

@@ -18,7 +18,16 @@ export default {
       type: Number,
       default: 0
     },
-    allowLoad: Boolean
+    value: Boolean
+  },
+  watch: {
+    value(val) {
+      console.log(val)
+      // if (!val) {
+      //   this.show = val
+      // }
+      // this.loading = !val
+    }
   },
   mounted() {
     this.throttle = throttle(this.scroll, 200)
@@ -29,16 +38,9 @@ export default {
       loading: false
     }
   },
-  watch: {
-    allowLoad(val) {
-      if (!val) {
-        this.show = false
-      }
-    }
-  },
   methods: {
     scroll() {
-      if (this.allowLoad && !this.loading) {
+      if (!this.loading) {
         let scrollHeight = this.$el.scrollHeight
         let clientHeight = this.$el.clientHeight
         let scrollTop = this.$el.scrollTop

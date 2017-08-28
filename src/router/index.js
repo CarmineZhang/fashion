@@ -7,13 +7,12 @@ import Login from '@/components/login'
 import SelectInvoice from '@/components/invoice'
 import Home from '@/components/index/home'
 import Register from '@/components/register'
-import OrderList from '@/components/orderlist'
 import OrderConfirmRouter from './confirm'
 import SettingRouter from './settings'
 import IntegralRouter from './integral'
 import FleaMarketRouter from './fleamarket'
 import UserCenter from '@/components/usercenter'
-import UserCenterRouter from './usercenter'
+import OrderRouter from './order'
 import GiftRouter from './gift'
 import GoodsRouter from './goods'
 Vue.use(Router)
@@ -44,8 +43,5 @@ export default new Router({
   }, {
     path: '/login',
     component: Login
-  }, {
-    path: '/orderlist',
-    component: OrderList
-  }, GoodsRouter, OrderConfirmRouter, SettingRouter, ...IntegralRouter, ...FleaMarketRouter, ...UserCenterRouter, ...GiftRouter]
+  }, GoodsRouter, OrderConfirmRouter, SettingRouter, ...IntegralRouter, ...FleaMarketRouter, ...OrderRouter, ...GiftRouter]
 })
