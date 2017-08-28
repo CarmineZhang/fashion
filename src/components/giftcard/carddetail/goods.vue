@@ -20,10 +20,6 @@
         <p>满78元包邮</p>
       </section>
       <section>
-        <cell type="select" title="产品参数"></cell>
-        <cell type="select" title="选择颜色"></cell>
-      </section>
-      <section>
         <p>商品评价</p>
         <comment></comment>
         <p class="more">
@@ -35,13 +31,11 @@
 </template>
 <script>
 import Swiper from '@/components/widget/swiper'
-import Cell from '@/components/widget/cell'
-import Comment from './comment'
+import Comment from '@/components/widget/comment'
 export default {
   name: 'goods',
   components: {
     Swiper,
-    Cell,
     Comment
   },
   beforeMount() {

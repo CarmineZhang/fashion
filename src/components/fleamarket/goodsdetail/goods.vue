@@ -1,18 +1,19 @@
 <template>
-  <div class="goods-inner">
+  <div class="goods-inner" style="width:100%">
     <swiper :list="list"></swiper>
     <div class="goods-info">
       <section>
-        <p class="goods-desc">夏季潮流男士拖鞋透气沙滩一字拖个性图案时尚青年男生夏天凉拖鞋子 2017-9白面图案 42</p>
+        <p class="goods-desc" v-text="goods.summary"></p>
         <p class="goods-price">
-          <strong v-price="price"></strong>
-          <span>积分</span>
-          <span>200</span>
+          <strong>
+            <em>¥ </em>
+            <span v-text="goods.price"></span>
+          </strong>
         </p>
         <p class="goods-other">
-          <span>快递 0.00</span>
-          <span>月销 800</span>
-          <span>库存 999</span>
+          <span>快递 {{goods.delivery}}</span>
+          <span>月销 {{goods.sales}}</span>
+          <span>库存 {{goods.quantity}}</span>
         </p>
       </section>
       <section>
@@ -20,12 +21,8 @@
         <p>满78元包邮</p>
       </section>
       <section>
-        <cell type="select" title="产品参数"></cell>
-        <cell type="select" title="选择颜色"></cell>
-      </section>
-      <section>
-        <p>商品评价</p>
-        <comment></comment>
+        <p>商品评价 ({{evaluateCount}})</p>
+        <comment :list="evaluateList"></comment>
         <p class="more">
           查看更多
         </p>
@@ -35,28 +32,95 @@
 </template>
 <script>
 import Swiper from '@/components/widget/swiper'
-import Cell from '@/components/widget/cell'
 import Comment from '@/components/widget/comment'
+import * as http from '@/services'
 export default {
   name: 'goods',
   components: {
     Swiper,
-    Cell,
     Comment
-  },
-  beforeMount() {
-    console.log('goods before mount')
   },
   data() {
     return {
-      price: 2000,
-      list: [{
-        img: '//m.360buyimg.com/mobilecms/s750x750_jfs/t4681/239/2930068290/125413/cea2430c/58f46bcfN504c893d.jpg!q80.jpg.webp'
+      show: false,
+      attrlist: [],
+      curAttrId: 0,
+      curAttrName: '',
+      attrResult: {},
+      evaluateCount: 10,
+      evaluateList: [{
+        "userName": "rel****124",//用户名称
+        "userImage": "http://192.168.1.213/resources/e8d459ff-498a-45f9-8551-60133f87caa1002.jpg",//用户头像
+        "content": "做工扎实，使用高档", //评价
+        "images": "http://192.168.1.213/resources/e8d459ff-498a-45f9-8551-60133f87caa1002.jpg,http://192.168.1.213/resources/e8d459ff-498a-45f9-8551-60133f87caa1002.jpg,http://192.168.1.213/resources/e8d459ff-498a-45f9-8551-60133f87caa1002.jpg", //上传的图片
+        "productParameter": [{
+          "comProID": 12,
+          "propertyName": "颜色选择",
+          "selector": "白色"
+        }, {
+          "comProID": 26,
+          "propertyName": "尺码选择",
+          "selector": "S"
+        }]
       }, {
-        img: '//m.360buyimg.com/mobilecms/s750x750_jfs/t4489/277/2733185219/458267/a4627e13/58f46be2Nf7486b41.jpg!q80.jpg.webp'
-      }, {
-        img: '//m.360buyimg.com/mobilecms/s750x750_jfs/t4849/305/1771777928/374099/c319fc1c/58f46be2N9a66791b.jpg!q80.jpg.webp'
+        "userName": "rel****124",//用户名称
+        "userImage": "http://192.168.1.213/resources/e8d459ff-498a-45f9-8551-60133f87caa1002.jpg",//用户头像
+        "content": "做工扎实，使用高档", //评价
+        "images": "http://192.168.1.213/resources/e8d459ff-498a-45f9-8551-60133f87caa1002.jpg,http://192.168.1.213/resources/e8d459ff-498a-45f9-8551-60133f87caa1002.jpg,http://192.168.1.213/resources/e8d459ff-498a-45f9-8551-60133f87caa1002.jpg", //上传的图片
+        "productParameter": [{
+          "comProID": 12,
+          "propertyName": "颜色选择",
+          "selector": "白色"
+        }, {
+          "comProID": 26,
+          "propertyName": "尺码选择",
+          "selector": "S"
+        }],
       }]
+    }
+  },
+  created() {
+    var id = this.$store.state.route.query.id;
+    this.$store.dispatch('getCommodityDetail', { cId: id })
+    http.commodityEvaluate(id, 1, 1).then(res => {
+      if (res.retcode === 0) {
+        // this.evaluateCount = res.respbody.total
+        // this.evaluateList = res.respbody.list
+      }
+    })
+  },
+  computed: {
+    list() {
+      if (this.goods.img) {
+        return this.goods.img.split(',')
+      }
+      return []
+    },
+    goods() {
+      return this.$store.state.goods.goods
+    }
+  },
+  methods: {
+    findattr(id) {
+      var ret = this.goods.propertyList.filter(item => {
+        return item.propertyID === id
+      })
+      if (ret.length > 0) {
+        return ret[0]
+      }
+      return null
+    },
+    attrClick(id) {
+      this.curAttrId = id;
+      let attr = this.findattr(id)
+      if (attr) {
+        this.curAttrName = attr.name
+        this.attrlist = attr.list
+      }
+      this.show = true
+    },
+    selectAttr(item) {
+      this.$set(this.attrResult, this.curAttrId, item)
     }
   }
 }

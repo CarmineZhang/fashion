@@ -13,30 +13,30 @@
       </a>
     </div>
     <div class="header-cart"></div>
-    <div class="header-info"></div>
+    <div class="header-other"></div>
   </div>
 </template>
 <script>
 export default {
   name: 'goods-header',
-  beforeMount() {
-    console.log(this.$store.state.route.path)
-  },
   computed: {
+    id() {
+      return this.$store.state.route.query.id
+    },
     path() {
       return this.$store.state.route.path
     }
   },
   methods: {
     showGoods() {
-      this.$router.push({ name: 'goods' })
+      this.$router.push({ name: 'goods', query: { id: this.id } })
     },
     showDetail() {
 
-      this.$router.push({ name: 'detail' })
+      this.$router.push({ name: 'detail', query: { id: this.id } })
     },
     showComments() {
-      this.$router.push({ name: 'comments' })
+      this.$router.push({ name: 'comments', query: { id: this.id } })
     }
   }
 }
@@ -61,7 +61,7 @@ export default {
   }
 }
 
-.header-info {
+.header-other {
   width: 40px;
   position: relative;
   &:after {
