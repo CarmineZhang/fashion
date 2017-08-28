@@ -1,7 +1,11 @@
 <template>
     <div>
-        <h3 v-text="title"></h3>
-        <iframe :src="Src" frameborder="0" width="100%" :height="height"></iframe>
+        <div class="header-wrapper">
+      <div class="header-back"></div>
+      <div class="header-info">订单进度</div>
+    </div>
+        <h3>{{title}}</h3>
+        <iframe :src="src" frameborder="0" width="100%" :height="height"></iframe>
     </div>
 </template>
 <script>
@@ -10,8 +14,9 @@ export default {
     name: 'schedule',
     data() {
         return {
-            title: String,
-            src: String
+            title:'',
+            height:0,
+            src: ''
         }
     },
     created() {

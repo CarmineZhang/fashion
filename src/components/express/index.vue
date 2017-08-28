@@ -1,5 +1,9 @@
 <template>
     <div>
+        <div class="header-wrapper">
+            <div class="header-back"></div>
+            <div class="header-info">物流状态</div>
+        </div>
         <p>
             <span>物流公司代码：</span>
             <span v-text="expressStatus.shipperCode"></span>
@@ -10,7 +14,7 @@
         </p>
         <p>
             <span>重量：</span>
-            <span>{{expressStatus.weight}} {{weightUnit}}</span>
+            <span>{{expressStatus.weight}} {{expressStatus.weightUnit}}</span>
         </p>
         <p>
             <span>快递单号：</span>
