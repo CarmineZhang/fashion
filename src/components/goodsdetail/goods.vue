@@ -1,5 +1,5 @@
 <template>
-  <div class="goods-inner">
+  <div class="goods-inner" style="width:100%">
     <swiper :list="list"></swiper>
     <div class="goods-info">
       <section>

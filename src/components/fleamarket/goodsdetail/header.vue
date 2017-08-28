@@ -8,7 +8,7 @@
       <a class="nav-item" :class="{'cur':path==='/goodsdetail/detail'}" @click="showDetail">
         <span>详情</span>
       </a>
-      <a class="nav-item">
+      <a class="nav-item" :class="{'cur':path==='/goodsdetail/comments'}" @click="showComments">
         <span>评价</span>
       </a>
     </div>
@@ -35,8 +35,8 @@ export default {
 
       this.$router.push({ name: 'detail' })
     },
-    showEvaluations() {
-      this.$router.push({ name: 'evaluations' })
+    showComments() {
+      this.$router.push({ name: 'comments' })
     }
   }
 }

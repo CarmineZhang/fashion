@@ -8,7 +8,7 @@
       <a class="nav-item" :class="{'cur':path==='/goodsdetail/detail'}" @click="showDetail">
         <span>详情</span>
       </a>
-      <a class="nav-item">
+      <a class="nav-item" :class="{'cur':path==='/goodsdetail/comments'}" @click="showComments">
         <span>评价</span>
       </a>
     </div>
@@ -20,20 +20,23 @@
 export default {
   name: 'goods-header',
   computed: {
+    id() {
+      return this.$store.state.route.query.id
+    },
     path() {
       return this.$store.state.route.path
     }
   },
   methods: {
     showGoods() {
-      this.$router.push({ name: 'goods' })
+      this.$router.push({ name: 'goods', query: { id: this.id } })
     },
     showDetail() {
 
-      this.$router.push({ name: 'detail' })
+      this.$router.push({ name: 'detail', query: { id: this.id } })
     },
-    showEvaluations() {
-      this.$router.push({ name: 'evaluations' })
+    showComments() {
+      this.$router.push({ name: 'comments', query: { id: this.id } })
     }
   }
 }
