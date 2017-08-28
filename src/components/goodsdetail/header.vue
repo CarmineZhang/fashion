@@ -2,13 +2,13 @@
   <div class="header-wrapper">
     <div class="header-back"></div>
     <div class="header-nav">
-      <a class="nav-item" :class="{'cur':path==='/goodsdetail/'}" @click="showGoods">
+      <a class="nav-item" :class="{'cur':name==='goods'}" @click="showGoods">
         <span>商品</span>
       </a>
-      <a class="nav-item" :class="{'cur':path==='/goodsdetail/detail'}" @click="showDetail">
+      <a class="nav-item" :class="{'cur':name==='detail'}" @click="showDetail">
         <span>详情</span>
       </a>
-      <a class="nav-item" :class="{'cur':path==='/goodsdetail/comments'}" @click="showComments">
+      <a class="nav-item" :class="{'cur':name==='comments'}" @click="showComments">
         <span>评价</span>
       </a>
     </div>
@@ -20,23 +20,19 @@
 export default {
   name: 'goods-header',
   computed: {
-    id() {
-      return this.$store.state.route.query.id
-    },
-    path() {
-      return this.$store.state.route.path
+    name() {
+      return this.$parent.currentView
     }
   },
   methods: {
     showGoods() {
-      this.$router.push({ name: 'goods', query: { id: this.id } })
+      this.$emit('on-click', 'goods')
     },
     showDetail() {
-
-      this.$router.push({ name: 'detail', query: { id: this.id } })
+      this.$emit('on-click', 'detail')
     },
     showComments() {
-      this.$router.push({ name: 'comments', query: { id: this.id } })
+      this.$emit('on-click', 'comments')
     }
   }
 }
