@@ -13,18 +13,27 @@
     .nav-item {
       flex: 1;
       text-align: center;
-      padding: 0 5px;
       span {
-        display: block;
+        position: relative;
+        display: inline-block;
         line-height: 40px;
         height: 40px;
         box-sizing: border-box;
+        padding: 0 10px;
       }
     }
     .cur {
       color: red;
       span {
-        border-bottom: 1px solid red;
+        &:after {
+          content: "";
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          right: 0;
+          height: 2px;
+          background: #e93b3d;
+        }
       }
     }
   }
