@@ -26,6 +26,7 @@ axios.interceptors.response.use(
 axios.interceptors.response.use(res => {
   if (res.retcode && res.retcode === -17401) {
     router.push('/login')
+    return res
   } else {
     return res;
   }
