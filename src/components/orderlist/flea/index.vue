@@ -38,8 +38,8 @@
           共1件商品，合计¥ {{item.totalPrice}}(含运费¥ {{item.freight.toFixed(2)}})
         </div>
         <div class="item-op">
-          <a class="op" @click="delivery">提货</a>
-          <a class="op" @click="sale">转售</a>
+          <a class="op">提货</a>
+          <a class="op">转售</a>
         </div>
       </div>
     </div>
