@@ -1,5 +1,5 @@
 import axios from 'axios'
-import router from '../router'
+// import router from '../router'
 axios.interceptors.response.use(
   response => {
     console.dir(response)
@@ -25,7 +25,7 @@ axios.interceptors.response.use(
 
 axios.interceptors.response.use(res => {
   if (res.retcode && res.retcode === -17401) {
-    router.push('/login')
+    // router.push('/login')
     return res
   } else {
     return res;

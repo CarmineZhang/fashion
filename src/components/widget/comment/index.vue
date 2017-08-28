@@ -17,20 +17,6 @@ export default {
   name: 'comment',
   props: {
     list: Array
-  },
-  directives: {
-    attr: {
-      bind(el, binding) {
-        let val = binding.value
-        let ret = ''
-        if (val) {
-          val.forEach(item => {
-            ret += item.propertyName + '  ' + item.selector + '  '
-          })
-        }
-        el.innerHTML = ret
-      }
-    }
   }
 }
 </script>

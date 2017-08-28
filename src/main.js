@@ -46,6 +46,17 @@ Vue.filter('price', (val) => {
   return val.toFixed(2)
 })
 
+Vue.directive('attr', (el, binding) => {
+  let val = binding.value
+  let ret = ''
+  if (val) {
+    val.forEach(item => {
+      ret += item.propertyName + '  ' + item.selector + '  '
+    })
+  }
+  el.innerHTML = ret
+})
+
 /* eslint-disable no-new */
 new Vue({
   el: '#app',

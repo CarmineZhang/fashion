@@ -1,6 +1,6 @@
 <template>
   <div class="header-wrapper">
-    <div class="header-back"></div>
+    <div class="header-back" @click="back"></div>
     <div class="header-nav">
       <a class="nav-item" :class="{'cur':name==='goods'}" @click="showGoods">
         <span>商品</span>
@@ -25,6 +25,9 @@ export default {
     }
   },
   methods: {
+    back() {
+      this.$router.go(-1)
+    },
     showGoods() {
       this.$emit('on-click', 'goods')
     },
