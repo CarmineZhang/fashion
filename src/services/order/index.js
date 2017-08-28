@@ -98,3 +98,21 @@ export function afterSaleMaintain(oId, weight, weightUnit, trackingNo) {
     }
   })
 }
+
+/**
+ * 订单进度
+ * @param {*} oId 
+ * @param {*} detailId 
+ */
+export function queryOrderSchedule(oId,detailId){
+  return ajax({
+    "name": "queryOrderSchedule",
+    "ctype": "Web",
+    "sessionStr": "B3B18F1384421A1AF839F11DAD35F7D8",
+    "userid": 40,
+    "reqbody": {
+      "orderID":oId, //订单ID
+      "detailID":detailId //订单详情ID
+    }
+  })
+}
