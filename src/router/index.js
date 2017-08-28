@@ -15,6 +15,7 @@ import UserCenter from '@/components/usercenter'
 import OrderRouter from './order'
 import GiftRouter from './gift'
 import GoodsRouter from './goods'
+import Test from '@/components/test'
 Vue.use(Router)
 
 export default new Router({
@@ -40,6 +41,9 @@ export default new Router({
   }, {
     path: '/register',
     component: Register
+  },{
+    path:'/test',
+    component:Test
   }, {
     path: '/login',
     component: Login

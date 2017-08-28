@@ -3,6 +3,7 @@
     <slot></slot>
     <div class="dropload" v-show="show">
       <span class="loading"></span>加载中...</div>
+      <div>{{value}}</div>
   </div>
 </template>
 <script>
@@ -22,10 +23,9 @@ export default {
   },
   watch: {
     value(val) {
-      if (!val) {
-        this.show = val
-      }
+      this.show = !val
       this.loading = !val
+      console.log('loading=='+this.loading)
     }
   },
   mounted() {
@@ -46,6 +46,7 @@ export default {
         if ((scrollHeight - this.threshold) <= (clientHeight + scrollTop)) {
           this.show = true
           this.loading = true
+          this.$emit('input',false)
           this.$emit('load-more')
         }
       }

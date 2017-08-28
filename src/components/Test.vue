@@ -1,9 +1,7 @@
 <template>
   <div class="hello">
-    <!-- <search-bar placeholder="查询所有订单"></search-bar>
-                                                                                                        <swiper :list="list" @on-click="showMask"></swiper>
-                                                                                                        <div class="mod-slider-mask" v-show="maskShow" @click="maskClick"></div> -->
-    <scroll-load @load-more="loadmore" v-model="loading">
+    <button @click="showLoading">测试</button>
+    <scroll-load @load-more="loadmore" :height="600" v-model="loading">
       <ul>
         <li v-for="(item,index) in items" :key="index">{{item}}</li>
       </ul>
@@ -23,7 +21,7 @@ export default {
     ScrollLoad
   },
   created() {
-    for (var i = 0; i < 50; i++) {
+    for (var i = 0; i < 10; i++) {
       this.items.push(i + "===" + Math.random().toString(16).substring(3))
     }
   },
@@ -32,17 +30,7 @@ export default {
       items: [],
       loading: true,
       msg: 'Welcome to Your Vue.js App',
-      maskShow: false,
-      list: [{
-        href: '',
-        img: 'https://m.360buyimg.com/n12/jfs/t5650/39/1969510279/230705/c0175d15/592b7e83N740a2e13.jpg!q70.jpg'
-      }, {
-        href: '',
-        img: 'https://m.360buyimg.com/n12/jfs/t5980/365/784165297/263510/67ae0a8b/592b7e81N2683a45a.jpg!q70.jpg'
-      }, {
-        href: '',
-        img: 'https://m.360buyimg.com/n12/jfs/t6118/153/709815207/247368/4e044731/592b7e82N34ed0798.jpg!q70.jpg'
-      }]
+      maskShow: false
     }
   },
   methods: {
@@ -51,9 +39,12 @@ export default {
         for (var i = 0; i < 50; i++) {
           this.items.push(i + "===" + Math.random().toString(16).substring(3))
         }
-        this.loading = false
-        console.log(this.loading)
-      }, 2000)
+        this.loading = true
+      }, 1000)
+    },
+    showLoading(){
+      console.log('button')
+      this.loading=true;
     },
     showMask() {
       this.maskShow = true
