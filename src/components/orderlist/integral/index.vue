@@ -31,7 +31,7 @@
           共1件商品，合计¥ {{item.totalPrice}}(含运费¥ {{item.freight.toFixed(2)}})
         </div>
         <div class="item-op">
-          <a class="op" @click="delivery">提货</a>
+          <a class="op" @click="delivery(item)">提货</a>
           <a class="op" @click="sale">转售</a>
         </div>
       </div>
@@ -63,8 +63,8 @@ export default {
         }
       })
     },
-    delivery() {
-      this.$router.push('/integral/order/delivery')
+    delivery(item) {
+      this.$router.push({ name: 'integral-delivery', params: { item: item } })
     },
     sale() {
       this.$router.push('/integral/order/transfer')

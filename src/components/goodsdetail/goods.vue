@@ -21,7 +21,7 @@
         <p>满78元包邮</p>
       </section>
       <section>
-        <cell type="select" :cell-key="item.propertyID" :title="item.name" v-for="item in goods.propertyList" :key="item.propertyID" @on-click="attrClick" :content="attrResult"></cell>
+        <cell type="select" :cell-key="item.propertyID" :title="item.propertyName" v-for="item in goods.propertyList" :key="item.propertyID" @on-click="attrClick" :content="attrResult"></cell>
       </section>
       <section>
         <p>商品评价 ({{evaluateCount}})</p>
@@ -122,7 +122,7 @@ export default {
       this.curAttrId = id;
       let attr = this.findattr(id)
       if (attr) {
-        this.curAttrName = attr.name
+        this.curAttrName = attr.propertyName
         this.attrlist = attr.list
       }
       this.show = true

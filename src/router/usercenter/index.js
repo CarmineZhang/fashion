@@ -7,6 +7,7 @@ export default [{
     component: IntegralOrderList
   }, {
     path: '/integral/order/delivery',
+    name: 'integral-delivery',
     component: IntegralOrderDelivery
   }, {
     path: '/integral/order/transfer',
