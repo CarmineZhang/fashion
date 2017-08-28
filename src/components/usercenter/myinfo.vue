@@ -3,30 +3,29 @@
     <div class="header-main">
       <div class="img-wrapper">
         <div class="my-header-avatar">
-          <img src="//storage.jd.com/i.imageUpload/7a68726d3139383431343930303939373030333233_mid.jpg" alt="">
+          <img :src="user.icon" alt="">
         </div>
       </div>
       <div class="user-info">
-        <div class="user-name">
-          zhangmin
+        <div class="user-name" v-text="user.name">
         </div>
         <div class="user-id">
-          ID:99999
+          ID:{{user.userCode}}
         </div>
         <div class="user-grade"></div>
       </div>
     </div>
     <div class="my-header-info">
       <div class="my-header-info-item">
-        <p>9999.00</p>
+        <p v-text="user.balance"></p>
         <p>余额</p>
       </div>
       <div class="my-header-info-item">
-        <p>6666</p>
+        <p v-text="user.integral"></p>
         <p>积分</p>
       </div>
       <div class="my-header-info-item">
-        <p>100</p>
+        <p v-text="user.collection"></p>
         <p>收藏</p>
       </div>
     </div>
@@ -34,7 +33,12 @@
 </template>
 <script>
 export default {
-  name: 'my-header'
+  name: 'my-header',
+  computed: {
+    user() {
+      return this.$store.state.user.info
+    }
+  }
 }
 </script>
 <style lang="scss">

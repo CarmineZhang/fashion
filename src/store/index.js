@@ -4,6 +4,7 @@ import address from './modules/address'
 import home from './modules/home'
 import category from './modules/category'
 import goods from './modules/goods'
+import user from './modules/user'
 Vue.use(Vuex)
 
 
@@ -12,6 +13,7 @@ export default new Vuex.Store({
     address,
     home,
     category,
-    goods
+    goods,
+    user
   }
 })

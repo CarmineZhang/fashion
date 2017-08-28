@@ -20,6 +20,9 @@ export default {
     MyOrder,
     MyTool
   },
+  created() {
+    this.$store.dispatch('getUserInfo')
+  },
   methods: {
     back() {
       this.$router.go(-1)
