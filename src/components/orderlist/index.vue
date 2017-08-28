@@ -51,7 +51,7 @@ export default {
   },
   methods: {
     getOrders() {
-      http.queryOrders(this.status, this.index, 10).then(res => {
+      http.queryOrders(this.status, this.index).then(res => {
         if (res.retcode === 0) {
           this.orderList = res.respbody.arrayList
         }

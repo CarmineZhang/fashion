@@ -5,7 +5,7 @@
         <router-link class="t-jifen" to="/integral/order/list">积分订单</router-link>
       </li>
       <li>
-        <a href="" class="t-tiaozao">跳蚤订单</a>
+        <router-link class="t-tiaozao" to="/flea/order/list">跳蚤订单</router-link>
       </li>
       <li>
         <a href="" class="t-qrcode">我的二维码</a>
