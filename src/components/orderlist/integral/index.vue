@@ -8,27 +8,27 @@
       <search-bar></search-bar>
     </div>
     <div class="o-list-wrapper">
-      <div>
+      <div v-for="item in list" :key="item.orderID">
         <div class="item-body-wrapper">
           <div class="item-body">
-            <img src="//img10.360buyimg.com/n2/jfs/t3094/57/1107687023/202099/ff931399/57c6b282n38d78374.jpg" alt="">
+            <img :src="item.icon" alt="">
             <div class="content">
               <div class="info">
-                <p class="title">固特异手工皮鞋</p>
-                <p class="desc">颜色分类：A 宝石蓝</p>
+                <p class="title" v-text="item.commodityName"></p>
+                <p class="desc" v-attr="item.type"></p>
               </div>
               <p>
                 <span>
                   <em>¥ </em>
-                  <span>2230.00</span>
+                  <span v-text="item.price"></span>
                 </span>
-                <span>x1</span>
+                <span>x{{item.quantity}}</span>
               </p>
             </div>
           </div>
         </div>
         <div class="item-footer">
-          共1件商品，合计2330
+          共1件商品，合计¥ {{item.totalPrice}}(含运费¥ {{item.freight.toFixed(2)}})
         </div>
         <div class="item-op">
           <a class="op" @click="delivery">提货</a>
@@ -40,12 +40,29 @@
 </template>
 <script>
 import SearchBar from '@/components/widget/searchbar'
+import * as http from '@/services'
 export default {
   name: 'integral-order-list',
   components: {
     SearchBar
   },
+  data() {
+    return {
+      index: 1,
+      list: []
+    }
+  },
+  created() {
+    this.getIntegralOrderList()
+  },
   methods: {
+    getIntegralOrderList() {
+      http.queryIntegralOrder(this.index).then(res => {
+        if (res.retcode === 0) {
+          this.list = res.respbody.arrayList
+        }
+      })
+    },
     delivery() {
       this.$router.push('/integral/order/delivery')
     },

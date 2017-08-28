@@ -6,7 +6,7 @@
       </div>
       <div class="item-body-wrapper">
         <div class="item-body" v-for="orderitem in item.list" :key="orderitem.detailID">
-          <img :src="orderitem.img" alt="">
+          <img :src="orderitem.icon" alt="">
           <div class="content">
             <div class="info">
               <p class="title" v-text="orderitem.commodityName"></p>

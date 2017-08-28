@@ -13,3 +13,16 @@ export function queryOrders(status, index, size) {
     }
   })
 }
+
+export function queryIntegralOrder(index) {
+  return ajax({
+    "name": "queryIntegralOrder",
+    "ctype": "weChat",
+    "sessionStr": "B3B18F1384421A1AF839F11DAD35F7D8",
+    "userid": 40,
+    "reqbody": {
+      "pageIndex": index,
+      "pageSize": 10
+    }
+  })
+}
