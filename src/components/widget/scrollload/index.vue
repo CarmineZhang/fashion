@@ -22,11 +22,10 @@ export default {
   },
   watch: {
     value(val) {
-      console.log(val)
-      // if (!val) {
-      //   this.show = val
-      // }
-      // this.loading = !val
+      if (!val) {
+        this.show = val
+      }
+      this.loading = !val
     }
   },
   mounted() {
