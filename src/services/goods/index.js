@@ -40,3 +40,17 @@ export function commodityEvaluate(cId, index, size) {
     }
   })
 }
+
+export function commoditySearch(key, mId, index, size) {
+  return ajax({
+    "name": "commoditySearch",
+    "ctype": "Web",
+    "reqbody": {
+      "key": key,
+      "sales": "0",
+      "marketId": mId,
+      "pageIndex": index,
+      "pageSize": size
+    }
+  })
+}
