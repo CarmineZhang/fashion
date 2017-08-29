@@ -8,7 +8,7 @@ export default {
   name: 'integral-goods-footer',
   methods: {
     order() {
-      this.$router.push('/integral/order')
+      this.$emit('on-exchange')
     }
   }
 }

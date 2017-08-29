@@ -31,7 +31,7 @@ export default {
   },
   methods: {
     showDetail(item) {
-      this.$router.push({ path: '/integralgoods', params: { commidty: item } })
+      this.$router.push({ path: '/integralgoods', query: { id: item.commodityId } })
     }
   }
 }

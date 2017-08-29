@@ -18,9 +18,6 @@
 <script>
 export default {
   name: 'product-list',
-  // props: {
-  //   list: Array
-  // },
   computed: {
     list() {
       return this.$store.state.goods.list
@@ -28,7 +25,6 @@ export default {
   },
   methods: {
     showGoods(item) {
-      console.log('goods')
       this.$router.push({ name: 'goods', query: { id: item.commodityId } })
     }
   }

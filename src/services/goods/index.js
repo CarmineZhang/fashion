@@ -76,9 +76,15 @@ export function directBuy(addrId, totalCost, invoiceFlag, list, integralFlag, in
 
 export function integralExchange(totalCost, list) {
   return ajax({
-    "totalCost": totalCost, //订单总金额
-    "invoiceFlag": 0,
-    "Accumulate": 0, //是否使用积分 0 不使用 ,1使用
-    "list": list
+    "name": "directBuy",
+    "ctype": "Web",
+    "sessionStr": "BCBC8BB0E7FC40DB1F281BC3B50C2419",
+    "userid": 40,
+    "reqbody": {
+      "totalCost": totalCost, //订单总金额
+      "invoiceFlag": 0,
+      "accumulate": 0, //是否使用积分 0 不使用 ,1使用
+      "list": list
+    }
   })
 }
