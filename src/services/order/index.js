@@ -59,7 +59,7 @@ export function cancelOrder(id) {
  * @param {*} addrId 
  * @param {*} attrList 
  */
-export function integralPickUp(oId, detailId, qty, addrId, attrList) {
+export function integralPickUp(oId, detailId, addrId, attrList) {
   return ajax({
     "name": "integralPickUp",
     "ctype": "weChat",
@@ -68,7 +68,7 @@ export function integralPickUp(oId, detailId, qty, addrId, attrList) {
     "reqbody": {
       "orderId": oId, //订单ID
       "detailID": detailId, //订单详情ID
-      "deliveryQty": qty,
+      "deliveryQty": 1,
       "addrId": addrId,
       "propertyList": attrList
     }

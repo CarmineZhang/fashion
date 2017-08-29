@@ -50,7 +50,6 @@ export default {
   created() {
     let params = this.$store.state.route.params
     this.item = params.commodity
-    this.qty = params.qty
     if (typeof this.item === 'undefined') {
       this.$router.push('/integral/order/list')
     } else {
@@ -73,7 +72,7 @@ export default {
           attrlist.push({ comProID: this.attrResult[key].comProID })
         })
         var loading = this.$ve.loading('处理中...')
-        http.integralPickUp(this.item.orderID, this.item.detailID, this.qty, 1, attrlist).then(res => {
+        http.integralPickUp(this.item.orderID, this.item.detailID, 1, attrlist).then(res => {
           loading.hide()
           if (res.retcode === 0) {
             this.$ve.toast.success('提货成功')

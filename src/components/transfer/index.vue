@@ -23,7 +23,6 @@ export default {
     console.dir(params)
     this.oId = params.oId
     this.detailId = params.detailId
-    this.qty = params.qty
   },
   data() {
     return {
@@ -34,7 +33,7 @@ export default {
   },
   methods: {
     sale() {
-      http.integralSales(this.oId, this.detailId, this.qty).then(res => {
+      http.integralSales(this.oId, this.detailId).then(res => {
         if (res.retcode === 0) {
           this.$ve.toast.success('转售成功', () => {
             this.$router.go(-1)

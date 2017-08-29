@@ -36,26 +36,20 @@
         </div>
       </div>
     </div>
-    <select-qty v-model="show" :max="commodity.quantity" @on-confirm="confirm"></select-qty>
   </div>
 </template>
 <script>
 import SearchBar from '@/components/widget/searchbar'
 import * as http from '@/services'
-import SelectQty from './selectqty'
 export default {
   name: 'integral-order-list',
   components: {
-    SearchBar,
-    SelectQty
+    SearchBar
   },
   data() {
     return {
       index: 1,
-      action: 'delivery',
-      commodity: {},
       list: [],
-      show: false
     }
   },
   created() {
@@ -70,26 +64,15 @@ export default {
       })
     },
     delivery(item) {
-      this.action = 'delivery'
-      this.commodity = item
-      this.show = true
+      this.$router.push({ name: 'integral-delivery', params: { commodity: item } })
     },
     sale(item) {
-      this.action = 'sale'
-      this.commodity = item
-      this.show = true
-    },
-    confirm(qty) {
-      if (this.action === 'delivery') {
-        this.$router.push({ name: 'integral-delivery', params: { commodity: this.commodity, qty: qty } })
-      } else if (this.action === 'sale') {
-        this.$router.push({
-          name: 'integral-transfer', params: {
-            oId: this.commodity.orderID, detailId:
-            this.commodity.detailID, qty: qty
-          }
-        })
-      }
+      this.$router.push({
+        name: 'integral-transfer', params: {
+          oId: item.orderID, detailId:
+          item.detailID
+        }
+      })
     }
   }
 }
