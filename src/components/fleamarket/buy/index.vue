@@ -31,7 +31,7 @@ export default {
   },
   methods: {
     showDetail(item) {
-      console.log(item)
+      this.$router.push({ name: 'flea-transfer', params: { item: item } })
     }
   }
 }
