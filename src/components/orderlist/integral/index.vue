@@ -83,7 +83,12 @@ export default {
       if (this.action === 'delivery') {
         this.$router.push({ name: 'integral-delivery', params: { commodity: this.commodity, qty: qty } })
       } else if (this.action === 'sale') {
-        this.$router.push({ name: 'integral-transfer', params: { commodity: this.commodity, qty: qty } })
+        this.$router.push({
+          name: 'integral-transfer', params: {
+            oId: this.commodity.orderID, detailId:
+            this.commodity.detailID, qty: qty
+          }
+        })
       }
     }
   }

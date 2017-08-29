@@ -18,9 +18,29 @@
 import * as http from '@/services'
 export default {
   name: 'integral-order-transfer',
+  created() {
+    let params = this.$store.state.route.params
+    console.dir(params)
+    this.oId = params.oId
+    this.detailId = params.detailId
+    this.qty = params.qty
+  },
+  data() {
+    return {
+      oId: 0,
+      detailId: 0,
+      qty: 0,
+    }
+  },
   methods: {
     sale() {
-      http.integralSales()
+      http.integralSales(this.oId, this.detailId, this.qty).then(res => {
+        if (res.retcode === 0) {
+          this.$ve.toast.success('转售成功', () => {
+            this.$router.go(-1)
+          })
+        }
+      })
     }
   }
 }

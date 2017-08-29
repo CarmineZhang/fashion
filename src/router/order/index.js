@@ -20,6 +20,7 @@ export default [{
     component: IntegralOrderDelivery
   }, {
     path: '/integral/order/transfer',
+    name: 'integral-transfer',
     component: IntegralOrderTransfer
   },
   {
