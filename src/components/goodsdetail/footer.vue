@@ -3,8 +3,8 @@
     <div class="goods-collect">
       <span @click="collection" v-text="text">收藏</span>
     </div>
-    <div class="goods-action goods-cart">加入购物车</div>
-    <div class="goods-action goods-buy">立即购买</div>
+    <a class="goods-action goods-cart" @click="addToCart">加入购物车</a>
+    <a class="goods-action goods-buy" @click="buy">立即购买</a>
   </div>
 </template>
 <script>
@@ -30,6 +30,12 @@ export default {
     }
   },
   methods: {
+    addToCart() {
+      this.$emit('on-add-cart')
+    },
+    buy() {
+      this.$emit('on-buy')
+    },
     collection() {
       if (this.collectionStatus === 0) {
         http.addCollection(this.goods.commodityId).then(res => {

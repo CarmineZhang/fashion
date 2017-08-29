@@ -4,7 +4,7 @@ export function integralSales(oId, detailId, qty) {
   return ajax({
     "name": "integralSales",
     "ctype": "Web",
-    "sessionStr": "B3B18F1384421A1AF839F11DAD35F7D8",
+    "sessionStr": "A239EE8058794C568857CA68A21403C1",
     "userid": 40,
     "reqbody": {
       "orderId": oId, //订单ID

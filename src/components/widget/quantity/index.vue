@@ -2,7 +2,7 @@
   <div class="num-wrap">
     <span class="minus" :class="{'disabled':minusDisabled}" @click="minus"></span>
     <div class="input-wrap">
-      <input class="num" type="tel" :value="quantity" @change="changeNum($event)">
+      <input class="num" type="tel" :value="qty" @change="changeNum($event)">
     </div>
     <span class="plus" @click="plus" :class="{'disabled':plusDisabled}"></span>
   </div>
@@ -14,20 +14,24 @@ export default {
     max: {
       type: Number,
       default: 200
+    },
+    quantity: {
+      type: Number,
+      default: 1
     }
   },
   data() {
     return {
       minusDisabled: true,
       plusDisabled: false,
-      quantity: 1
+      qty: 1
     }
   },
   watch: {
     quantity(val) {
       this.minusDisabled = val === 1 ? true : false
       this.plusDisabled = val === 200 ? true : false
-      this.$emit('on-change', this.quantity)
+      this.qty = val
     }
   },
   methods: {
@@ -39,20 +43,23 @@ export default {
         } else if (val >= this.max) {
           val = 200
         }
-        this.quantity = val
+        this.qty = val
+        this.$emit('on-change', this.qty)
       }
     },
     minus() {
       if (this.minusDisabled) {
         return
       }
-      this.quantity = this.quantity - 1
+      this.qty = this.qty - 1
+      this.$emit('on-change', this.qty)
     },
     plus() {
       if (this.plusDisabled) {
         return
       }
-      this.quantity = this.quantity + 1
+      this.qty = this.qty + 1
+      this.$emit('on-change', this.qty)
     }
   }
 }

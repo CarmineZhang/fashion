@@ -4,7 +4,7 @@ export function queryOrders(status, index) {
   return ajax({
     "name": "queryOrders",
     "ctype": "weChat",
-    "sessionStr": "B3B18F1384421A1AF839F11DAD35F7D8",
+    "sessionStr": "A239EE8058794C568857CA68A21403C1",
     "userid": 40,
     "reqbody": {
       "status": status, // 0 查询全部订单  1查询待付款订单  3查询待发货订单 4查询待收货订单 5查询待评价订单
@@ -18,7 +18,7 @@ export function queryIntegralOrder(index) {
   return ajax({
     "name": "queryIntegralOrder",
     "ctype": "weChat",
-    "sessionStr": "B3B18F1384421A1AF839F11DAD35F7D8",
+    "sessionStr": "A239EE8058794C568857CA68A21403C1",
     "userid": 40,
     "reqbody": {
       "pageIndex": index,
@@ -31,7 +31,7 @@ export function queryFleaOrder(flag, index) {
   return ajax({
     "name": "queryFleaOrder",
     "ctype": "weChat",
-    "sessionStr": "B3B18F1384421A1AF839F11DAD35F7D8",
+    "sessionStr": "A239EE8058794C568857CA68A21403C1",
     "userid": 40,
     "reqbody": {
       "bsFlag": flag, // 1、买方(求购) 2、卖方(寄售)      
@@ -45,7 +45,7 @@ export function cancelOrder(id) {
   return ajax({
     "name": "userCancelOrder",
     "ctype": "weChat",
-    "sessionStr": "B3B18F1384421A1AF839F11DAD35F7D8",
+    "sessionStr": "A239EE8058794C568857CA68A21403C1",
     "userid": 40,
     "reqbody": {
       "orderId": id
@@ -63,7 +63,7 @@ export function integralPickUp(oId, detailId, qty, addrId, attrList) {
   return ajax({
     "name": "integralPickUp",
     "ctype": "weChat",
-    "sessionStr": "B3B18F1384421A1AF839F11DAD35F7D8",
+    "sessionStr": "A239EE8058794C568857CA68A21403C1",
     "userid": 40,
     "reqbody": {
       "orderId": oId, //订单ID
@@ -86,7 +86,7 @@ export function afterSaleMaintain(oId, shipperCode, weight, trackingNo) {
   return ajax({
     "name": "afterSaleMaintain",
     "ctype": "weChat",
-    "sessionStr": "B3B18F1384421A1AF839F11DAD35F7D8",
+    "sessionStr": "A239EE8058794C568857CA68A21403C1",
     "userid": 40,
     "reqbody": {
       "orderID": oId, //订单ID
@@ -108,7 +108,7 @@ export function afterSaleRenewed(oId, detailId) {
   return ajax({
     "name": "afterSaleRenewed",
     "ctype": "Web",
-    "sessionStr": "B3B18F1384421A1AF839F11DAD35F7D8",
+    "sessionStr": "A239EE8058794C568857CA68A21403C1",
     "userid": 40,
     "reqbody": {
       "orderID": oId, //订单ID
@@ -126,7 +126,7 @@ export function queryOrderSchedule(oId, detailId) {
   return ajax({
     "name": "queryOrderSchedule",
     "ctype": "Web",
-    "sessionStr": "B3B18F1384421A1AF839F11DAD35F7D8",
+    "sessionStr": "A239EE8058794C568857CA68A21403C1",
     "userid": 40,
     "reqbody": {
       "orderID": oId, //订单ID
@@ -139,7 +139,7 @@ export function queryLogistics(oId) {
   return ajax({
     "name": "queryLogistics",
     "ctype": "Web",
-    "sessionStr": "B3B18F1384421A1AF839F11DAD35F7D8",
+    "sessionStr": "A239EE8058794C568857CA68A21403C1",
     "userid": 40,
     "reqbody": {
       "orderID": oId //订单ID
