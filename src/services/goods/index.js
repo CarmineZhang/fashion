@@ -82,6 +82,7 @@ export function integralExchange(totalCost, list) {
     "userid": 40,
     "reqbody": {
       "totalCost": totalCost, //订单总金额
+      "freight": 0,
       "invoiceFlag": 0,
       "accumulate": 0, //是否使用积分 0 不使用 ,1使用
       "list": list
