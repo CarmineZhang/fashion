@@ -4,7 +4,7 @@
       <search-bar placeholder="搜索"></search-bar>
     </div>
     <swiper :list="banners"></swiper>
-    <column v-for="item in columns" :key="item.categoryid" :cdata="item"></column>
+    <column v-for="item in columns" :key="item.categoryid" :cdata="item" @on-click="buy"></column>
   </div>
 </template>
 <script>
@@ -28,6 +28,11 @@ export default {
   },
   created() {
     this.$store.dispatch('getFMSaleColumns')
+  },
+  methods: {
+    buy(item) {
+      this.$router.push({ path: '/fleamarket/goods', query: { id: item.commodityId, lId: item.listOrderId } })
+    }
   }
 }
 </script>

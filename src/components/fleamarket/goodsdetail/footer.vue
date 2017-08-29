@@ -1,10 +1,6 @@
 <template>
   <div class="goods-footer">
-    <div class="goods-collect">
-      <span>收藏</span>
-    </div>
-    <div class="goods-action goods-cart">加入购物车</div>
-    <div class="goods-action goods-buy" @click="buy">立即购买</div>
+    <a class="goods-action goods-buy" @click="buy">立即购买</a>
   </div>
 </template>
 <script>
@@ -12,7 +8,7 @@ export default {
   name: 'goods-footer',
   methods: {
     buy() {
-      this.$router.push('/fleamarket/confirm')
+      this.$emit('on-buy')
     }
   }
 }

@@ -3,7 +3,7 @@
     <div class="col-header" :class="[headerClass]" v-text="cdata.categoryName"></div>
     <div class="col-body">
       <div class="col-footer fm-footer">
-        <div class="footer-item" v-for="item in cdata.commodityList" :key="item.commodityId" @click="goodsClick">
+        <div class="footer-item" v-for="item in cdata.commodityList" :key="item.commodityId" @click="goodsClick(item)">
           <div class="img-wrapper">
             <img v-lazy="item.image" alt="">
           </div>
@@ -28,8 +28,8 @@ export default {
     }
   },
   methods: {
-    goodsClick() {
-      this.$emit('on-click')
+    goodsClick(item) {
+      this.$emit('on-click', item)
     }
   }
 }
