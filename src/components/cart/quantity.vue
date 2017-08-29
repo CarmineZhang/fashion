@@ -21,7 +21,7 @@ export default {
     return {
       minusDisabled: true,
       plusDisabled: false,
-      qty: 1
+      qty: this.commodity.quantity
     }
   },
   watch: {
