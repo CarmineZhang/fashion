@@ -82,7 +82,7 @@ export function integralPickUp(oId, detailId, addrId, attrList) {
  * @param {*} weightUnit 
  * @param {*} trackingNo 
  */
-export function afterSaleMaintain(oId, weight, weightUnit, trackingNo) {
+export function afterSaleMaintain(oId, shipperCode, weight, trackingNo) {
   return ajax({
     "name": "afterSaleMaintain",
     "ctype": "weChat",
@@ -90,10 +90,10 @@ export function afterSaleMaintain(oId, weight, weightUnit, trackingNo) {
     "userid": 40,
     "reqbody": {
       "orderID": oId, //订单ID
-      "shipperCode": "1", //物流公司代码
+      "shipperCode": shipperCode, //物流公司代码
       "shippingMode": 1, //配送方式
       "weight": weight, //商品重量
-      "weightUnit": "Kg",
+      "weightUnit": "kg",
       "trackingNo": trackingNo
     }
   })
@@ -104,27 +104,37 @@ export function afterSaleMaintain(oId, weight, weightUnit, trackingNo) {
  * @param {*} oId 
  * @param {*} detailId 
  */
-export function queryOrderSchedule(oId,detailId){
+export function queryOrderSchedule(oId, detailId) {
   return ajax({
     "name": "queryOrderSchedule",
     "ctype": "Web",
     "sessionStr": "B3B18F1384421A1AF839F11DAD35F7D8",
     "userid": 40,
     "reqbody": {
-      "orderID":oId, //订单ID
-      "detailID":detailId //订单详情ID
+      "orderID": oId, //订单ID
+      "detailID": detailId //订单详情ID
     }
   })
 }
 
-export function queryLogistics(oId){
+export function queryLogistics(oId) {
   return ajax({
     "name": "queryLogistics",
     "ctype": "Web",
     "sessionStr": "B3B18F1384421A1AF839F11DAD35F7D8",
     "userid": 40,
     "reqbody": {
-      "orderID":oId//订单ID
+      "orderID": oId //订单ID
     }
+  })
+}
+
+/**
+ * 查询物流公司
+ */
+export function queryLogisticsInfo() {
+  return ajax({
+    "name": "queryLogisticsInfo",
+    "ctype": "weChat"
   })
 }

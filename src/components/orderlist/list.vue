@@ -6,6 +6,11 @@
       </div>
       <div class="item-body-wrapper">
         <div class="item-body" v-for="orderitem in item.list" :key="orderitem.detailID">
+          <div v-show="item.status===11">
+            <a @click="maintaince(orderitem)">申请维修</a>
+            <span>|</span>
+            <a>以旧换新</a>
+          </div>
           <img :src="orderitem.icon" alt="">
           <div class="content">
             <div class="info">
@@ -82,6 +87,11 @@ export default {
       }
       return ret;
     }
+  },
+  methods: {
+    maintaince(item) {
+      this.$router.push({ name: 'maintaince', params: { item: item } })
+    }
   }
 }
 </script>
@@ -92,6 +102,18 @@ export default {
   margin-bottom: 10px;
   .item-header {
     overflow: hidden;
+    .action {
+      float: left;
+      height: 30px;
+      line-height: 30px;
+      a {
+        display: inline-block;
+      }
+      span {
+        display: inline-block;
+        padding: 0 5px;
+      }
+    }
     .status {
       float: right;
       height: 30px;
