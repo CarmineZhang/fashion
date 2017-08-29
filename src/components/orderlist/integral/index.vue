@@ -32,24 +32,30 @@
         </div>
         <div class="item-op">
           <a class="op" @click="delivery(item)">提货</a>
-          <a class="op" @click="sale">转售</a>
+          <a class="op" @click="sale(item)">转售</a>
         </div>
       </div>
     </div>
+    <select-qty v-model="show" :max="commodity.quantity" @on-confirm="confirm"></select-qty>
   </div>
 </template>
 <script>
 import SearchBar from '@/components/widget/searchbar'
 import * as http from '@/services'
+import SelectQty from './selectqty'
 export default {
   name: 'integral-order-list',
   components: {
-    SearchBar
+    SearchBar,
+    SelectQty
   },
   data() {
     return {
       index: 1,
-      list: []
+      action: 'delivery',
+      commodity: {},
+      list: [],
+      show: false
     }
   },
   created() {
@@ -64,10 +70,21 @@ export default {
       })
     },
     delivery(item) {
-      this.$router.push({ name: 'integral-delivery', params: { item: item } })
+      this.action = 'delivery'
+      this.commodity = item
+      this.show = true
     },
-    sale() {
-      this.$router.push('/integral/order/transfer')
+    sale(item) {
+      this.action = 'sale'
+      this.commodity = item
+      this.show = true
+    },
+    confirm(qty) {
+      if (this.action === 'delivery') {
+        this.$router.push({ name: 'integral-delivery', params: { commodity: this.commodity, qty: qty } })
+      } else if (this.action === 'sale') {
+        this.$router.push({ name: 'integral-transfer', params: { commodity: this.commodity, qty: qty } })
+      }
     }
   }
 }

@@ -10,13 +10,19 @@
       <p>该商品平均售卖周期：3日</p>
     </section>
     <div class="footer-action">
-      <a class="action transfer-action">一键转让</a>
+      <a class="action transfer-action" @click="sale">一键转让</a>
     </div>
   </div>
 </template>
 <script>
+import * as http from '@/services'
 export default {
-  name: 'integral-order-transfer'
+  name: 'integral-order-transfer',
+  methods: {
+    sale() {
+      http.integralSales()
+    }
+  }
 }
 </script>
 <style lang="scss" scoped>
