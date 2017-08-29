@@ -17,7 +17,6 @@
         </p>
       </section>
       <section>
-        <!-- <cell type="select" :cell-key="item.propertyID" :title="item.propertyName" v-for="item in goods.propertyList" :key="item.propertyID" @on-click="attrClick" :content="attrResult"></cell> -->
         <div class="sku" v-for="item in goods.propertyList" :key="item.propertyID">
           <h3>{{item.propertyName}}</h3>
           <div class="sku_list">
@@ -36,31 +35,24 @@
         </p>
       </section>
     </div>
-    <!-- <select-attr v-model="show" :title="curAttrName" :list="attrlist" @on-click="selectAttr"></select-attr> -->
   </div>
 </template>
 <script>
 import Swiper from '@/components/widget/swiper'
-// import Cell from './cell'
 import Comment from '@/components/widget/comment'
 import Quantity from '@/components/widget/quantity'
-// import SelectAttr from './select'
 import * as http from '@/services'
 export default {
   name: 'goods',
   components: {
     Swiper,
-    // Cell,
     Comment,
     Quantity
-    // SelectAttr
   },
   data() {
     return {
       show: false,
       attrlist: [],
-      // curAttrId: 0,
-      // curAttrName: '',
       attrResult: {},
       evaluateCount: 10,
       evaluateList: []
@@ -88,25 +80,6 @@ export default {
     }
   },
   methods: {
-    // findattr(id) {
-    //   var ret = this.goods.propertyList.filter(item => {
-    //     return item.propertyID === id
-    //   })
-    //   if (ret.length > 0) {
-    //     return ret[0]
-    //   }
-    //   return null
-    // },
-    // attrClick(id) {
-    //   this.curAttrId = id;
-    //   let attr = this.findattr(id)
-    //   console.dir(attr)
-    //   if (attr) {
-    //     this.curAttrName = attr.propertyName
-    //     this.attrlist = attr.propertyList
-    //   }
-    //   this.show = true
-    // },
     selectAttr(pid, aid) {
       this.$emit('on-attr-change', pid, aid)
       this.$set(this.attrResult, pid, aid)
