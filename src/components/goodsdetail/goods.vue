@@ -56,35 +56,7 @@ export default {
       curAttrName: '',
       attrResult: {},
       evaluateCount: 10,
-      evaluateList: [{
-        "userName": "rel****124",//用户名称
-        "userImage": "http://192.168.1.213/resources/e8d459ff-498a-45f9-8551-60133f87caa1002.jpg",//用户头像
-        "content": "做工扎实，使用高档", //评价
-        "images": "http://192.168.1.213/resources/e8d459ff-498a-45f9-8551-60133f87caa1002.jpg,http://192.168.1.213/resources/e8d459ff-498a-45f9-8551-60133f87caa1002.jpg,http://192.168.1.213/resources/e8d459ff-498a-45f9-8551-60133f87caa1002.jpg", //上传的图片
-        "productParameter": [{
-          "comProID": 12,
-          "propertyName": "颜色选择",
-          "selector": "白色"
-        }, {
-          "comProID": 26,
-          "propertyName": "尺码选择",
-          "selector": "S"
-        }]
-      }, {
-        "userName": "rel****124",//用户名称
-        "userImage": "http://192.168.1.213/resources/e8d459ff-498a-45f9-8551-60133f87caa1002.jpg",//用户头像
-        "content": "做工扎实，使用高档", //评价
-        "images": "http://192.168.1.213/resources/e8d459ff-498a-45f9-8551-60133f87caa1002.jpg,http://192.168.1.213/resources/e8d459ff-498a-45f9-8551-60133f87caa1002.jpg,http://192.168.1.213/resources/e8d459ff-498a-45f9-8551-60133f87caa1002.jpg", //上传的图片
-        "productParameter": [{
-          "comProID": 12,
-          "propertyName": "颜色选择",
-          "selector": "白色"
-        }, {
-          "comProID": 26,
-          "propertyName": "尺码选择",
-          "selector": "S"
-        }],
-      }]
+      evaluateList: []
     }
   },
   created() {
@@ -92,8 +64,8 @@ export default {
     this.$store.dispatch('getCommodityDetail', { cId: id })
     http.commodityEvaluate(id, 1, 1).then(res => {
       if (res.retcode === 0) {
-        // this.evaluateCount = res.respbody.total
-        // this.evaluateList = res.respbody.list
+        this.evaluateCount = res.respbody.total
+        this.evaluateList = res.respbody.list
       }
     })
   },
@@ -121,9 +93,10 @@ export default {
     attrClick(id) {
       this.curAttrId = id;
       let attr = this.findattr(id)
+      console.dir(attr)
       if (attr) {
         this.curAttrName = attr.propertyName
-        this.attrlist = attr.list
+        this.attrlist = attr.propertyList
       }
       this.show = true
     },

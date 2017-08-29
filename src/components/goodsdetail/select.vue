@@ -1,5 +1,5 @@
 <template>
-  <div class="ve-address">
+  <div>
     <transition name="ve-mask">
       <div class="mod-slide" v-show="show"></div>
     </transition>

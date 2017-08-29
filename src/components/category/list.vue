@@ -28,6 +28,7 @@ export default {
   },
   methods: {
     showGoods(item) {
+      console.log('goods')
       this.$router.push({ name: 'goods', query: { id: item.commodityId } })
     }
   }
