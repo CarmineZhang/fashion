@@ -82,11 +82,12 @@ export default {
       this.$router.push({ name: 'order-select-addr' })
     },
     submit() {
-      http.afterSaleMaintain(this.order.orderID, this.shipperCode, this.weight, this.expressNo).then(res => {
-        if (res.retcode === 0) {
-          this.$ve.toast.success('提交成功')
-        }
-      })
+      http.afterSaleMaintain(this.order.orderID, this.shipperCode,
+        this.weight, this.expressNo).then(res => {
+          if (res.retcode === 0) {
+            this.$ve.toast.success('提交成功')
+          }
+        })
     }
   }
 }
