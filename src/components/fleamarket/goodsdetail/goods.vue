@@ -6,8 +6,8 @@
         <p class="goods-desc" v-text="goods.summary"></p>
         <p class="goods-price">
           <strong>
+            <em>¥ </em>
             <span v-text="goods.price"></span>
-            <span>积分</span>
           </strong>
         </p>
         <p class="goods-other">

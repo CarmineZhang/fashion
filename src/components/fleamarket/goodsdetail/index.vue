@@ -3,10 +3,11 @@
     <goods-header class="fixed-header" @on-click="showView"></goods-header>
     <transition name="ve-pop-in">
       <keep-alive>
-        <component :is="currentView" class="goods-body"></component>
+        <component :is="currentView" class="goods-body" :goods="goods"></component>
       </keep-alive>
     </transition>
     <goods-footer class="fixed-footer" @on-buy="buy"></goods-footer>
+    <confirm v-model="show" :pay-url="payUrl"></confirm>
   </div>
 </template>
 <script>
@@ -15,7 +16,9 @@ import GoodsFooter from './footer'
 import Goods from './goods'
 import Detail from './detail'
 import Comments from './comments'
+import Confirm from './confirm'
 import * as http from '@/services'
+
 export default {
   name: 'goods-detail',
   components: {
@@ -23,10 +26,11 @@ export default {
     GoodsFooter,
     Goods,
     Detail,
-    Comments
+    Comments,
+    Confirm
   },
   created() {
-    let query = is.$store.state.route.query
+    let query = this.$store.state.route.query
     let id = query.id
     this.listId = query.lId
     this.getCommodityDetail(id)
@@ -35,7 +39,9 @@ export default {
     return {
       currentView: 'goods',
       listId: 0,
-      goods: {}
+      goods: {},
+      show: false,
+      payUrl: {}
     }
   },
   methods: {
@@ -53,7 +59,8 @@ export default {
       http.fleaMarketTrade(this.listId).then(res => {
         if (res.retcode === 0) {
           this.$ve.toast.success('购买成功', () => {
-            this.$router.go(-1)
+            this.show = true
+            this.payUrl = res.respbody.urlList
           })
         } else {
           this.$ve.alert(res.msg)

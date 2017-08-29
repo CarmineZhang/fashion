@@ -19,7 +19,7 @@ export default {
   components: {
     Comment
   },
-  created() {
+  beforeMount() {
     this.id = this.$store.state.route.query.id
     this.getEvaluate()
   },

@@ -30,8 +30,8 @@ export default {
     this.$store.dispatch('getFMBuyColumns')
   },
   methods: {
-    showDetail() {
-      this.$router.push('/fleamarket/goods')
+    showDetail(item) {
+      console.log(item)
     }
   }
 }
