@@ -1,21 +1,26 @@
 <template>
-  <div class="order-goods-list">
-    <div class="goods-img">
-      <img src="//img10.360buyimg.com/n4/jfs/t6043/305/5636125253/87985/21230f90/596f169aN1246fe10.jpg" alt="">
-    </div>
-    <div class="goods-info">
-      <p>苹果手机</p>
-      <p class="type">iphone 64G</p>
-    </div>
-    <div class="goods-price">
-      <strong class="price">¥3499.00</strong>
-      <p>×1</p>
+  <div>
+    <div class="order-goods-list" v-for="item in list" :key="item.detailID">
+      <div class="goods-img">
+        <img :src="item.icon" alt="">
+      </div>
+      <div class="goods-info">
+        <p v-text="item.title"></p>
+        <p class="type" v-attr="item.type">iphone 64G</p>
+      </div>
+      <div class="goods-price">
+        <strong class="price">¥{{item.price}}</strong>
+        <p>×{{item.quantity}}</p>
+      </div>
     </div>
   </div>
 </template>
 <script>
 export default {
-  name: 'order-list'
+  name: 'order-list',
+  props: {
+    list: Array
+  }
 }
 </script>
 <style lang="scss">

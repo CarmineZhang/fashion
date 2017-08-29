@@ -54,3 +54,16 @@ export function commoditySearch(key, mId, index, size) {
     }
   })
 }
+
+export function directBuy(addrId, totalCost, invoiceFlag, list, integralFlag, invoiceId) {
+  return ajax({
+    "addrId": addrId, //收货地址  积分商品为空
+    "totalCost": totalCost, //订单总金额
+    "freight": 16.00, //订单运费
+    "brokerFirmId": 12, //经纪人
+    "invoiceFlag": invoiceFlag,
+    "infoID": invoiceId, //发票信息ID
+    "Accumulate": integralFlag, //是否使用积分 0 不使用 ,1使用
+    "list": list
+  })
+}

@@ -5,45 +5,37 @@
     </transition>
     <div class="mod-slide-main" :class="{'mod-slide-toggle': show}">
       <div class="mod-slide-header">
-        付款详情
+        付款
         <i class="close" @click="close"></i>
       </div>
       <div class="mod-slide-body">
         <ul class="mod-slide-list order-confirm">
           <li class="item">
-            <div class="header">支付方式</div>
-            <div class="footer">购物卡</div>
-          </li>
-          <li class="item">
-            <div class="header">需付款</div>
-            <div class="footer">6.00元</div>
-          </li>
-          <li class="item">
-            <div class="header">余额不足</div>
-            <div class="footer">微信支付</div>
-          </li>
-          <li class="item">
-            <div class="header">还需付款</div>
-            <div class="footer">3.00元</div>
+            <a @click="pay('qq')">qq支付</a>
+            <a @click="pay('ali')">支付宝支付</a>
+            <a @click="pay('wechat')">微信支付</a>
           </li>
         </ul>
-      </div>
-      <div class="mod-slide-footer">
-        <a class="action">确认支付</a>
+        <div>
+          <qrcode :value="url" v-if="url" :options="{ size: 100 }"></qrcode>
+        </div>
       </div>
     </div>
   </div>
 </template>
 <script>
+
 export default {
   name: 'order-confirm',
   data() {
     return {
       show: false,
+      url: ''
     }
   },
   props: {
-    value: Boolean
+    value: Boolean,
+    payUrl: Object
   },
   watch: {
     value(val) {
@@ -56,7 +48,13 @@ export default {
   methods: {
     close() {
       this.show = false
+    },
+    pay(type) {
+      this.url = this.payUrl[type]
     }
+  },
+  beforeMount() {
+    this.url = this.payUrl['wechat']
   }
 }
 </script>

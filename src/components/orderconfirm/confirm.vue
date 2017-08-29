@@ -10,17 +10,16 @@
         <span v-text="defaultAddr.addressDetail"></span>
       </p>
     </section>
-    <list></list>
-    <cell type="link" title="配送方式"></cell>
+    <list :list="goodslist"></list>
     <cell type="link" title="选择发票抬头" @on-click="selectInvoice"></cell>
     <cell title="可用1000积分抵扣50" ce-class="order-switch">
       <my-switch slot="footer"></my-switch>
     </cell>
     <div class="footer-action">
       <div class="footer-desc">共一件商品，合计</div>
-      <a class="action" @click="showConfirmDetail">提交订单</a>
+      <a class="action" @click="submit()">提交订单</a>
     </div>
-    <confirm-detail v-model="show"></confirm-detail>
+    <confirm-detail v-model="show" :pay-url="payUrl"></confirm-detail>
   </div>
 </template>
 <script>
@@ -29,17 +28,22 @@ import Cell from '@/components/widget/cell'
 import MySwitch from '@/components/widget/switch'
 import { mapGetters } from 'vuex'
 import ConfirmDetail from './confirmdetail'
+import * as http from '@/services'
 export default {
   name: 'confirm',
   data() {
     return {
-      show: false
+      show: false,
+      payUrl: {}
     }
   },
   computed: {
     ...mapGetters([
-      'defaultAddr'
-    ])
+      'defaultAddr',
+    ]),
+    goodslist() {
+      return this.$store.state.settlegoods
+    }
   },
   components: {
     List,
@@ -53,6 +57,33 @@ export default {
     },
     selectInvoice() {
       this.$router.push('/selectinvoice')
+    },
+    submit() {
+      let list = []
+      this.goodslist.forEach(item => {
+        var ob = {
+          "commodityId": item.commodityId,//商品唯一标识
+          "price": item.price,//商品价格
+          "quantity": item.quantity//商品数量
+        }
+        let attrlist = item.type
+        let attrret = []
+        attrlist.forEach(attr => {
+          attrret.push({
+            comProID: attr.comProID
+          })
+        })
+        ob.propertyList = attrret
+        list.push(ob)
+      })
+      http.directBuy(1, 20, 0, list, 0).then(res => {
+        if (res.retcode === 0) {
+          this.$ve.toast.success('下单成功', () => {
+            this.payUrl = res.respbody.urlList
+            this.show = true
+          })
+        }
+      })
     },
     showConfirmDetail() {
       this.show = true

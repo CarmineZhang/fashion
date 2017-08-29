@@ -129,6 +129,7 @@ export default {
         this.$ve.alert('请选择一件商品')
         return
       }
+      this.$store.commit('RECEIVE_SETTLE_GOODS', list)
       this.$router.push('/orderconfirm')
     },
     getCart() {

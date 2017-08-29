@@ -1,17 +1,6 @@
 import * as types from '../mutation-types'
-// import * as http from '@/services'
-let id = 2
-const addrList = [{
-  "addrID": 1,
-  "province": "1",
-  "city": "1",
-  "countyName": "1",
-  "townName": "1",
-  "addressDetail": "北京市海淀区永泰东里",
-  "realName": "张三",
-  "mobile": "18612254938",
-  "isDefault": 1
-}]
+import * as http from '@/services'
+
 // initial state
 const state = {
   list: []
@@ -54,73 +43,26 @@ const actions = {
   getAddrList({
     commit
   }) {
-    // return http.getAddrList().then((res) => {
-    //   if (res.retcode === 0) {
-    //     commit(types.RECEIVE_ADDRESSLIST, {
-    //       addrList: res.respbody.list
-    //     })
-    //   }
-    // })
-    return new Promise((resolve) => {
-      commit(types.RECEIVE_ADDRESSLIST, {
-        addrList: addrList
-      })
-      resolve()
+    return http.getAddrList().then((res) => {
+      if (res.retcode === 0) {
+        commit(types.RECEIVE_ADDRESSLIST, {
+          addrList: res.respbody.list
+        })
+      }
     })
   },
   editAddr(context, addr) {
-    // return http.editAddr(addr)
-    if (addr.addrID) {
-      return new Promise((resolve) => {
-        var index = addrList.findIndex(item => {
-          return item.addrID == addr.addrID
-        })
-        if (index !== -1) {
-          addrList.splice(index, 1, addr)
-          resolve({
-            retcode: 0
-          })
-        }
-      })
-    } else {
-      return new Promise((resolve) => {
-        addr.addrID = id++;
-        addrList.push(addr)
-        resolve({
-          retcode: 0
-        })
-      })
-    }
+    return http.editAddr(addr)
   },
   deleteAddr(context, {
     id
   }) {
-    // return http.delAddr(id)
-    return new Promise((resolve) => {
-      var index = addrList.findIndex(item => {
-        return item.addrID == id
-      })
-      if (index !== -1) {
-        addrList.splice(index, 1)
-        resolve({
-          retcode: 0
-        })
-      }
-    })
-
+    return http.delAddr(id)
   },
   setDefaultAddr(context, {
     id
   }) {
-    // return http.setAddrDefault(id)
-    return new Promise((resolve) => {
-      addrList.forEach(item => {
-        item.addrID === id ? item.isDefault = 1 : item.isDefault = 0
-      })
-      resolve({
-        retcode: 0
-      })
-    })
+    return http.setAddrDefault(id)
   }
 }
 
