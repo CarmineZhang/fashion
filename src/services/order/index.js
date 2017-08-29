@@ -107,7 +107,7 @@ export function afterSaleMaintain(oId, shipperCode, weight, trackingNo) {
 export function afterSaleRenewed(oId, detailId) {
   return ajax({
     "name": "afterSaleRenewed",
-    "ctype": "Web",
+    "ctype": "weChat",
     "sessionStr": "BCBC8BB0E7FC40DB1F281BC3B50C2419",
     "userid": 40,
     "reqbody": {
@@ -125,7 +125,7 @@ export function afterSaleRenewed(oId, detailId) {
 export function queryOrderSchedule(oId, detailId) {
   return ajax({
     "name": "queryOrderSchedule",
-    "ctype": "Web",
+    "ctype": "weChat",
     "sessionStr": "BCBC8BB0E7FC40DB1F281BC3B50C2419",
     "userid": 40,
     "reqbody": {
@@ -138,13 +138,24 @@ export function queryOrderSchedule(oId, detailId) {
 export function queryLogistics(oId) {
   return ajax({
     "name": "queryLogistics",
-    "ctype": "Web",
+    "ctype": "weChat",
     "sessionStr": "BCBC8BB0E7FC40DB1F281BC3B50C2419",
     "userid": 40,
     "reqbody": {
       "orderID": oId //订单ID
     }
   })
+}
+
+export function confirmReceipt(id){
+  return ajax({
+	"name": "confirmReceipt",
+	"ctype": "weChat",
+  "sessionStr": "BCBC8BB0E7FC40DB1F281BC3B50C2419",
+  "userid": 40,
+	"reqbody": {
+		"orderID":id //订单ID
+	}})
 }
 
 /**
