@@ -31,22 +31,21 @@ export default {
   },
   created() {
     let query = this.$store.state.route.query
-    let id = query.id
-    this.listId = query.lId
-    this.getCommodityDetail(id)
+    this.cId = query.id
+    this.getCommodityDetail()
   },
   data() {
     return {
       currentView: 'goods',
-      listId: 0,
+      cId: 0,
       goods: {},
       show: false,
       payUrl: {}
     }
   },
   methods: {
-    getCommodityDetail(id) {
-      http.commodityDetail(id).then(res => {
+    getCommodityDetail() {
+      http.commodityDetail(this.cId).then(res => {
         if (res.retcode === 0) {
           this.goods = res.respbody
         }
@@ -56,7 +55,7 @@ export default {
       this.currentView = name
     },
     buy() {
-      http.fleaMarketTrade(this.listId).then(res => {
+      http.fleaBuying(this.cId).then(res => {
         if (res.retcode === 0) {
           this.$ve.toast.success('购买成功', () => {
             this.show = true

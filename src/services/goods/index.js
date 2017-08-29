@@ -32,7 +32,7 @@ export function commodityDetail(cId) {
 export function commodityEvaluate(cId, index, size) {
   return ajax({
     "name": "commodityEvaluate",
-    "ctype": "Web",
+    "ctype": "weChat",
     "reqbody": {
       "commodityId": cId, //商品唯一标识
       "pageIndex": index, //当前页码
@@ -44,7 +44,7 @@ export function commodityEvaluate(cId, index, size) {
 export function commoditySearch(key, mId, index, size) {
   return ajax({
     "name": "commoditySearch",
-    "ctype": "Web",
+    "ctype": "weChat",
     "reqbody": {
       "key": key,
       "sales": "0",
@@ -58,7 +58,7 @@ export function commoditySearch(key, mId, index, size) {
 export function directBuy(addrId, totalCost, invoiceFlag, list, integralFlag, invoiceId) {
   return ajax({
     "name": "directBuy",
-    "ctype": "Web",
+    "ctype": "weChat",
     "sessionStr": "BCBC8BB0E7FC40DB1F281BC3B50C2419",
     "userid": 40,
     "reqbody": {
@@ -77,7 +77,7 @@ export function directBuy(addrId, totalCost, invoiceFlag, list, integralFlag, in
 export function integralExchange(totalCost, list) {
   return ajax({
     "name": "directBuy",
-    "ctype": "Web",
+    "ctype": "weChat",
     "sessionStr": "BCBC8BB0E7FC40DB1F281BC3B50C2419",
     "userid": 40,
     "reqbody": {
@@ -93,11 +93,25 @@ export function integralExchange(totalCost, list) {
 export function fleaMarketTrade(id) {
   return ajax({
     "name": "fleaMarketTrade",
-    "ctype": "Web",
+    "ctype": "weChat",
     "sessionStr": "BCBC8BB0E7FC40DB1F281BC3B50C2419",
     "userid": 40,
     "reqbody": {
       "listOrderID": id //挂牌订单ID
+    }
+  })
+}
+
+
+export function fleaBuying(id){
+  return ajax({
+    "name": "fleaBuying",
+    "ctype": "weChat",
+    "sessionStr": "BCBC8BB0E7FC40DB1F281BC3B50C2419",
+    "userid": 40,
+    "reqbody": {
+      "commodityId":id,
+      "entrustQty":1
     }
   })
 }

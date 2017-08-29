@@ -1,7 +1,7 @@
 <template>
   <div class="flea-goods-wrapper">
     <ul class="goods">
-      <li v-for="item in data" :key="item.commodityId">
+      <li v-for="item in data" :key="item.commodityId" @click="showDetail(item)">
         <div class="cover">
           <img :src="item.icon" alt="">
         </div>
@@ -17,6 +17,11 @@ export default {
     data: {
       type: Array,
       default: () => []
+    }
+  },
+  methods:{
+    showDetail(item){
+      this.$emit('on-select',item)
     }
   }
 }

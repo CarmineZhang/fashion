@@ -1,6 +1,6 @@
 <template>
   <div class="goods-footer">
-    <a class="goods-action goods-buy" @click="buy">立即购买</a>
+    <a class="goods-action goods-buy" @click="buy">交付求购款</a>
   </div>
 </template>
 <script>

@@ -1,7 +1,7 @@
 <template>
   <div class="flea-pub-wrapper">
     <my-select @on-click="choose"></my-select>
-    <goods :data="list"></goods>
+    <goods :data="list" @on-select="publish"></goods>
   </div>
 </template>
 <script>
@@ -24,6 +24,9 @@ export default {
         index: 1,
         size: 100
       })
+    },
+    publish(item){
+      this.$router.push({name:'publish-buy',params:{id:item.commodityId}})
     }
   }
 }
