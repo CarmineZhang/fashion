@@ -11,7 +11,7 @@ import Validator from '@/plugins/validator'
 import Widget from '@/plugins/widget'
 import Toast from '@/plugins/widget/toast'
 import VueLazyload from 'vue-lazyload'
-
+import VueQrcode from 'vue-qrcode'
 import './sass/main.scss'
 Vue.config.productionTip = false
 Vue.use(Validator)
@@ -19,7 +19,7 @@ Vue.use(Widget)
 Vue.use(Toast)
 
 Vue.use(VueLazyload)
-
+Vue.component('qrcode', VueQrcode)
 sync(store, router)
 
 Vue.directive('price', {

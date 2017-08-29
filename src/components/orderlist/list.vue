@@ -9,7 +9,7 @@
           <div v-show="item.status===11">
             <a @click="maintaince(orderitem)">申请维修</a>
             <span>|</span>
-            <a>以旧换新</a>
+            <a @click="oldfornew(item.orderID,orderitem.detailID)">以旧换新</a>
           </div>
           <img :src="orderitem.icon" alt="">
           <div class="content">
@@ -91,6 +91,9 @@ export default {
   methods: {
     maintaince(item) {
       this.$router.push({ name: 'maintaince', params: { item: item } })
+    },
+    oldfornew(oId, detailId) {
+      this.$router.push({ name: 'oldfornew', params: { oId: oId, detailId: detailId } })
     }
   }
 }

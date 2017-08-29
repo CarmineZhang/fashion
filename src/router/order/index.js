@@ -3,6 +3,7 @@ import IntegralOrderDelivery from '@/components/delivery'
 import IntegralOrderTransfer from '@/components/transfer'
 import FleaOrderList from '@/components/orderlist/flea'
 import Maintaince from '@/components/maintaince'
+import OldforNew from '@/components/oldfornew'
 import OrderList from '@/components/orderlist'
 import ExpressStatus from '@/components/express'
 import Sechedule from '@/components/schedule'
@@ -28,17 +29,21 @@ export default [{
     path: '/maintaince',
     name: 'maintaince',
     component: Maintaince
-  },{
-    path:'/expressstatus',
-    name:'expressstatus',
-    component:ExpressStatus
-  },{
-    path:'/sechedule',
-    name:'sechedule',
-    component:Sechedule
-  },{
-    path:'/evaluation',
-    name:'evaluation',
-    component:Evaluation
+  }, {
+    path: '/oldfornew',
+    name: 'oldfornew',
+    component: OldforNew
+  }, {
+    path: '/expressstatus',
+    name: 'expressstatus',
+    component: ExpressStatus
+  }, {
+    path: '/sechedule',
+    name: 'sechedule',
+    component: Sechedule
+  }, {
+    path: '/evaluation',
+    name: 'evaluation',
+    component: Evaluation
   }
 ]
