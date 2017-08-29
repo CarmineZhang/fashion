@@ -36,6 +36,8 @@ export default {
           this.$ve.toast.success('转让成功', () => {
             this.$router.push('/flea/order/list')
           })
+        } else {
+          this.$ve.alert(res.msg)
         }
       })
     }
