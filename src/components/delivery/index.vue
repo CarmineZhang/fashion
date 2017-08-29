@@ -11,13 +11,17 @@
       </p>
     </section>
     <section>
-      <cell type="select" :cell-key="item.propertyID" :title="item.propertyName" v-for="item in propertyList" :key="item.propertyID" @on-click="attrClick" :content="attrResult"></cell>
+      <div class="sku" v-for="item in propertyList" :key="item.propertyID">
+        <h3>{{item.propertyName}}</h3>
+        <div class="sku_list">
+          <a class="option" :class="{'cur':pitem.comProID===attrResult[item.propertyID]}" v-text="pitem.selector" v-for="pitem in item.propertyList" :key="pitem.propertyID" @click="selectAttr(item.propertyID,pitem.comProID)"></a>
+        </div>
+      </div>
     </section>
     <div class="footer-action">
       <div class="footer-desc">共一件商品</div>
       <a class="action" @click="confirm">确认提货</a>
     </div>
-    <select-attr v-model="attrShow" :title="curAttrName" :list="attrList" @on-click="selectAttr"></select-attr>
   </div>
 </template>
 <script>
@@ -41,10 +45,8 @@ export default {
       qty: 0,
       attrShow: false,
       propertyList: [],
-      attrList: [],
-      curAttrId: 0,
-      curAttrName: '',
-      attrResult: {},
+      attrlist: [],
+      attrResult: {}
     }
   },
   created() {
@@ -91,26 +93,9 @@ export default {
         }
       }
     },
-    findattr(id) {
-      var ret = this.propertyList.filter(item => {
-        return item.propertyID === id
-      })
-      if (ret.length > 0) {
-        return ret[0]
-      }
-      return null
-    },
-    attrClick(id) {
-      this.curAttrId = id;
-      let attr = this.findattr(id)
-      if (attr) {
-        this.curAttrName = attr.propertyName
-        this.attrList = attr.propertyList
-      }
-      this.attrShow = true
-    },
-    selectAttr(item) {
-      this.$set(this.attrResult, this.curAttrId, item)
+
+    selectAttr(pid, aid) {
+      this.$set(this.attrResult, pid, aid)
     }
   }
 }
