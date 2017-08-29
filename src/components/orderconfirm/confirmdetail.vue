@@ -12,7 +12,7 @@
         <ul class="mod-slide-list order-confirm">
           <li class="item">
             <a @click="pay('qq')">qq支付</a>
-            <a @click="pay('ali')">支付宝支付</a>
+            <a @click="pay('alipay')">支付宝支付</a>
             <a @click="pay('wechat')">微信支付</a>
           </li>
         </ul>

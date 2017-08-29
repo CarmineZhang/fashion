@@ -1,41 +1,41 @@
 <template>
   <div class="header-wrapper">
-    <div class="header-back"></div>
+    <div class="header-back" @click="back"></div>
     <div class="header-nav">
-      <a class="nav-item" :class="{'cur':path==='/integralgoods/'}" @click="showGoods">
+      <a class="nav-item" :class="{'cur':name==='goods'}" @click="showGoods">
         <span>商品</span>
       </a>
-      <a class="nav-item" :class="{'cur':path==='/integralgoods/detail'}" @click="showDetail">
+      <a class="nav-item" :class="{'cur':name==='detail'}" @click="showDetail">
         <span>详情</span>
       </a>
-      <a class="nav-item">
+      <a class="nav-item" :class="{'cur':name==='comments'}" @click="showComments">
         <span>评价</span>
       </a>
     </div>
-    <div class="header-info"></div>
+    <div class="header-cart"></div>
+    <div class="header-other"></div>
   </div>
 </template>
 <script>
 export default {
-  name: 'integral-goods-header',
-  beforeMount() {
-    console.log(this.$store.state.route.path)
-  },
+  name: 'goods-header',
   computed: {
-    path() {
-      return this.$store.state.route.path
+    name() {
+      return this.$parent.currentView
     }
   },
   methods: {
+    back() {
+      this.$router.go(-1)
+    },
     showGoods() {
-      this.$router.push({ name: 'integralgoods' })
+      this.$emit('on-click', 'goods')
     },
     showDetail() {
-
-      this.$router.push({ name: 'integraldetail' })
+      this.$emit('on-click', 'detail')
     },
-    showEvaluations() {
-      this.$router.push({ name: 'integralevaluations' })
+    showComments() {
+      this.$emit('on-click', 'comments')
     }
   }
 }
@@ -60,7 +60,7 @@ export default {
   }
 }
 
-.header-info {
+.header-other {
   width: 40px;
   position: relative;
   &:after {

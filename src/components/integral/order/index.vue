@@ -13,14 +13,6 @@
         <p>×1</p>
       </div>
     </div>
-    <div class="cell">
-      <div class="cell-hd">
-        买家留言
-      </div>
-      <div class="cell-bd">
-        <input type="text" class="ipt">
-      </div>
-    </div>
     <div class="footer-action">
       <div class="footer-desc">共一件商品</div>
       <a class="action" @click="confirm">提交订单</a>

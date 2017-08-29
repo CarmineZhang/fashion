@@ -1,11 +1,11 @@
 <template>
   <div class="home-col">
-    <div class="col-body" @click="showDetail">
+    <div class="col-body">
       <a class="banner">
         <img v-lazy="cdata.categoryImage" alt="">
       </a>
       <div class="col-footer integral-footer">
-        <div class="footer-item" v-for="item in cdata.commodityList" :key="item.commodityId">
+        <div class="footer-item" v-for="item in cdata.commodityList" :key="item.commodityId" @click="showDetail(item)">
           <div class="img-wrapper">
             <img v-lazy="item.image" alt="">
           </div>
@@ -30,8 +30,8 @@ export default {
     }
   },
   methods: {
-    showDetail() {
-      this.$router.push('/integralgoods')
+    showDetail(item) {
+      this.$router.push({ path: '/integralgoods', params: { commidty: item } })
     }
   }
 }
