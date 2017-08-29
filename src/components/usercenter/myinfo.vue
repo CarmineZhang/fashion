@@ -24,7 +24,7 @@
         <p v-text="user.integral"></p>
         <p>积分</p>
       </div>
-      <div class="my-header-info-item">
+      <div class="my-header-info-item" @click="showCollection">
         <p v-text="user.collection"></p>
         <p>收藏</p>
       </div>
@@ -37,6 +37,11 @@ export default {
   computed: {
     user() {
       return this.$store.state.user.info
+    }
+  },
+  methods: {
+    showCollection() {
+      this.$router.push('/collection')
     }
   }
 }

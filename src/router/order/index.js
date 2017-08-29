@@ -8,6 +8,7 @@ import OrderList from '@/components/orderlist'
 import ExpressStatus from '@/components/express'
 import Sechedule from '@/components/schedule'
 import Evaluation from '@/components/evaluation'
+import Collection from '@/components/collection'
 export default [{
     path: '/orderlist',
     component: OrderList
@@ -46,5 +47,8 @@ export default [{
     path: '/evaluation',
     name: 'evaluation',
     component: Evaluation
+  }, {
+    path: '/collection',
+    component: Collection
   }
 ]
