@@ -12,8 +12,6 @@
         <span>评价</span>
       </a>
     </div>
-    <div class="header-cart"></div>
-    <div class="header-other"></div>
   </div>
 </template>
 <script>
