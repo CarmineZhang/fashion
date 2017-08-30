@@ -11,7 +11,7 @@
       </p>
     </section>
     <list :list="goodslist"></list>
-    <cell type="link" title="选择发票抬头" @on-click="selectInvoice"></cell>
+    <cell type="link" title="选择发票抬头" :content="invoice.header" @on-click="selectInvoice"></cell>
     <cell title="可用1000积分抵扣50" ce-class="order-switch">
       <my-switch slot="footer"></my-switch>
     </cell>
@@ -39,8 +39,11 @@ export default {
   },
   computed: {
     ...mapGetters([
-      'defaultAddr',
+      'defaultAddr'
     ]),
+    invoice() {
+      return this.$store.state.invoice
+    },
     goodslist() {
       return this.$store.state.settlegoods
     }
@@ -56,7 +59,7 @@ export default {
       this.$router.push({ name: 'order-select-addr' })
     },
     selectInvoice() {
-      this.$router.push('/selectinvoice')
+      this.$router.push({ name: 'order-select-invoice' })
     },
     submit() {
       let list = []

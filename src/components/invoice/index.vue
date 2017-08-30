@@ -3,7 +3,7 @@
     <div class="select-form" :class="{'selected-form':choose}">
       <div>
         <div class="item" v-slider v-for="item in list" :key="item.infoID">
-          <ul @click="chooseInvoice(item.infoId)">
+          <ul @click="chooseInvoice(item)">
             <li>
               <span>发票抬头</span>
               <span v-text="item.header"></span>
