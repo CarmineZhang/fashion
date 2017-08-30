@@ -16,8 +16,6 @@ var tpl = `<div class="<%=className%>">
 
 import $ from '../util';
 
-let _sington;
-
 /**
  * dialog，弹窗，alert和confirm的父类
  *
@@ -54,7 +52,8 @@ let _sington;
  * });
  */
 function dialog(options = {}) {
-  if (_sington) return _sington;
+  let _sington
+  if (_sington) return _sington
 
   const isAndroid = $.os.android;
   options = $.extend({

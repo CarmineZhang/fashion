@@ -1,5 +1,5 @@
 <template>
-  <input class="switch-ipt" type="checkbox" :checked="checked">
+  <input class="switch-ipt" type="checkbox" :checked="checked" @click="change($event)">
 </template>
 <script>
 export default {
@@ -8,6 +8,11 @@ export default {
     checked: {
       type: Boolean,
       default: false
+    }
+  },
+  methods: {
+    change(e) {
+      this.$emit('on-click', e.target.checked)
     }
   }
 }

@@ -1,7 +1,7 @@
 <template>
   <div class="ve-address">
     <transition name="ve-mask">
-      <div class="mask mask-transparent" v-show="show"></div>
+      <div class="mod-slide" v-show="show"></div>
     </transition>
     <div class="mod-slide-main" :class="{'mod-slide-toggle': show}">
       <div class="mod-slide-header">
@@ -186,7 +186,7 @@ export default {
   },
   directives: {
     addrText: {
-      inserted: function (el, binding) {
+      inserted: function(el, binding) {
         var v = binding.value,
           result = v
         if (Array.isArray(v)) {

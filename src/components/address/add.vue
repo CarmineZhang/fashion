@@ -35,8 +35,8 @@
   </div>
 </template>
 <script>
-import Cell from '../widget/cell'
-import MyArea from '../widget/address'
+import Cell from '@/components/widget/cell'
+import MyArea from '@/components/widget/address'
 export default {
   name: 'add-address',
   components: {
@@ -96,26 +96,27 @@ export default {
       county: '',
       countyId: 0,
       detail: '',
-      isDefault: 0,
+      isDefault: 1,
       show: false
     }
   },
   beforeMount() {
     var params = this.$store.state.route.params
     var addr = params.addr
+    console.dir(addr)
     if (addr) {
-      this.province = addr['province'] || ''
+      this.province = addr['provinceName'] || ''
       this.provinceId = addr['provinceId'] || 0
-      this.city = addr['city'] || ''
+      this.city = addr['cityName'] || ''
       this.cityId = addr['cityId'] || 0
-      this.town = addr['town'] || ''
-      this.townId = addr['townId'] || 0
-      this.county = addr['county'] || ''
+      this.county = addr['districtName'] || ''
       this.countyId = addr['countyId'] || 0
+      this.town = addr['townName'] || ''
+      this.townId = addr['townId'] || 0
       this.receiver = addr.realName || ''
       this.addrID = addr.addrID
       this.mobile = addr.mobile
-      this.detail = addr.addressDetail
+      this.detail = addr.addressDetail || ''
       this.isDefault = addr.isDefault
     }
   },
@@ -139,10 +140,10 @@ export default {
       this.provinceId = this.getKey(result[0])
       this.city = this.getValue(result[1])
       this.cityId = this.getKey(result[1])
-      this.town = this.getValue(result[2])
-      this.townId = this.getKey(result[2])
-      this.county = this.getValue(result[3])
-      this.countyId = this.getKey(result[3])
+      this.county = this.getValue(result[2])
+      this.countyId = this.getKey(result[2])
+      this.town = this.getValue(result[3])
+      this.townId = this.getKey(result[3])
     },
     clearDetail() {
       this.detail = ''
@@ -160,6 +161,7 @@ export default {
         "mobile": this.mobile,
         "isDefault": this.isDefault
       }
+      console.log(addr)
       if (this.$validator.valid) {
         this.$store.dispatch('editAddr', addr).then(res => {
           if (res.retcode === 0) {

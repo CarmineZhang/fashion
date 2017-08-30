@@ -1,7 +1,7 @@
 import ajax, {
   axios
 } from '../ajax'
-import cookie from '@/libs/cookie'
+// import cookie from '@/libs/cookie'
 
 export function getArea(id) {
   var url = `/json/${id}.json`
@@ -11,11 +11,11 @@ export function getArea(id) {
 }
 
 export function setAddrDefault(id) {
-  return ajax.post({
+  return ajax({
     "name": "editDefAddr",
     "ctype": "weChat",
-    "sessionStr": cookie('sessionStr'),
-    "userid": cookie('userId'),
+    "sessionStr": "BCBC8BB0E7FC40DB1F281BC3B50C2419",
+    "userid": 40,
     "reqbody": {
       "defAddrID": id
     }
@@ -23,31 +23,31 @@ export function setAddrDefault(id) {
 }
 
 export function getAddrList() {
-  return ajax.post({
+  return ajax({
     "name": "queryAddr",
     "ctype": "weChat",
-    "sessionStr": cookie('sessionStr'),
-    "userid": cookie('userId')
+    "sessionStr": "BCBC8BB0E7FC40DB1F281BC3B50C2419",
+    "userid": 40,
   })
 }
 
 export function editAddr(addr) {
   var name = 'addAddr'
-  if (addr.addrId) {
+  if (addr.addrID) {
     name = 'editAddr'
   }
   return ajax({
     "name": name,
     "ctype": "weChat",
-    "sessionStr": cookie('sessionStr'),
-    "userid": cookie('userId'),
+    "sessionStr": "BCBC8BB0E7FC40DB1F281BC3B50C2419",
+    "userid": 40,
     "reqbody": {
-      "addrID": addr.addrId,
+      "addrID": addr.addrID,
       "province": addr.province,
       "city": addr.city,
-      'countyName': addr.county,
-      'townName': addr.town,
-      'addressDetail': addr.detail,
+      'countyName': addr.countyName,
+      'townName': addr.townName,
+      'addressDetail': addr.addressDetail,
       'mobile': addr.mobile,
       'realName': addr.realName
     }
@@ -58,8 +58,8 @@ export function delAddr(id) {
   return ajax({
     "name": "delAddr",
     "ctype": "weChat",
-    "sessionStr": cookie('sessionStr'),
-    "userid": cookie('userId'),
+    "sessionStr": "BCBC8BB0E7FC40DB1F281BC3B50C2419",
+    "userid": 40,
     "reqbody": {
       addrID: id
     }
