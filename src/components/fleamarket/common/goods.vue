@@ -1,6 +1,6 @@
 <template>
   <div class="flea-goods-wrapper">
-    <ul class="goods">
+    <ul class="goods" v-show="data.length>0">
       <li v-for="item in data" :key="item.commodityId" @click="showDetail(item)">
         <div class="cover">
           <img :src="item.icon" alt="">
@@ -8,6 +8,9 @@
         <p class="tit" v-text="item.name"></p>
       </li>
     </ul>
+    <p v-show="data.length===0">
+      没有数据
+    </p>
   </div>
 </template>
 <script>
@@ -19,9 +22,9 @@ export default {
       default: () => []
     }
   },
-  methods:{
-    showDetail(item){
-      this.$emit('on-select',item)
+  methods: {
+    showDetail(item) {
+      this.$emit('on-select', item)
     }
   }
 }

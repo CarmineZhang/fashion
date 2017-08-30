@@ -25,8 +25,9 @@ export default {
         size: 100
       })
     },
-    publish(item){
-      this.$router.push({name:'publish-buy',params:{id:item.commodityId}})
+    publish(item) {
+      console.dir(item)
+      this.$router.push({ name: 'publish-buy', query: { id: item.commodityId } })
     }
   }
 }

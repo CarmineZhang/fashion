@@ -28,7 +28,7 @@ export default {
       this.$router.push({ name: 'flea-buy' })
     },
     publish() {
-      this.$router.push('/publish/buy')
+      this.$router.push('/publish')
     }
   }
 }
