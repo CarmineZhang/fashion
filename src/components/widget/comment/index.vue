@@ -3,7 +3,7 @@
     <li class="cmt-item" v-for="(item,index) in list" :key="index">
       <div class="cmt-item-user" v-text="item.userName"></div>
       <div class="cmt-item-cnt" v-text="item.content"></div>
-      <div class="cmt-item-imglist">
+      <div class="cmt-item-imglist" v-if="item.images">
         <span class="img" v-for="(imgItem ,imgIndex) in item.images.split(',')" :key="imgIndex">
           <img :src="imgItem" alt="">
         </span>
