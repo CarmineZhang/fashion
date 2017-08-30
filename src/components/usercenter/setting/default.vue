@@ -1,8 +1,8 @@
 <template>
   <div>
     <div class="section">
-      <cell type="link" title="个人信息" @on-click="showAddress"></cell>
-      <cell type="link" title="账户安全"></cell>
+      <cell type="link" title="地址管理" @on-click="showAddress"></cell>
+      <cell type="link" title="发票管理" @on-click="showInvoice"></cell>
       <cell type="link" title="消息提醒设置"></cell>
       <cell type="link" title="通用"></cell>
     </div>
@@ -30,6 +30,9 @@ export default {
       this.$router.push({
         name: 'setting-addrlist'
       })
+    },
+    showInvoice() {
+      this.$router.push({ name: 'setting-invoicelist' })
     }
   }
 }

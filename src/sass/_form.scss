@@ -34,3 +34,72 @@
 .form-op {
   padding-top: .3rem;
 }
+
+.add-form {
+  background: #fff;
+  position: relative;
+  padding-bottom: 10px;
+  .ipt {
+    padding: 0;
+  }
+  p {
+    padding: 12px 10px 12px 75px;
+    position: relative;
+    box-sizing: border-box;
+    @include bottomline();
+  }
+  label {
+    display: block;
+    font-size: 14px;
+    color: #333;
+  }
+  .tit {
+    width: 65px;
+    line-height: 1;
+    position: absolute;
+    top: 15px;
+    left: 0;
+    right: 0;
+    margin: auto 0;
+    text-align: right;
+  }
+  textarea {
+    -webkit-appearance: none;
+    width: 100%;
+    border: none;
+    resize: none;
+    font-size: 14px;
+    line-height: 1.5;
+  }
+  .detail {
+    padding-right: 35px;
+  }
+  .arrow {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 35px;
+    height: 44px;
+    @include arrow-right();
+    &:after {
+      right: 20px;
+    }
+  }
+  .close {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 35px;
+    height: 44px;
+    &::after {
+      content: "";
+      position: absolute;
+      top: 16px;
+      right: 10px;
+      width: 15px;
+      height: 15px;
+      background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeBAMAAADJHrORAAAABGdBTUEAALGPC/xhBQAAAAFzUkdCAK7OHOkAAAAnUExURQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAN0S+bUAAAANdFJOU00ARgwYLAUnEg40OzwIOFrEAAAAvklEQVQY02MQBAHXQww6IWAWAxCLFTGAgHoilO/EAAEqEL4oAwwEgvkL4HwuEB8hDVLAIOiAxGcRZBBTQOIzJTKIMyCDQgYhkLImIKEB0qjIACI5hBUYmAwbQDIMASBthkYMypIgg1gZNoC0KQsrGU4CMbgZwMYzGRpLQhhQc5UFJ6HYoyxoBGVB1U8WhqqHmCepZGgEMQ9i3ySgFRD7wO6RRLgH3b3o/kH3L3p4YIQXenhihDd6fGDEF3J8AgDkYx3BeW71dAAAAABJRU5ErkJggg==");
+      background-size: 15px;
+    }
+  }
+}

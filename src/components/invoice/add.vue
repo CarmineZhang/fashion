@@ -1,26 +1,26 @@
 <template>
   <div>
     <transition name="ve-mask">
-      <div class="mod-slide" v-show="show" @click="cancel"></div>
+      <div class="mod-slide" v-show="show" @click="close"></div>
     </transition>
     <div class="mod-slide-main" :class="{'mod-slide-toggle': show}">
       <div class="mod-slide-header">
         发票抬头
-        <i class="close" @click="cancel"></i>
+        <i class="close" @click="close"></i>
       </div>
-      <div class="invoice-body">
-        <div class="cell-form-item">
-          <div class="cell-hd">发票抬头：</div>
-          <div class="cell-bd">
-            <input type="text" class="ipt" v-model="header">
-          </div>
-        </div>
-        <div class="cell-form-item">
-          <div class="cell-hd">纳税人识别号：</div>
-          <div class="cell-bd">
-            <input type="tel" class="ipt" v-model="no">
-          </div>
-        </div>
+      <div class="add-form invoice-form">
+        <p>
+          <label>
+            <span class="tit">发票抬头</span>
+            <input type="text" placeholder="请填写发票抬头" v-model.trim="header" class="ipt" />
+          </label>
+        </p>
+        <p>
+          <label>
+            <span class="tit">纳税人识别号</span>
+            <input type="tel" placeholder="请填写纳税人识别号" v-model.trim="no" class="ipt">
+          </label>
+        </p>
       </div>
       <div class="invoice-footer">
         <a class="btn btn-primary" @click="submit">确认</a>
@@ -36,6 +36,16 @@ export default {
     value: Boolean,
     invoice: Object
   },
+  validator: {
+    header: {
+      test: 'required',
+      message: '请输入发票抬头'
+    },
+    no: {
+      test: 'required',
+      message: '请输入纳税人识别号'
+    }
+  },
   data() {
     return {
       show: false,
@@ -47,9 +57,9 @@ export default {
   watch: {
     invoice(ob) {
       if (ob) {
-        this.header = ob.header,
-          this.no = ob.dutyNo,
-          this.id = ob.infoID
+        this.header = ob.header
+        this.no = ob.dutyNo
+        this.id = ob.infoId
       }
     },
     value(val) {
@@ -60,34 +70,48 @@ export default {
     }
   },
   methods: {
-    cancel() {
+    close() {
       this.show = false
     },
     submit() {
-      if (this.id) {
-        http.addInvoiceInfo(this.header, this.no).then(res => {
-          if (res.retcode === 0) {
-            this.$ve.toast.success('添加成功', () => {
-              this.cancel()
-              this.$emit('on-confirm')
-            })
-          }
-        })
+      if (this.$validator.valid) {
+        if (this.id === 0) {
+          http.addInvoiceInfo(this.header, this.no).then(res => {
+            if (res.retcode === 0) {
+              this.$ve.alert('添加成功', () => {
+                this.close()
+                this.$emit('on-confirm')
+              })
+            }
+          })
+        } else {
+          http.updateInvoiceInfo(this.id, this.header, this.no).then(res => {
+            if (res.retcode === 0) {
+              this.$ve.toast.success('修改成功', () => {
+                this.close()
+                this.$emit('on-confirm')
+              })
+            }
+          })
+        }
       } else {
-        http.updateInvoiceInfo(this.id,this.header, this.no).then(res => {
-          if (res.retcode === 0) {
-            this.$ve.toast.success('修改成功', () => {
-              this.cancel()
-              this.$emit('on-confirm')
-            })
-          }
-        })
+        let errors = this.$validator.$errors
+        this.$ve.alert(errors.header || errors.no)
       }
     }
   }
 }
 </script>
 <style lang="scss">
+.invoice-form {
+  p {
+    padding-left: 120px;
+    .tit {
+      width: 100px;
+    }
+  }
+}
+
 .invoice-footer {
   margin-top: 30px;
   padding: 0 15px;

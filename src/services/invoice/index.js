@@ -3,50 +3,50 @@ import ajax from '../ajax'
 /**
  * 查询发票信息
  */
-export function queryInvoiceInfo(){
+export function queryInvoiceInfo() {
   return ajax({
     "name": "queryInvoiceInfo",
     "ctype": "weChat",
-    "sessionStr": "3634F440030595CC6B6B4F718BECA437",
-    "userid": 2
+    "sessionStr": "BCBC8BB0E7FC40DB1F281BC3B50C2419",
+    "userid": 40
   })
 }
 
-export function addInvoiceInfo(header,no){
+export function addInvoiceInfo(header, no) {
   return ajax({
     "name": "addInvoiceInfo",
     "ctype": "weChat",
-    "sessionStr": "3634F440030595CC6B6B4F718BECA437",
-    "userid": 2,
+    "sessionStr": "BCBC8BB0E7FC40DB1F281BC3B50C2419",
+    "userid": 40,
     "reqbody": {
-      "header":header, //发票抬头
-      "dutyNo":no //税号
+      "header": header, //发票抬头
+      "dutyNo": no //税号
     }
   })
 }
 
-export function updateInvoiceInfo(id,header,no){
+export function updateInvoiceInfo(id, header, no) {
   return ajax({
-    "name": "addInvoiceInfo",
-    "ctype": "Web",
-    "sessionStr": "3634F440030595CC6B6B4F718BECA437",
-    "userid": 2,
+    "name": "updateInvoiceInfo",
+    "ctype": "weChat",
+    "sessionStr": "BCBC8BB0E7FC40DB1F281BC3B50C2419",
+    "userid": 40,
     "reqbody": {
-      "infoId":id, //发票信息ID
-      "header":header, //发票抬头
-      "dutyNo":no //税号
+      "infoId": id, //发票信息ID
+      "header": header, //发票抬头
+      "dutyNo": no //税号
     }
   })
 }
 
-export function deleteInvoiceInfo(id){
+export function deleteInvoiceInfo(id) {
   return ajax({
     "name": "deleteInvoiceInfo",
-    "ctype": "Web",
-    "sessionStr": "3634F440030595CC6B6B4F718BECA437",
-    "userid": 2,
+    "ctype": "weChat",
+    "sessionStr": "BCBC8BB0E7FC40DB1F281BC3B50C2419",
+    "userid": 40,
     "reqbody": {
-      "infoID":id //发票信息ID
+      "infoID": id //发票信息ID
     }
   })
 }
