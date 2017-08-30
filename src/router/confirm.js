@@ -3,8 +3,8 @@
  */
 import OrderConfirm from '@/components/orderconfirm'
 import Confirm from '@/components/orderconfirm/confirm'
-import SelectAddr from '@/components/orderconfirm/selectaddr'
-import AddAddr from '@/components/orderconfirm/addaddr'
+import SelectAddr from '@/components/common/selectaddr'
+import AddAddr from '@/components/common/addaddr'
 export default {
   path: '/orderconfirm',
   component: OrderConfirm,
