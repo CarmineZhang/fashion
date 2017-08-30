@@ -84,7 +84,11 @@ export default {
     },
     buy() {
       if (this.judgeAttr()) {
-        console.log('1')
+        let ret = { ...this.goods }
+        ret.quantity = this.qty
+        ret.type = this.attrlist
+        this.$store.commit('RECEIVE_SETTLE_GOODS', [ret])
+        this.$router.push('/orderconfirm')
       }
     }
   }

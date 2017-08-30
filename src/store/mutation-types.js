@@ -8,6 +8,11 @@ export const SET_DEFAULT_ADDR = 'SET_DEFAULT_ADDR'
 export const DEL_TO_ADDRESS = 'DEL_TO_ADDRESS'
 
 /**
+ * 默认发票
+ */
+export const RECEIVE_DEFAULT_INVOICE = 'RECEIVE_DEFAULT_INVOICE'
+
+/**
  * 首页
  */
 

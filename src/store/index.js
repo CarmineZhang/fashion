@@ -9,12 +9,16 @@ import * as types from './mutation-types'
 Vue.use(Vuex)
 
 const state = {
-  settlegoods: []
+  settlegoods: [],
+  invoice: {}
 }
 
 const mutations = {
   [types.RECEIVE_SETTLE_GOODS](state, goods) {
     state.settlegoods = goods
+  },
+  [types.RECEIVE_DEFAULT_INVOICE](state, invoice) {
+    state.invoice = invoice
   }
 }
 
