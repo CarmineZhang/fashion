@@ -26,3 +26,12 @@ export function fleaTransfer(id) {
 
   })
 }
+
+export function queryFirmIntegral() {
+  return ajax({
+    "name": "queryFirmIntegral",
+    "ctype": "weChat",
+    "sessionStr": "BCBC8BB0E7FC40DB1F281BC3B50C2419",
+    "userid": 40
+  })
+}

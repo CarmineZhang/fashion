@@ -55,7 +55,7 @@ export function commoditySearch(key, mId, index, size) {
   })
 }
 
-export function directBuy(addrId, totalCost, invoiceFlag, list, integralFlag, invoiceId) {
+export function directBuy(addrId, totalCost, invoiceFlag, invoiceId, list, integralFlag, cartDetaiLID, couponsStatus, couponsIdList) {
   return ajax({
     "name": "directBuy",
     "ctype": "weChat",
@@ -69,7 +69,10 @@ export function directBuy(addrId, totalCost, invoiceFlag, list, integralFlag, in
       "invoiceFlag": invoiceFlag,
       "infoID": invoiceId, //发票信息ID
       "accumulate": integralFlag, //是否使用积分 0 不使用 ,1使用
-      "list": list
+      "list": list,
+      "cartDetaiLID": cartDetaiLID, //购物车下单填写
+      "couponsStatus": couponsStatus, //是否使用代金券 0不使用  1使用 
+      "couponsIdList": couponsIdList
     }
   })
 }
@@ -101,4 +104,3 @@ export function fleaMarketTrade(id) {
     }
   })
 }
-
