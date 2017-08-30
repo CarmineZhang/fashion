@@ -13,7 +13,7 @@ import IntegralRouter from './integral'
 import FleaMarketRouter from './fleamarket'
 import UserCenter from '@/components/usercenter'
 import OrderRouter from './order'
-import GiftRouter from './gift'
+import CouponsRouter from './coupons'
 import GoodsRouter from './goods'
 import Test from '@/components/test'
 Vue.use(Router)
@@ -41,11 +41,11 @@ export default new Router({
   }, {
     path: '/register',
     component: Register
-  },{
-    path:'/test',
-    component:Test
+  }, {
+    path: '/test',
+    component: Test
   }, {
     path: '/login',
     component: Login
-  }, GoodsRouter, OrderConfirmRouter, SettingRouter, ...IntegralRouter, ...FleaMarketRouter, ...OrderRouter, ...GiftRouter]
+  }, GoodsRouter, OrderConfirmRouter, SettingRouter, ...IntegralRouter, ...FleaMarketRouter, ...OrderRouter, ...CouponsRouter]
 })

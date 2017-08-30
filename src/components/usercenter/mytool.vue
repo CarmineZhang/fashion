@@ -11,10 +11,7 @@
         <a href="" class="t-qrcode">我的二维码</a>
       </li>
       <li>
-        <router-link href="" class="t-buy-card" to="/gift/list">购卡</router-link>
-      </li>
-      <li>
-        <a href="" class="t-bind-card">礼品卡绑定</a>
+        <router-link href="" class="t-buy-card" to="/counpons/list">礼品卡</router-link>
       </li>
       <li>
         <router-link class="t-set" to="/setting">设置</router-link>
