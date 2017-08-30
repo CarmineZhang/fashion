@@ -4,7 +4,7 @@
       <div>
         <div class="item" v-slider v-for="(item,index) in list" :key="item.id">
           <ul :class="{'selected':choose&&item.isDefault===1}" @click="chooseAddr(item.addrID)">
-            <li v-addr-detail="item"></li>
+            <li v-attr-detail="item"></li>
             <li>
               <strong v-text="item.realName"></strong>
               <span v-text="item.mobile"></span>
@@ -28,49 +28,7 @@ import { mapActions } from 'vuex'
 export default {
   name: 'address',
   directives: {
-    slider: slider,
-    addrDetail: {
-      bind(el, binding) {
-        var item = binding.value
-        let ret = ''
-        if (item.provinceName) {
-          ret += item.provinceName
-        }
-        if (item.cityName) {
-          ret += item.cityName
-        }
-        if (item.districtName) {
-          ret += item.districtName
-        }
-        if (item.townName) {
-          ret += item.townName
-        }
-        if (item.addressDetail) {
-          ret += item.addressDetail
-        }
-        el.innerHTML = ret
-      },
-      update(el, binding) {
-        var item = binding.value
-        let ret = ''
-        if (item.provinceName) {
-          ret += item.provinceName
-        }
-        if (item.cityName) {
-          ret += item.cityName
-        }
-        if (item.districtName) {
-          ret += item.districtName
-        }
-        if (item.townName) {
-          ret += item.townName
-        }
-        if (item.addressDetail) {
-          ret += item.addressDetail
-        }
-        el.innerHTML = ret
-      }
-    }
+    slider: slider
   },
   props: {
     choose: {

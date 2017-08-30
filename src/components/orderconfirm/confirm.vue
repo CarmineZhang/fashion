@@ -7,7 +7,7 @@
       </p>
       <p class="sub-addr">
         <span>收货地址：</span>
-        <span v-text="defaultAddr.addressDetail"></span>
+        <span v-attr-detail="defaultAddr"></span>
       </p>
     </section>
     <list :list="goodslist"></list>

@@ -1,5 +1,5 @@
 <template>
-  <div class="order-confirm">
+  <div>
     <keep-alive :exclude="['order-add-address']">
       <router-view>
       </router-view>

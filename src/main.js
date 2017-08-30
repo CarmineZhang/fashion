@@ -57,6 +57,27 @@ Vue.directive('attr', (el, binding) => {
   el.innerHTML = ret
 })
 
+Vue.directive('attrDetail', (el, binding) => {
+  var item = binding.value
+  let ret = ''
+  if (item.provinceName) {
+    ret += item.provinceName
+  }
+  if (item.cityName) {
+    ret += item.cityName
+  }
+  if (item.districtName) {
+    ret += item.districtName
+  }
+  if (item.townName) {
+    ret += item.townName
+  }
+  if (item.addressDetail) {
+    ret += item.addressDetail
+  }
+  el.innerHTML = ret
+})
+
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
