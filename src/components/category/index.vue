@@ -25,6 +25,9 @@ export default {
   computed: {
     loading() {
       return this.$store.state.goods.allowLoad
+    },
+    goodslist() {
+      return this.$store.state.goods.list
     }
   },
   beforeMount() {

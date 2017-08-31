@@ -19,6 +19,7 @@ export function getCommodity(cId, mId, index, size) {
   })
 }
 
+
 export function commodityDetail(cId) {
   return ajax({
     "name": "commodityDetail",
@@ -41,14 +42,14 @@ export function commodityEvaluate(cId, index, size) {
   })
 }
 
-export function commoditySearch(key, mId, index, size) {
+export function commoditySearch(key, index, size) {
   return ajax({
     "name": "commoditySearch",
     "ctype": "weChat",
     "reqbody": {
       "key": key,
       "sales": "0",
-      "marketId": mId,
+      "marketId": 1,
       "pageIndex": index,
       "pageSize": size
     }
