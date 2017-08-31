@@ -77,6 +77,20 @@ export function directBuy(addrId, totalCost, invoiceFlag, invoiceId, list, integ
   })
 }
 
+export function couponsDirectBuy(totalCost, list) {
+  return ajax({
+    "name": "directBuy",
+    "ctype": "weChat",
+    "sessionStr": "BCBC8BB0E7FC40DB1F281BC3B50C2419",
+    "userid": 40,
+    "reqbody": {
+      "totalCost": totalCost, //订单总金额
+      "brokerFirmId": 12, //经纪人
+      "list": list,
+    }
+  })
+}
+
 export function integralExchange(totalCost, list) {
   return ajax({
     "name": "directBuy",
