@@ -158,6 +158,10 @@ input[type='file'] {
       margin-right: 10px;
       width: 50px;
       height: 50px;
+      img {
+        width: 100%;
+        height: 100%;
+      }
       .add {
         position: relative;
         display: block;
