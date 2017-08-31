@@ -32,10 +32,11 @@
           共1件商品，合计¥ {{item.totalPrice}}(含运费¥ {{item.freight.toFixed(2)}})
         </div>
         <div class="item-op">
-          <a class="op" @click="cancel(item)" v-show="item.status===1">撤单</a>
-          <a class="op" @click="delivery(item)" v-show="item.status===2||item.status===3">提货</a>
-          <a class="op" @click="sale(item)" v-show="item.status===2||item.status===3">转售</a>
-          <a class="op" @click="confirm(item)" v-show="item.status===5">确认收货</a>
+          <a class="op" @click="cancel(item)" v-show="item.status===10">撤单</a>
+          <a class="op" @click="delivery(item)" v-show="item.status===2">提货</a>
+          <a class="op" @click="sale(item)" v-show="item.status===2">转售</a>
+          <a class="op" @click="confirm(item)" v-show="item.status===4">确认收货</a>
+          <a class="op" @click="evaluate(item)" v-show="item.status===8">评价</a>
         </div>
       </div>
     </div>
@@ -62,23 +63,26 @@ export default {
     getStatus(val) {
       let ret = ''
       switch (val) {
-        case 1:
-          ret = '已委托'
-          break
         case 2:
-          ret = '已成交'
+          ret = '已支付'
           break
         case 3:
-          ret = '已撤单'
+          ret = '待发货'
           break
         case 4:
-          ret = '已提货'
-          break
-        case 5:
           ret = '已发货'
           break
-        case 6:
-          ret = '确认收货'
+        case 8:
+          ret = '已收货'
+          break
+        case 9:
+          ret = '已评价'
+          break
+        case 10:
+          ret = '已寄售'
+          break
+        case 11:
+          ret = '已完成'
           break
       }
       return ret
@@ -120,6 +124,9 @@ export default {
           })
         }
       })
+    },
+    evaluate(item) {
+      this.$router.push({ name: 'evaluation', params: { oId: item.orderID, cId: item.commodityID } })
     }
   }
 }
