@@ -6,6 +6,7 @@ import Maintaince from '@/components/maintaince'
 import OldforNew from '@/components/oldfornew'
 import OrderList from '@/components/orderlist'
 import ExpressStatus from '@/components/express'
+import FleaExpressStatus from '@/components/express/flea'
 import Sechedule from '@/components/schedule'
 import Evaluation from '@/components/evaluation'
 import Collection from '@/components/collection'
@@ -46,6 +47,11 @@ export default [{
     name: 'expressstatus',
     component: ExpressStatus
   }, {
+    path: '/flea/expressstatus',
+    name: 'flea-expressstatus',
+    component: FleaExpressStatus
+  },
+  {
     path: '/sechedule',
     name: 'sechedule',
     component: Sechedule

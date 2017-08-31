@@ -42,6 +42,7 @@
           <a class="op" @click="delivery(item)" v-show="flag ===1&&(item.status===2||item.status===3)">提货</a>
           <a class="op" @click="cancelOrder(item)" v-show="flag ===1&&item.status===1">撤单</a>
           <a class="op" @click="confirm(item)" v-show="flag ===1&&item.status===5">确认收货</a>
+          <a class="op" @click="showExpress(item)" v-show="flag ===1&&item.status===5">查看物流</a>
         </div>
       </div>
     </div>
@@ -131,6 +132,9 @@ export default {
           this.$ve.alert(res.msg)
         }
       })
+    },
+    showExpress(item) {
+      this.$router.push({ name: 'flea-expressstatus', query: { oId: item.orderID } })
     }
   }
 }

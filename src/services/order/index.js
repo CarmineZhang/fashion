@@ -157,9 +157,25 @@ export function queryOrderSchedule(oId, detailId) {
   })
 }
 
+/**
+ * 查看物流
+ * @param {*} oId 
+ */
 export function queryLogistics(oId) {
   return ajax({
     "name": "queryLogistics",
+    "ctype": "weChat",
+    "sessionStr": "BCBC8BB0E7FC40DB1F281BC3B50C2419",
+    "userid": 40,
+    "reqbody": {
+      "orderID": oId //订单ID
+    }
+  })
+}
+
+export function queryFleaLogistics(oId) {
+  return ajax({
+    "name": "fleaLogistics",
     "ctype": "weChat",
     "sessionStr": "BCBC8BB0E7FC40DB1F281BC3B50C2419",
     "userid": 40,
