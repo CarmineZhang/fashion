@@ -78,6 +78,26 @@ export function integralPickUp(oId, detailId, addrId, attrList) {
 }
 
 /**
+ * 跳蚤订单的提货
+ * @param {*} oId 
+ * @param {*} addrId 
+ * @param {*} attrList 
+ */
+export function fleaPickUp(oId, addrId, attrList) {
+  return ajax({
+    "name": "fleaPickUp",
+    "ctype": "weChat",
+    "sessionStr": "BCBC8BB0E7FC40DB1F281BC3B50C2419",
+    "userid": 40,
+    "reqbody": {
+      "orderId": oId, //订单ID
+      "addrId": addrId,
+      "propertyList": attrList
+    }
+  })
+}
+
+/**
  * 维修
  * @param {*} oId 
  * @param {*} weight 

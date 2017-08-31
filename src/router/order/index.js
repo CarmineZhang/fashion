@@ -9,6 +9,7 @@ import ExpressStatus from '@/components/express'
 import Sechedule from '@/components/schedule'
 import Evaluation from '@/components/evaluation'
 import Collection from '@/components/collection'
+import FleaOrderDelivery from '@/components/delivery/flea'
 export default [{
     path: '/orderlist',
     component: OrderList
@@ -19,6 +20,11 @@ export default [{
     path: '/integral/order/delivery',
     name: 'integral-delivery',
     component: IntegralOrderDelivery
+  },
+  {
+    path: '/flea/order/delivery',
+    name: 'flea-delivery',
+    component: FleaOrderDelivery
   }, {
     path: '/integral/order/transfer',
     name: 'integral-transfer',

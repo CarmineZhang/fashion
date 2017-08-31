@@ -28,7 +28,7 @@
 import { mapGetters } from 'vuex'
 import * as http from '@/services'
 export default {
-  name: 'integral-order-delivery',
+  name: 'flea-order-delivery',
   computed: {
     ...mapGetters([
       'defaultAddr'
@@ -47,7 +47,7 @@ export default {
     let params = this.$store.state.route.params
     this.item = params.commodity
     if (typeof this.item === 'undefined') {
-      this.$router.push('/integral/order/list')
+      this.$router.push('/flea/order/list')
     } else {
       http.commodityDetail(this.item.commodityID).then(res => {
         if (res.retcode === 0) {
@@ -72,7 +72,7 @@ export default {
           attrlist.push({ comProID: this.attrResult[key].comProID })
         })
         var loading = this.$ve.loading('处理中...')
-        http.integralPickUp(this.item.orderID, this.item.detailID, this.defaultAddr.addrID, attrlist).then(res => {
+        http.fleaPickUp(this.item.orderID, this.defaultAddr.addrID, attrlist).then(res => {
           loading.hide()
           if (res.retcode === 0) {
             this.$ve.toast.success('提货成功')

@@ -39,9 +39,9 @@
           共1件商品，合计¥ {{item.totalPrice}}(含运费¥ {{item.freight.toFixed(2)}})
         </div>
         <div class="item-op">
-          <a class="op" @click="delivery(item)" v-show="item.status===2||item.status===3">提货</a>
-          <a class="op" @click="cancelOrder(item)" v-show="item.status===1">撤单</a>
-          <a class="op" @click="confirm(item)" v-show="item.status===5">确认收货</a>
+          <a class="op" @click="delivery(item)" v-show="flag ===1&&(item.status===2||item.status===3)">提货</a>
+          <a class="op" @click="cancelOrder(item)" v-show="flag ===1&&item.status===1">撤单</a>
+          <a class="op" @click="confirm(item)" v-show="flag ===1&&item.status===5">确认收货</a>
         </div>
       </div>
     </div>
