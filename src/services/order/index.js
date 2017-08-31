@@ -1,4 +1,6 @@
-import ajax from '../ajax'
+import ajax, {
+  upload
+} from '../ajax'
 
 export function queryOrders(status, index) {
   return ajax({
@@ -147,15 +149,36 @@ export function queryLogistics(oId) {
   })
 }
 
-export function confirmReceipt(id){
+export function confirmReceipt(id) {
   return ajax({
-	"name": "confirmReceipt",
-	"ctype": "weChat",
-  "sessionStr": "BCBC8BB0E7FC40DB1F281BC3B50C2419",
-  "userid": 40,
-	"reqbody": {
-		"orderID":id //订单ID
-	}})
+    "name": "confirmReceipt",
+    "ctype": "weChat",
+    "sessionStr": "BCBC8BB0E7FC40DB1F281BC3B50C2419",
+    "userid": 40,
+    "reqbody": {
+      "orderID": id //订单ID
+    }
+  })
+}
+
+export function uploadImg(data) {
+  return upload(data)
+}
+
+export function addEvaluation(oId, level, cId, content, imglist) {
+  return ajax({
+    "name": "addEvaluation",
+    "ctype": "Web",
+    "sessionStr": "BCBC8BB0E7FC40DB1F281BC3B50C2419",
+    "userid": 40,
+    "reqbody": {
+      "orderID": 12, //订单ID
+      "level": level, //评价等级
+      "title": cId, //标题
+      "content": content, //评价内容
+      "images": imglist
+    }
+  })
 }
 
 /**

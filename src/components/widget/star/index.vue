@@ -20,7 +20,7 @@ export default {
   methods: {
     setSelected(n) {
       this.index = n;
-      this.$emit('on-change')
+      this.$emit('on-change', this.index)
     }
   }
 }
