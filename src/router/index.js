@@ -47,5 +47,5 @@ export default new Router({
   }, {
     path: '/login',
     component: Login
-  }, GoodsRouter, OrderConfirmRouter, SettingRouter, ...IntegralRouter, ...FleaMarketRouter, ...OrderRouter, ...CouponsRouter]
+  }, ...GoodsRouter, OrderConfirmRouter, SettingRouter, ...IntegralRouter, ...FleaMarketRouter, ...OrderRouter, ...CouponsRouter]
 })

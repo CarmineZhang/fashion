@@ -4,7 +4,6 @@
   </div>
 </template>
 <script>
-import * as http from '@/services'
 export default {
   name: 'goods-footer',
   methods: {
