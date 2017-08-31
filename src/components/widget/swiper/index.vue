@@ -80,6 +80,13 @@ export default {
       return null
     }
   },
+  watch: {
+    len() {
+      this.$nextTick(() => {
+        this.render()
+      })
+    }
+  },
   methods: {
     cover() {
       // this.showViewer = true
