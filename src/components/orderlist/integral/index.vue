@@ -35,6 +35,7 @@
           <a class="op" @click="cancel(item)" v-show="item.status===10">撤单</a>
           <a class="op" @click="delivery(item)" v-show="item.status===2">提货</a>
           <a class="op" @click="sale(item)" v-show="item.status===2">转售</a>
+          <a class="op" @click="showExpress(item)" v-show="item.status===4">查看物流</a>
           <a class="op" @click="confirm(item)" v-show="item.status===4">确认收货</a>
           <a class="op" @click="evaluate(item)" v-show="item.status===8">评价</a>
         </div>
@@ -127,6 +128,9 @@ export default {
     },
     evaluate(item) {
       this.$router.push({ name: 'evaluation', params: { oId: item.orderID, cId: item.commodityID } })
+    },
+    showExpress(item) {
+      this.$router.push({ name: 'expressstatus', query: { oId: item.orderID } })
     }
   }
 }
