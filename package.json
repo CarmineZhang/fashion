@@ -21,6 +21,7 @@
     "lodash.debounce": "^4.0.8",
     "lodash.throttle": "^4.1.1",
     "object-assign": "^4.1.1",
+    "photoswipe": "^4.1.2",
     "vue": "^2.3.3",
     "vue-lazyload": "^1.0.6",
     "vue-qrcode": "github:xkeshi/vue-qrcode",

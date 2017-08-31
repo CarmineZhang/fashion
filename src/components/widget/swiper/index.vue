@@ -88,10 +88,6 @@ export default {
     }
   },
   methods: {
-    cover() {
-      // this.showViewer = true
-      // this.$emit('on-click')
-    },
     render() {
       this.swiper && this.swiper.destory()
       this.swiper = new Swiper({

@@ -17,7 +17,7 @@
       </p>
       <ul class="images">
         <li v-for="(item,index) in imgList" :key="index">
-          <img :src="item">
+          <img :src="item" @click="showPreview(index)" class="preview-img">
         </li>
         <li>
           <a class="add" @click="showUpload"></a>
@@ -27,16 +27,19 @@
       <div class="footer-action">
         <a class="action comment-action" @click="submit">发表评价</a>
       </div>
+      <previewer :list="prelist" ref="previewer" :options="options"></previewer>
     </div>
   </div>
 </template>
 <script>
 import Star from '@/components/widget/star'
+import Previewer from '@/components/widget/previewer'
 import * as http from '@/services'
 export default {
   name: 'evaluation',
   components: {
-    Star
+    Star,
+    Previewer
   },
   created() {
     let params = this.$store.state.route.params
@@ -47,12 +50,25 @@ export default {
     return {
       oId: 0,
       cId: 0,
-      imgList: [],
+      imgList: ['https://ooo.0o0.ooo/2017/05/17/591c271ab71b1.jpg', 'https://ooo.0o0.ooo/2017/05/17/591c271acea7c.jpg'],
       content: '',
-      level: -1
+      level: -1,
+      prelist: [],
+      options: {
+        getThumbBoundsFn(index) {
+          let thumbnail = document.querySelectorAll('.preview-img')[index]
+          let pageYScroll = window.pageYOffset || document.documentElement.scrollTop
+          let rect = thumbnail.getBoundingClientRect()
+          return { x: rect.left, y: rect.top + pageYScroll, w: rect.width }
+        }
+      }
     }
   },
   methods: {
+    showPreview(index) {
+      this.prelist = this.imgList
+      this.$refs.previewer.show(index)
+    },
     submit() {
       if (this.level === -1) {
         this.$ve.alert('请填写评分')
@@ -159,8 +175,7 @@ input[type='file'] {
       width: 50px;
       height: 50px;
       img {
-        width: 100%;
-        height: 100%;
+        width: 100%; // height: 100%;
       }
       .add {
         position: relative;
