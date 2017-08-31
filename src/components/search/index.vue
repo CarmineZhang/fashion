@@ -1,6 +1,6 @@
 <template>
   <div>
-    <scroll-load :height="height" @load-more="loadmore" :allow-load="allowLoading">
+    <scroll-load :height="height" @load-more="loadmore" v-model="allowLoading">
       <product-list :list="goodslist"></product-list>
     </scroll-load>
   </div>

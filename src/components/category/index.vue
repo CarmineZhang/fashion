@@ -4,7 +4,7 @@
       <category-header></category-header>
       <category-nav @on-click="getCommodity"></category-nav>
     </div>
-    <scroll-load class="list-wrapper" :height="height" @load-more="loadmore" :allow-load="loading">
+    <scroll-load class="list-wrapper" :height="height" @load-more="loadmore" v-model="loading">
       <product-list :list="goodslist"></product-list>
     </scroll-load>
   </div>
@@ -35,8 +35,6 @@ export default {
   },
   data() {
     return {
-      allowLoading: true,
-      goodslist: [],
       index: 1,
       cId: 0,
       height: 0
