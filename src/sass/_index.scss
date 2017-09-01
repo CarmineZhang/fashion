@@ -1,0 +1,57 @@
+.home-col {
+  background: #fff;
+  margin-bottom: 10px;
+  padding: 0 .17rem;
+  .col-header {
+    height: .86rem;
+    line-height: .86rem;
+    font-size: 16px;
+    text-align: center;
+  }
+  .col-body {
+    .banner {
+      position: relative;
+      display: block;
+      padding-top: (252/716)*100%;
+      img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: auto;
+      }
+    }
+    .body {
+      // height: 2.7rem;
+      display: flex;
+      .body-item {
+        padding: 0 5px;
+        flex: 1;
+        text-align: center;
+        .img-wrapper {
+          position: relative;
+          padding-top: 100%;
+          img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: auto;
+          }
+        }
+        .name {
+          display: block;
+          color: #333;
+          font-weight: normal;
+          font-size: 12px;
+          @include ellipsisLn()
+        }
+        span {
+          display: block;
+          color: #999;
+          font-size: 12px;
+        }
+      }
+    }
+  }
+}
