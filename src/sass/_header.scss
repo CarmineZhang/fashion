@@ -1,6 +1,7 @@
 .header-wrapper {
   display: flex;
   background: #fff;
+  position: relative;
   @include bottomline();
   .header-back {
     width: 40px;
@@ -23,7 +24,7 @@
       }
     }
     .cur {
-      color: red;
+      color: $pricecolor;
       span {
         &:after {
           content: "";
@@ -32,7 +33,7 @@
           left: 0;
           right: 0;
           height: 2px;
-          background: #e93b3d;
+          background: $pricecolor;
         }
       }
     }
@@ -40,8 +41,9 @@
   .header-info {
     flex: 1;
     text-align: center;
-    color: #fff;
+    color: $maincolor;
     height: 40px;
     line-height: 40px;
+    margin-left: -40px;
   }
 }
