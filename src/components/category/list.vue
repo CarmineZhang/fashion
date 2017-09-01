@@ -6,10 +6,10 @@
       </div>
       <p class="pt-des" v-text="item.name"></p>
       <p class="pt-price">
-        <strong>
-          <em>¥ </em>
-          <span v-price="item.price"></span>
-        </strong>
+        <span class="price">
+          ¥
+          <em v-text="item.price"></em>
+        </span>
         <span>月销{{item.sales}}笔</span>
       </p>
     </a>
@@ -71,15 +71,17 @@ export default {
       padding: 0 5px;
       display: flex;
       margin: 5px 0;
-      strong {
-        flex: 1;
+      .price {
+        display: inline-block;
+        color: $pricecolor;
+        font-weight: 700;
+        line-height: 1.3;
         text-align: left;
-        font-weight: normal;
-        color: #e4393c;
         em {
-          font-size: 12px;
+          font-size: 16px;
         }
       }
+
       span {
         flex: 1;
         text-align: right
