@@ -1,14 +1,16 @@
 <template>
   <div>
-    <section class="order-address" @click="selectAddress">
-      <p>
-        <span>收货人：</span>
-        <strong v-text="defaultAddr.realName"></strong>
-      </p>
-      <p class="sub-addr">
-        <span>收货地址：</span>
-        <span v-attr-detail="defaultAddr"></span>
-      </p>
+    <section class="select-addr" @click="selectAddress">
+      <ul>
+        <li>
+          <span>收货人：</span>
+          <span v-text="defaultAddr.realName"></span>
+          <span class="mobile" v-text="defaultAddr.mobile"></span>
+        </li>
+        <li>
+          <span v-attr-detail="defaultAddr"></span>
+        </li>
+      </ul>
     </section>
     <list :list="goodslist"></list>
     <cell type="link" title="选择发票抬头" :content="invoice.header" @on-click="selectInvoice"></cell>
@@ -22,7 +24,12 @@
       <checklist :list="couponsList" @on-change="selectCoupons"></checklist>
     </div>
     <div class="footer-action">
-      <div class="footer-desc">共一件商品，{{count}}合计 {{amount}}</div>
+      <div class="footer-desc">合计:
+        <span class="price">
+          ¥
+          <em v-text="amount"></em>
+        </span>
+      </div>
       <a class="action" @click="submit()">提交订单</a>
     </div>
     <confirm-detail v-model="show" :pay-url="payUrl"></confirm-detail>
@@ -177,23 +184,6 @@ export default {
 }
 </script>
 <style lang="scss">
-.order-confirm {
-  .order-address {
-    background-color: #fff;
-    margin-bottom: 10px;
-    padding: 10px 40px 10px 10px;
-    position: relative;
-    @include arrow-right();
-    &::after {
-      right: 15px;
-    }
-  }
-  .sub-addr {
-    font-size: 12px;
-  }
-}
-
-
 .order-switch {
   .cell-bd {
     line-height: 32px;

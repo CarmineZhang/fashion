@@ -1,17 +1,21 @@
 <template>
   <div>
-    <div class="order-goods-list" v-for="item in list" :key="item.detailID">
+    <div class="order-goods-header"></div>
+    <div class="order-goods-body" v-for="item in list" :key="item.detailID">
       <div class="goods-img">
         <img :src="item.icon" alt="">
       </div>
-      <div class="goods-info">
-        <p v-text="item.title"></p>
-        <p class="type" v-attr="item.type">iphone 64G</p>
-      </div>
-      <div class="goods-price">
-        <strong class="price">¥{{item.price}}</strong>
-        <p>×{{item.quantity}}</p>
-      </div>
+      <ul class="goods-info">
+        <li v-text="item.title" class="title"></li>
+        <li class="type" v-attr="item.type"></li>
+        <div class="goods-price">
+          <span>
+            ¥
+            <em v-text="item.price"></em>
+          </span>
+          <span class="quantity">x {{item.quantity}}</span>
+        </div>
+      </ul>
     </div>
   </div>
 </template>
@@ -23,32 +27,4 @@ export default {
   }
 }
 </script>
-<style lang="scss">
-.order-goods-list {
-  padding: 10px;
-  display: flex;
-  color: #333;
-  background-color: #fff;
-  .goods-img {
-    width: 75px;
-    height: 75px;
-    img {
-      width: 100%;
-    }
-  }
-  .goods-info {
-    flex: 1;
-    .type {
-      color: #666;
-    }
-  }
-  .goods-price {
-    flex: 1;
-    text-align: right;
-    .price {
-      color: #e93b3d;
-    }
-  }
-}
-</style>
 

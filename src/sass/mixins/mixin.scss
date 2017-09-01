@@ -81,13 +81,13 @@
   }
 }
 
-@mixin arrow-right($num:10px, $color:#C8C8CD) {
+@mixin arrow-right($num:10px, $color:#666) {
   &:after {
     content: "";
     display: block;
     width: $num;
     height: $num;
-    border-width: 2px 2px 0 0;
+    border-width: 1px 1px 0 0;
     border-color: $color;
     border-style: solid;
     transform-origin: 50%;
@@ -99,13 +99,13 @@
   }
 }
 
-@mixin arrow-left($num:10px, $color:#C8C8CD) {
+@mixin arrow-left($num:10px, $color:#666) {
   &:before {
     content: "";
     display: block;
     width: $num;
     height: $num;
-    border-width: 2px 2px 0 0;
+    border-width: 1px 1px 0 0;
     border-color: $color;
     border-style: solid;
     transform-origin: 50%;
@@ -117,13 +117,13 @@
   }
 }
 
-@mixin arrow-down($num:10px, $color:#C8C8CD) {
+@mixin arrow-down($num:10px, $color:#666) {
   &:after {
     content: "";
     display: block;
     width: $num;
     height: $num;
-    border-width: 2px 2px 0 0;
+    border-width: 1px 1px 0 0;
     border-color: $color;
     border-style: solid;
     transform-origin: 50%;
@@ -135,13 +135,13 @@
   }
 }
 
-@mixin arrow-up($num:10px, $color:#C8C8CD) {
+@mixin arrow-up($num:10px, $color:#666) {
   &:after {
     content: "";
     display: block;
     width: $num;
     height: $num;
-    border-width: 2px 2px 0 0;
+    border-width: 1px 1px 0 0;
     border-color: $color;
     border-style: solid;
     transform-origin: 50%;

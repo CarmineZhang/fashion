@@ -1,0 +1,56 @@
+  .order-goods-header {
+    background: #fff url('../assets/logo.png') no-repeat;
+    padding: 10px;
+    height: .43rem;
+    background-size: .94rem .43rem;
+    background-position: 10px 10px;
+    position: relative;
+    @include topline();
+  }
+
+  .order-goods-body {
+    padding: 10px;
+    display: flex;
+    color: #333;
+    background-color: #F9F9F9;
+    .goods-img {
+      width: 1.7rem;
+      height: 1.7rem;
+      img {
+        width: 100%;
+      }
+    }
+    .goods-info {
+      flex: 1;
+      margin-left: 10px;
+      position: relative;
+      font-size: 12px;
+      .title {
+        @include ellipsisLn();
+      }
+      .type {
+        color: #666;
+      }
+      .goods-price {
+        overflow: hidden;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        span {
+          display: inline-block;
+          color: $pricecolor;
+          font-weight: 700;
+          line-height: 24px;
+          em {
+            font-size: 18px;
+          }
+        }
+        .quantity {
+          float: right;
+          color: $subcolor;
+          font-weight: normal;
+        }
+      }
+    }
+  }
