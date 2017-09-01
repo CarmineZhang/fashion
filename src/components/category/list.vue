@@ -23,11 +23,11 @@ export default {
   },
   methods: {
     showGoods(item) {
-      if (item.commodityType === 0) {
-        this.$router.push({ name: 'goods', query: { id: item.commodityId } })
-      } else {
-        this.$router.push({ name: 'coupons-goods', query: { id: item.commodityId } })
-      }
+      // if (item.commodityType === 0) {
+      this.$router.push({ name: 'goods', query: { id: item.commodityId } })
+      // } else {
+      //   this.$router.push({ name: 'coupons-goods', query: { id: item.commodityId } })
+      // }
     }
   }
 }

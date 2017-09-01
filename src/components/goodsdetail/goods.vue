@@ -19,13 +19,13 @@
       <section>
         <div class="sku" v-for="item in goods.propertyList" :key="item.propertyID">
           <h3>{{item.propertyName}}</h3>
-          <div class="sku_list">
+          <div class="sku-list">
             <a class="option" :class="{'cur':pitem.comProID===attrResult[item.propertyID]}" v-text="pitem.selector" v-for="pitem in item.propertyList" :key="pitem.propertyID" @click="selectAttr(item.propertyID,pitem.comProID)"></a>
           </div>
         </div>
       </section>
       <section>
-        <quantity @on-change="changeQty"></quantity>
+        <quantity @on-change="changeQty" :quantity="qty"></quantity>
       </section>
       <section>
         <p>商品评价 ({{evaluateCount}})</p>
@@ -44,6 +44,10 @@ import Quantity from '@/components/widget/quantity'
 import * as http from '@/services'
 export default {
   name: 'goods',
+  props: {
+    qty: Number,
+    attrResult: {}
+  },
   components: {
     Swiper,
     Comment,
@@ -53,9 +57,8 @@ export default {
     return {
       show: false,
       attrlist: [],
-      attrResult: {},
       evaluateCount: 10,
-      evaluateList: []
+      evaluateList: [],
     }
   },
   created() {
@@ -82,7 +85,6 @@ export default {
   methods: {
     selectAttr(pid, aid) {
       this.$emit('on-attr-change', pid, aid)
-      this.$set(this.attrResult, pid, aid)
     },
     changeQty(qty) {
       this.$emit('on-qty-change', qty)
@@ -105,23 +107,26 @@ export default {
     font-weight: 400;
     color: #999;
   }
-  .sku_list {
+  .sku-list {
     overflow: hidden;
     .option {
+      padding: 0 15px;
+      min-width: 20px;
+      max-width: 270px;
+      overflow: hidden;
+      height: 25px;
+      line-height: 25px;
       float: left;
-      position: relative;
-      padding: 5px 10px 4px;
-      margin: 5px 10px 5px 0;
-      min-width: 30px;
-      border-radius: 2px;
       text-align: center;
-      word-break: break-all;
-      font-size: 14px;
-      color: #333;
-      background-color: #fff;
+      margin-left: 10px;
+      margin-bottom: 10px;
+      border-radius: 3px;
+      color: $maincolor;
+      background-color: #f3f2f8;
     }
     .cur {
-      color: #e4393c;
+      background-color: $pricecolor;
+      color: #fff;
     }
   }
 }

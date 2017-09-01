@@ -4,9 +4,10 @@
     <transition name="ve-pop-in">
       <keep-alive>
         <!-- <router-view class="goods-body"></router-view> -->
-        <component :is="currentView" class="goods-body" @on-attr-change="attrChange" @on-qty-change="qtyChange"></component>
+        <component :is="currentView" class="goods-body" @on-attr-change="attrChange" @on-qty-change="qtyChange" :qty="qty" :attr-result="attrResult"></component>
       </keep-alive>
     </transition>
+    <popup :goods="goods" :attr-result="attrResult" @on-attr-change="attrChange" v-model="show" :qty="qty" @on-qty-change="qtyChange"></popup>
     <goods-footer class="fixed-footer" @on-add-cart="addCart" @on-buy="buy"></goods-footer>
   </div>
 </template>
@@ -16,6 +17,7 @@ import GoodsFooter from './footer'
 import Goods from './goods'
 import Detail from './detail'
 import Comments from './comments'
+import Popup from './popup'
 import * as http from '@/services'
 export default {
   name: 'goods-detail',
@@ -24,7 +26,8 @@ export default {
     GoodsFooter,
     Goods,
     Detail,
-    Comments
+    Comments,
+    Popup
   },
   computed: {
     goods() {
@@ -36,7 +39,8 @@ export default {
       currentView: 'goods',
       attrResult: {},
       attrlist: [],
-      qty: 1
+      qty: 1,
+      show: false
     }
   },
   methods: {
@@ -83,13 +87,14 @@ export default {
       }
     },
     buy() {
-      if (this.judgeAttr()) {
-        let ret = { ...this.goods }
-        ret.quantity = this.qty
-        ret.type = this.attrlist
-        this.$store.commit('RECEIVE_SETTLE_GOODS', [ret])
-        this.$router.push('/orderconfirm')
-      }
+      this.show = true
+      // if (this.judgeAttr()) {
+      //   let ret = { ...this.goods }
+      //   ret.quantity = this.qty
+      //   ret.type = this.attrlist
+      //   this.$store.commit('RECEIVE_SETTLE_GOODS', [ret])
+      //   this.$router.push('/orderconfirm')
+      // }
     }
   }
 }

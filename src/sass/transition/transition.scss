@@ -106,3 +106,29 @@
 .ve-slide-leave-active {
   animation: slideDown .3s;
 }
+
+.popup-enter {
+  opacity: 1;
+}
+
+.popup-enter-active,
+.popup-leave-active {
+  transition: transform .3s;
+}
+
+.popup-enter-active {
+  transform: translateY(110%);
+}
+
+.popup-enter-to {
+  transform: translateY(0%);
+}
+
+.popup-leave-active {
+  opacity: 1;
+  transform: translateY(110%);
+}
+
+.popup-leave {
+  transform: translateY(0%);
+}
