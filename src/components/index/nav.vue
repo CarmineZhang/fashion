@@ -12,11 +12,11 @@
       <img src="../../assets/index/tiaozao.png" alt="">
       <span>跳蚤市场</span>
     </div>
-    <div class="nav-item">
+    <div class="nav-item" @click="gotoMe">
       <img src="../../assets/index/me.png" alt="">
       <span>个人中心</span>
     </div>
-    <div class="nav-item">
+    <div class="nav-item" @click="gotoCategory">
       <img src="../../assets/index/cate.png" alt="">
       <span>分类</span>
     </div>
@@ -30,7 +30,14 @@ export default {
       this.$router.push('/integral')
     },
     gotoFleaMarket() {
-      this.$router.push('/fleamarket')
+      // this.$router.push('/fleamarket')
+      this.$router.push({ name: 'flea-sale' })
+    },
+    gotoMe() {
+      this.$router.push('/usercenter')
+    },
+    gotoCategory() {
+      this.$router.push('/category')
     }
   }
 }

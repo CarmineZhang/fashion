@@ -7,7 +7,7 @@ import Buy from '@/components/fleamarket/buy'
 import Publish from '@/components/fleamarket/buy/publish'
 import GoodsDetail from '@/components/fleamarket/goodsdetail'
 import Transfer from '@/components/transfer/sale'
-import PublishBuy  from '@/components/publish'
+import PublishBuy from '@/components/publish'
 export default [{
     path: '/fleamarket',
     component: FleaMarketIndex,
@@ -23,10 +23,10 @@ export default [{
   }, {
     path: '/publish',
     component: Publish
-  },{
-    path:'/publish/buy',
-    name:'publish-buy',
-    component:PublishBuy
+  }, {
+    path: '/publish/buy',
+    name: 'publish-buy',
+    component: PublishBuy
   },
   {
     path: '/fleamarket/goods',

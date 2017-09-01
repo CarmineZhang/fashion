@@ -1,8 +1,6 @@
 <template>
   <div>
-    <div class="header-wrapper">
-      <search-bar placeholder="搜索"></search-bar>
-    </div>
+    <search-bar placeholder="搜索"></search-bar>
     <swiper :list="banners"></swiper>
     <column v-for="item in columns" :key="item.categoryid" :cdata="item" @on-click="buy"></column>
   </div>

@@ -1,11 +1,11 @@
 <template>
   <div class="header-wrapper fm-header">
-    <div class="header-back"></div>
+    <div class="header-back" @click="back"></div>
     <div class="header-nav">
-      <a class="nav-item" :class="{'cur':path==='/fleamarket/'}" @click="showSale">
+      <a class="nav-item" :class="{'cur':name==='flea-sale'}" @click="showSale">
         <span>寄售</span>
       </a>
-      <a class="nav-item" :class="{'cur':path==='/fleamarket/buy'}" @click="showBuy">
+      <a class="nav-item" :class="{'cur':name==='flea-buy'}" @click="showBuy">
         <span>求购</span>
       </a>
     </div>
@@ -16,8 +16,8 @@
 export default {
   name: 'flex-market-header',
   computed: {
-    path() {
-      return this.$store.state.route.path
+    name() {
+      return this.$store.state.route.name
     }
   },
   methods: {
@@ -29,6 +29,9 @@ export default {
     },
     publish() {
       this.$router.push('/publish')
+    },
+    back() {
+      this.$router.go(-1)
     }
   }
 }
