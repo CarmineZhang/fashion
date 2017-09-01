@@ -24,7 +24,7 @@ export default {
   },
   computed: {
     loading() {
-      return this.$store.state.goods.allowLoad
+      return this.$store.state.goods.allowLoad || false
     },
     goodslist() {
       return this.$store.state.goods.list

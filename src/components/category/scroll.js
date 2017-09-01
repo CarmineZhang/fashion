@@ -72,6 +72,11 @@ class Scroll {
       let noScrollerY = Math.abs(distanceX) > Math.abs(distanceY)
       console.log(distanceX)
       if (noScrollerY) {
+        if (distanceX > 100) {
+          distanceX = 100
+        } else if (distanceX < -100) {
+          distanceX = -100
+        }
         me._setTransform(distanceX)
       }
       noScrollerY && e.preventDefault()
