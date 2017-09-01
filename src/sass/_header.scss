@@ -1,11 +1,11 @@
 .header-wrapper {
   display: flex;
-  background: -webkit-gradient(linear, left bottom, right bottom, from(#fdb34b), to(#fd9520));
+  background: #fff;
+  @include bottomline();
   .header-back {
     width: 40px;
     position: relative;
-    background: #fdb34b;
-    @include arrow-left(10px, #fff);
+    @include arrow-left(10px, #333);
   }
   .header-nav {
     flex: 1;

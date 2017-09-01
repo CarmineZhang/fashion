@@ -1,5 +1,5 @@
 <template>
-  <div class="ve-slider" :class="{'ve-slider-cover':showViewer}" v-if="len>0" @click="cover">
+  <div class="ve-slider" :class="{'ve-slider-cover':showViewer}" v-if="len>0">
     <div class="ve-slider-hold">
       <div class="ve-slider-list">
         <div class="ve-slider-item">
