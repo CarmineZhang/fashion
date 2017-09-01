@@ -97,11 +97,6 @@ export default {
 }
 </script>
 <style lang="scss">
-.o-list-wrapper {
-  background-color: #fff; // padding: $searchbarHeight + 40px 10px 0;
-  padding: 0 10px;
-}
-
 .nav-inner {
   position: relative;
   background-color: #fff;

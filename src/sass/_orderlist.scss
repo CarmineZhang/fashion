@@ -1,0 +1,28 @@
+.o-list-wrapper {
+  background-color: #fff;
+  padding: 0 10px;
+  .list-item {
+    .item-header {
+      line-height: 30px;
+      text-align: right;
+    }
+    .item-footer {
+      line-height: 30px;
+      text-align: right;
+    }
+    .item-actions {
+      margin: 5px 0;
+      text-align: right;
+      .action {
+        display: inline-block;
+        width: 75px;
+        height: 25px;
+        text-align: center;
+        color: #fff;
+        line-height: 25px;
+        background-color: $orange;
+        border-radius: 2px;
+      }
+    }
+  }
+}

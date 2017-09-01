@@ -15,34 +15,32 @@
       <search-bar></search-bar>
     </div>
     <div class="o-list-wrapper">
-      <div v-for="item in list" :key="item.orderID">
+      <div v-for="item in list" :key="item.orderID" class="list-item">
         <div class="item-header" v-text="getStatus(item.status)"></div>
         <div class="item-body-wrapper">
-          <div class="item-body">
-            <img :src="item.icon" alt="">
-            <div class="content">
-              <div class="info">
-                <p class="title" v-text="item.commodityName"></p>
-                <p class="desc" v-attr="item.type"></p>
-              </div>
-              <p>
+          <div class="order-goods-body">
+            <img :src="item.icon" alt="" class="goods-img">
+            <ul class="goods-info">
+              <li v-text="item.commodityName" class="title"></li>
+              <li class="type" v-attr="item.type"></li>
+              <div class="goods-price">
                 <span>
-                  <em>¥ </em>
-                  <span v-text="item.price"></span>
+                  ¥
+                  <em v-text="item.price"></em>
                 </span>
-                <span>x{{item.quantity}}</span>
-              </p>
-            </div>
+                <span class="quantity">x {{item.quantity}}</span>
+              </div>
+            </ul>
           </div>
         </div>
         <div class="item-footer">
           共1件商品，合计¥ {{item.totalPrice}}(含运费¥ {{item.freight.toFixed(2)}})
         </div>
-        <div class="item-op">
-          <a class="op" @click="delivery(item)" v-show="flag ===1&&(item.status===2||item.status===3)">提货</a>
-          <a class="op" @click="cancelOrder(item)" v-show="flag ===1&&item.status===1">撤单</a>
-          <a class="op" @click="confirm(item)" v-show="flag ===1&&item.status===5">确认收货</a>
-          <a class="op" @click="showExpress(item)" v-show="flag ===1&&item.status===5">查看物流</a>
+        <div class="item-actions">
+          <a class="action" @click="delivery(item)" v-show="flag ===1&&(item.status===2||item.status===3)">提货</a>
+          <a class="action" @click="cancelOrder(item)" v-show="flag ===1&&item.status===1">撤单</a>
+          <a class="action" @click="confirm(item)" v-show="flag ===1&&item.status===5">确认收货</a>
+          <a class="action" @click="showExpress(item)" v-show="flag ===1&&item.status===5">查看物流</a>
         </div>
       </div>
     </div>
@@ -139,9 +137,3 @@ export default {
   }
 }
 </script>
-<style lang="scss">
-.o-list-wrapper {
-  background-color: #fff;
-  padding: $searchbarHeight+ 10px 0;
-}
-</style>

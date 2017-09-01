@@ -40,14 +40,15 @@
         span {
           display: inline-block;
           color: $pricecolor;
-          font-weight: 700;
-          line-height: 24px;
+          font-weight: 700; // line-height: 24px;
           em {
             font-size: 18px;
           }
         }
         .quantity {
-          float: right;
+          position: absolute;
+          right: 0;
+          top: 8px;
           color: $subcolor;
           font-weight: normal;
         }
