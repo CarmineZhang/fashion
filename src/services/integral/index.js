@@ -35,3 +35,15 @@ export function queryFirmIntegral() {
     "userid": 40
   })
 }
+
+export function integralWithdrawOrder(id) {
+  return ajax({
+    "name": "integralWithdrawOrder",
+    "ctype": "Web",
+    "sessionStr": "BCBC8BB0E7FC40DB1F281BC3B50C2419",
+    "userid": 40,
+    "reqbody": {
+      "listOrderID": id //挂牌订单ID
+    }
+  })
+}

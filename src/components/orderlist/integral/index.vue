@@ -107,7 +107,8 @@ export default {
       })
     },
     cancel(item) {
-      http.cancelOrder(item.orderID).then(res => {
+      console.log(item)
+      http.integralWithdrawOrder(item.listOrderID).then(res => {
         if (res.retcode === 0) {
           this.$ve.alert('撤单成功', () => {
             this.index = 1
