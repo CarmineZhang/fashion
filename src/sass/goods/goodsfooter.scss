@@ -4,23 +4,31 @@
   .goods-collect {
     flex: 1;
     position: relative;
-    padding-top: 25px;
+    padding-top: 30px;
     background-color: #fff;
     &::before {
       content: "";
       position: absolute;
-      top: 0;
+      top: 5px;
       left: 50%;
       transform: translate3d(-50%, 0, 0);
-      width: 25px;
-      height: 25px;
-      background: url('//wq.360buyimg.com/fd/base/img/detail/favour.png?20160512') no-repeat;
-      background-size: 25px 60px;
-      background-position: 0 -35px;
+      width: 20px;
+      height: 20px;
+      background: url('../assets/detail/no-collection.png') no-repeat;
+      background-size: 20px;
     }
     span {
       display: block;
       text-align: center;
+      font-size: 10px;
+      color: #666;
+      line-height: 20px;
+    }
+  }
+  .goods-collect.collected {
+    &::before {
+      background: url('../assets/detail/collection.png') no-repeat;
+      background-size: 20px;
     }
   }
   .goods-action {

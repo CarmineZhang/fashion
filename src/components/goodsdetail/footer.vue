@@ -1,7 +1,7 @@
 <template>
   <div class="goods-footer">
-    <div class="goods-collect">
-      <span @click="collection" v-text="text">收藏</span>
+    <div class="goods-collect" :class="{'collected':collectionStatus===1}" @click="collection">
+      <span v-text="text">收藏</span>
     </div>
     <a class="goods-action goods-cart" @click="addToCart">加入购物车</a>
     <a class="goods-action goods-buy" @click="buy">立即购买</a>
