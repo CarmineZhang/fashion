@@ -7,16 +7,83 @@
       text-align: center;
     }
   }
+  .goods-title {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 18px;
+    margin-bottom: 10px;
+  }
   .goods-price {
-    strong {
-      color: #e4393c
+    span {
+      display: inline-block;
+      color: $pricecolor;
+      font-size: 12px;
+      font-weight: 700;
+      line-height: 1.3;
+      em {
+        font-size: 18px;
+      }
     }
   }
   .goods-other {
     font-size: 12px;
     display: flex;
+    color: $subcolor;
+    padding: 5px 0;
     span {
       flex: 1;
+    }
+  }
+  .quantity {
+    font-size: 12px;
+    line-height: 30px;
+    color: $subcolor;
+  }
+  .quantity-wrap {
+    float: right;
+  }
+  .goods-comments {
+    padding: 0;
+    margin-top: -10px;
+    .header {
+      font-size: 12px;
+      height: 40px;
+      line-height: 40px;
+      background-color: #f1f1f1;
+      text-align: center;
+      position: relative;
+      i {
+        z-index: 1;
+        display: inline-block;
+        vertical-align: middle;
+        width: 18px;
+        height: 18px;
+        background: url('../assets/detail/comment.png') no-repeat;
+        background-size: 18px 18px;
+      }
+      span {
+        z-index: 1;
+        display: inline-block;
+        color: $subcolor;
+        vertical-align: middle;
+      }
+    }
+    .body {
+      background-color: #fff;
+      padding: 10px 10px 20px;
+      .cts-more {
+        text-align: center;
+        font-size: 12px;
+        span {
+          display: inline-block;
+          color: $orange;
+          border: 1px solid $orange;
+          height: 24px;
+          border-radius: 12px;
+          line-height: 24px;
+          padding: 0 20px;
+        }
+      }
     }
   }
 }

@@ -3,12 +3,12 @@
     <swiper :list="list"></swiper>
     <div class="goods-info">
       <section>
-        <p class="goods-desc" v-text="goods.summary"></p>
+        <p class="goods-title" v-text="goods.summary"></p>
         <p class="goods-price">
-          <strong>
-            <em>¥ </em>
-            <span v-text="goods.price"></span>
-          </strong>
+          <span>
+            ¥
+            <em v-text="goods.price"></em>
+          </span>
         </p>
         <p class="goods-other">
           <span>快递 {{goods.delivery}}</span>
@@ -25,14 +25,21 @@
         </div>
       </section>
       <section>
-        <quantity @on-change="changeQty" :quantity="qty"></quantity>
+        <span class="quantity">数量</span>
+        <quantity @on-change="changeQty" :quantity="qty" class="quantity-wrap"></quantity>
       </section>
-      <section>
-        <p>商品评价 ({{evaluateCount}})</p>
-        <comment :list="evaluateList"></comment>
-        <p class="more">
-          查看更多
-        </p>
+      <section class="goods-comments">
+        <div class="header">
+          <i></i>
+          <span>评价</span>
+        </div>
+        <div class="body">
+          <p>商品评价 ({{evaluateCount}})</p>
+          <comment :list="evaluateList"></comment>
+          <p class="cts-more">
+            <span>查看全部评价</span>
+          </p>
+        </div>
       </section>
     </div>
   </div>
