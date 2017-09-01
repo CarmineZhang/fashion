@@ -23,8 +23,13 @@ export default {
     ScrollLoad
   },
   computed: {
-    loading() {
-      return this.$store.state.goods.allowLoad || false
+    loading: {
+      get() {
+        return this.$store.state.goods.allowLoad
+      },
+      set(val) {
+        this.$store.commit('GOODS_ALLOWLOAD', val)
+      }
     },
     goodslist() {
       return this.$store.state.goods.list

@@ -63,6 +63,7 @@ export default {
       font-size: 12px;
       margin: 10px 0;
       padding: 0 5px;
+      height: 36px;
       text-align: left;
       @include ellipsisLn();
     }
