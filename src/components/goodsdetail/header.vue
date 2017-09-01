@@ -12,7 +12,7 @@
         <span>评价</span>
       </a>
     </div>
-    <div class="header-cart"></div>
+    <div class="header-cart" @click="gotoCart"></div>
   </div>
 </template>
 <script>
@@ -35,6 +35,9 @@ export default {
     },
     showComments() {
       this.$emit('on-click', 'comments')
+    },
+    gotoCart() {
+      this.$router.push('/cart')
     }
   }
 }

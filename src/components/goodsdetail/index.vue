@@ -7,7 +7,7 @@
         <component :is="currentView" class="goods-body" @on-attr-change="attrChange" @on-qty-change="qtyChange" :qty="qty" :attr-result="attrResult"></component>
       </keep-alive>
     </transition>
-    <popup :goods="goods" :attr-result="attrResult" @on-attr-change="attrChange" v-model="show" :qty="qty" @on-qty-change="qtyChange"></popup>
+    <popup :goods="goods" :action="action" :attr-result="attrResult" @on-attr-change="attrChange" v-model="show" :qty="qty" @on-qty-change="qtyChange" @on-confirm="confirm"></popup>
     <goods-footer class="fixed-footer" @on-add-cart="addCart" @on-buy="buy"></goods-footer>
   </div>
 </template>
@@ -40,7 +40,8 @@ export default {
       attrResult: {},
       attrlist: [],
       qty: 1,
-      show: false
+      show: false,
+      action: ''
     }
   },
   methods: {
@@ -73,28 +74,35 @@ export default {
       }
     },
     addCart() {
-      if (this.judgeAttr()) {
-        console.log(this.attrlist)
-        var loading = this.$ve.loading('处理中...')
-        http.addToCart(this.goods.commodityId, this.qty, this.attrlist).then(res => {
-          loading.hide()
-          if (res.retcode === 0) {
-            this.$ve.toast.text('添加到购物车')
-          } else {
-            this.$ve.alert(res.msg)
-          }
-        })
-      }
+      this.action = 'cart'
+      this.show = true
     },
     buy() {
+      this.action = 'buy'
       this.show = true
-      // if (this.judgeAttr()) {
-      //   let ret = { ...this.goods }
-      //   ret.quantity = this.qty
-      //   ret.type = this.attrlist
-      //   this.$store.commit('RECEIVE_SETTLE_GOODS', [ret])
-      //   this.$router.push('/orderconfirm')
-      // }
+    },
+    confirm(action) {
+      if (action === 'buy') {
+        if (this.judgeAttr()) {
+          let ret = { ...this.goods }
+          ret.quantity = this.qty
+          ret.type = this.attrlist
+          this.$store.commit('RECEIVE_SETTLE_GOODS', [ret])
+          this.$router.push('/orderconfirm')
+        }
+      } else {
+        if (this.judgeAttr()) {
+          var loading = this.$ve.loading('处理中...')
+          http.addToCart(this.goods.commodityId, this.qty, this.attrlist).then(res => {
+            loading.hide()
+            if (res.retcode === 0) {
+              this.$ve.toast.text('添加到购物车')
+            } else {
+              this.$ve.alert(res.msg)
+            }
+          })
+        }
+      }
     }
   }
 }

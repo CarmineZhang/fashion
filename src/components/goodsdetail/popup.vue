@@ -46,7 +46,8 @@ export default {
     goods: Object,
     value: Boolean,
     qty: Number,
-    attrResult: {}
+    attrResult: {},
+    action: String
   },
   data() {
     return {
@@ -74,6 +75,7 @@ export default {
     confirm() {
       this.show = false
       this.$emit('input', false)
+      this.$emit('on-confirm', this.action)
     },
     selectAttr(pid, aid) {
       this.$emit('on-attr-change', pid, aid)

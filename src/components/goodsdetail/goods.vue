@@ -9,6 +9,7 @@
             ¥
             <em v-text="goods.price"></em>
           </span>
+          <span class="integral">积分：{{goods.takeAccumulate}}</span>
         </p>
         <p class="goods-other">
           <span>快递 {{goods.delivery}}</span>
