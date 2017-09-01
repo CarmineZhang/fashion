@@ -1,5 +1,5 @@
 <template>
-  <div class="header-wrapper">
+  <div class="header-wrapper search-header-wrapper">
     <div class="header-back"></div>
     <search-bar></search-bar>
   </div>

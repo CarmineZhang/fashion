@@ -1,10 +1,10 @@
 .cell {
   box-sizing: border-box;
+  margin-bottom: 10px;
   display: flex;
   position: relative;
   padding: 10px 15px;
-  background-color: #fff;
-  @include topline();
+  background-color: #fff; // @include topline();
   .cell-hd {
     line-height: 24px;
   }

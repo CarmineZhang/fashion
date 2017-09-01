@@ -1,4 +1,10 @@
-.header-wrapper {
+.search-header-wrapper {
+  .header-back {
+    background-color: #fdb34b;
+    &:before {
+      border-color: #fff;
+    }
+  }
   .search-bar {
     flex: 1;
     background: -webkit-gradient(linear, left bottom, right bottom, from(#fdb34b), to(#fd9520));
