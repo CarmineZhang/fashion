@@ -91,3 +91,41 @@
     }
   }
 }
+
+.sku {
+  position: relative;
+  padding-left: 80px;
+  margin: 5px 0;
+  h3 {
+    position: absolute;
+    top: 20px;
+    left: 0;
+    line-height: 1.2;
+    transform: translateY(-50%);
+    font-size: 12px;
+    font-weight: 400;
+    color: #999;
+  }
+  .sku-list {
+    overflow: hidden;
+    .option {
+      padding: 0 15px;
+      min-width: 20px;
+      max-width: 270px;
+      overflow: hidden;
+      height: 25px;
+      line-height: 25px;
+      float: left;
+      text-align: center;
+      margin-left: 10px;
+      margin-bottom: 10px;
+      border-radius: 3px;
+      color: $maincolor;
+      background-color: #f3f2f8;
+    }
+    .cur {
+      background-color: $pricecolor;
+      color: #fff;
+    }
+  }
+}

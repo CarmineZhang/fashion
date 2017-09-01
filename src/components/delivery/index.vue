@@ -1,19 +1,21 @@
 <template>
   <div>
-    <section class="order-address" @click="selectAddress">
-      <p>
-        <span>收货人：</span>
-        <strong v-text="defaultAddr.realName"></strong>
-      </p>
-      <p class="sub-addr">
-        <span>收货地址：</span>
-        <span v-text="defaultAddr.addressDetail"></span>
-      </p>
+    <section class="select-addr" @click="selectAddress">
+      <ul>
+        <li>
+          <span>收货人：</span>
+          <span v-text="defaultAddr.realName"></span>
+          <span class="mobile" v-text="defaultAddr.mobile"></span>
+        </li>
+        <li>
+          <span v-attr-detail="defaultAddr"></span>
+        </li>
+      </ul>
     </section>
     <section>
       <div class="sku" v-for="item in propertyList" :key="item.propertyID">
         <h3>{{item.propertyName}}</h3>
-        <div class="sku_list">
+        <div class="sku-list">
           <a class="option" :class="{'cur':pitem.comProID===attrResult[item.propertyID]}" v-text="pitem.selector" v-for="pitem in item.propertyList" :key="pitem.propertyID" @click="selectAttr(item.propertyID,pitem.comProID)"></a>
         </div>
       </div>

@@ -3,7 +3,7 @@
     <swiper :list="list"></swiper>
     <div class="goods-info">
       <section>
-        <p class="goods-desc" v-text="goods.summary"></p>
+        <p class="goods-title" v-text="goods.summary"></p>
         <p class="goods-price">
           <strong>
             <span v-text="goods.price"></span>
@@ -16,12 +16,18 @@
           <span>库存 {{goods.quantity}}</span>
         </p>
       </section>
-      <section>
-        <p>商品评价 ({{evaluateCount}})</p>
-        <comment :list="evaluateList"></comment>
-        <p class="more">
-          查看更多
-        </p>
+      <section class="goods-comments">
+        <div class="header">
+          <i></i>
+          <span>评价</span>
+        </div>
+        <div class="body">
+          <p>商品评价 ({{evaluateCount}})</p>
+          <comment :list="evaluateList"></comment>
+          <p class="cts-more">
+            <span>查看全部评价</span>
+          </p>
+        </div>
       </section>
     </div>
   </div>
