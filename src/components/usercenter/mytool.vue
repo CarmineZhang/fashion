@@ -13,9 +13,9 @@
       <li>
         <router-link href="" class="t-buy-card" to="/counpons/list">礼品卡</router-link>
       </li>
-      <li>
-        <router-link class="t-set" to="/setting">设置</router-link>
-      </li>
+      <!-- <li>
+          <router-link class="t-set" to="/setting">设置</router-link>
+        </li> -->
     </ul>
   </div>
 </template>

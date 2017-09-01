@@ -6,7 +6,7 @@
           <img :src="user.icon" alt="">
         </div>
       </div>
-      <div class="user-info">
+      <div class="user-info" @click="gotoSetting">
         <div class="user-name" v-text="user.name">
         </div>
         <div class="user-id">
@@ -42,6 +42,9 @@ export default {
   methods: {
     showCollection() {
       this.$router.push('/collection')
+    },
+    gotoSetting() {
+      this.$router.push('/setting')
     }
   }
 }

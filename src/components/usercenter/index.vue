@@ -1,7 +1,6 @@
 <template>
-  <div class="my-main">
-    <div class="my-fixed-header header-wrapper">
-      <a class="header-back" @click="back"></a>
+  <div>
+    <div class="me-header header-wrapper">
       <div class="header-info">我的</div>
     </div>
     <my-info></my-info>
@@ -31,20 +30,12 @@ export default {
 }
 </script>
 <style lang="scss">
-.my-main {
-  padding-top: 40px;
-}
-
-.my-fixed-header {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 40px;
-  line-height: 40px;
-  background-color: #fff;
-  display: flex;
-  @include bottomline();
+.me-header {
+  background-color: #FB000D;
+  .header-info {
+    color: #fff;
+    margin-left: 0;
+  }
 }
 </style>
 
